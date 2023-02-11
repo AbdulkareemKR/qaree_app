@@ -20,7 +20,7 @@ The commit contains the following structural elements, to communicate intent to 
 
 * **fix:** a commit of the type `fix` patches a bug in the codebase.
 
-* **feat:** a commit of the type `feat` introduces a new feature to the codebase.
+* **new:** a commit of the type `new` introduces a new feature to the codebase.
 
 * **BREAKING CHANGE:** a commit that has a footer `BREAKING CHANGE:`, or appends a `!` after the type/scope, introduces a breaking change.
 
