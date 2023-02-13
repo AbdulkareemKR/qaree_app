@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           home: child,
         ));
       },
-      child: Scaffold(body: const HomeScreen()),
+      child: Scaffold(body: const LoginScreen()),
     );
   }
 }
