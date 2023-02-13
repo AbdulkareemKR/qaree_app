@@ -7,45 +7,45 @@ class MainTheme {
   static final main = ThemeData(
       fontFamily: FontConst.fontFamily,
       scaffoldBackgroundColor: ColorsConst.white,
-      primaryColor: ColorsConst.cosmicCobalt.shade500,
+      primaryColor: ColorsConst.black,
       dividerColor: Colors.transparent,
       colorScheme: ColorScheme.light(
-        primary: ColorsConst.cosmicCobalt.shade500,
+        primary: ColorsConst.black,
         secondary: ColorsConst.white,
       ),
       textTheme: TextTheme(
           headlineLarge: TextStyle(
               fontSize: 70.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey),
+              color: ColorsConst.darkGrey),
           headlineMedium: TextStyle(
               fontSize: 50.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey),
+              color: ColorsConst.darkGrey),
           titleLarge: TextStyle(
               fontSize: 30.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey),
+              color: ColorsConst.darkGrey),
           titleMedium: TextStyle(
               fontSize: 25.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey),
+              color: ColorsConst.darkGrey),
           bodyLarge: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey),
+              color: ColorsConst.darkGrey),
           bodyMedium: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey),
+              color: ColorsConst.darkGrey),
           bodySmall: TextStyle(
               fontSize: 15.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey),
+              color: ColorsConst.darkGrey),
           displaySmall: TextStyle(
               fontSize: 12.sp,
               fontWeight: FontWeight.w500,
-              color: ColorsConst.dartGrey)),
+              color: ColorsConst.darkGrey)),
       bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: Colors.transparent,
       ),

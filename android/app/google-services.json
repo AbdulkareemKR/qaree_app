@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "283561677269",
+    "project_id": "qaree-3d7b9",
+    "storage_bucket": "qaree-3d7b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283561677269:android:e8355da381fccf20946d5c",
+        "android_client_info": {
+          "package_name": "com.example.Naqaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283561677269-qvqliqc0gu3dpubtka4ntr7sv0dhacu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4SZic1lddr-TmM4PBNi4LcjlmdZ1eyUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283561677269-qvqliqc0gu3dpubtka4ntr7sv0dhacu0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

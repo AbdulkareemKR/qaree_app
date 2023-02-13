@@ -14,17 +14,15 @@ extension StyleChange on TextStyle {
   /// Theme.of(context).textTheme.bodyLard.regular().copyWith()... or Theme.of(context).textTheme.bodyLard.copyWith().regular()
   /// ```
   TextStyle get regular {
-    return copyWith(
-        fontWeight: FontWeight.w400, color: ColorsConst.gunmetalLight);
+    return copyWith(fontWeight: FontWeight.w400, color: ColorsConst.black);
   }
 
   /// The default is medium, make sure that you need this function.
   TextStyle get medium {
-    return copyWith(
-        fontWeight: FontWeight.w500, color: ColorsConst.gunmetalLight);
+    return copyWith(fontWeight: FontWeight.w500, color: ColorsConst.black);
   }
 
   TextStyle get light {
-    return copyWith(fontWeight: FontWeight.w300, color: ColorsConst.lightGrey);
+    return copyWith(fontWeight: FontWeight.w300, color: ColorsConst.black);
   }
 }

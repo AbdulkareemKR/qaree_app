@@ -1,10 +1,15 @@
-import 'package:Naqaa/features/home/presentation/screens/home_screen.dart';
-import 'package:Naqaa/features/login/presentation/screens/login_screen.dart';
+import 'package:Naqaa/features/login/screens/login_screen.dart';
+import 'package:Naqaa/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
+  // TODO: move it to an initializer funciton
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -15,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //Set the fit size (Find your UI design, look at the dimensions of the device screen and fill it in,unit in dp)
     return ScreenUtilInit(
-      designSize: const Size(1366, 1024),
+      designSize: const Size(414, 896),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -31,7 +36,10 @@ class MyApp extends StatelessWidget {
           home: child,
         ));
       },
-      child: Scaffold(body: const LoginScreen()),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: const LoginScreen(),
+      ),
     );
   }
 }
