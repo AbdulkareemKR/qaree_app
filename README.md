@@ -4,6 +4,12 @@ Qaree is a digital product aiming to facilitate group reading by enabling reader
 
 ### Conventions
 
+#### Creating a New Branch
+
+Once you're assigned to an issue or want to start working on a new feature, create a new branch with a descriptive title preceded with your name as `@yourname/new-feature-title`.
+
+_Note: branch names ar all small case separated by a dash `-`, e.g. `@Abdulkareem/booking-bug`_
+
 #### Commits & PR
 
 The commit message should be structured as follows:
