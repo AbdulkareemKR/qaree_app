@@ -1,15 +1,12 @@
 import 'package:Naqaa/features/login/screens/login_screen.dart';
-import 'package:Naqaa/firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:Naqaa/services/initializer.dart';
+import 'package:Naqaa/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
-  // TODO: move it to an initializer funciton
-  Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Initializer.initAll();
   runApp(const MyApp());
 }
 
@@ -27,12 +24,8 @@ class MyApp extends StatelessWidget {
         return ProviderScope(
             child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'First Method',
-          // You can use the library anywhere in the app even in theme
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-          ),
+          title: 'Qaree App',
+          theme: MainTheme.main,
           home: child,
         ));
       },
