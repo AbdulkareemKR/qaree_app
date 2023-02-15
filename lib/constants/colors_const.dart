@@ -14,6 +14,7 @@ class ColorsConst {
   static const negativeRed = Color(0xffEB5757);
   static const infoBlue = Color(0xff4C71F2);
   static const warningYellow = Color(0xffF2C94C);
+  static const positiveGreen = Color(0xff40c97b);
 
   // UI Colors
   static const primaryPurple = Color(0xff685BFB);

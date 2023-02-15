@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:Naqaa/features/login/domain/auth_reo.dart';
+import 'package:Naqaa/features/login/auth_reo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

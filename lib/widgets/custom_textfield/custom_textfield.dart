@@ -29,7 +29,6 @@ class CustomTextField extends StatefulWidget {
     this.hasCounter = false,
     this.counterText = "",
     this.initialValue,
-    this.textLanguage = "en",
     this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
@@ -53,7 +52,6 @@ class CustomTextField extends StatefulWidget {
   final String counterText;
   final String? initialValue;
   final TextStyle textFieldStyle;
-  final String textLanguage;
   final TextInputType keyboardType;
 
   final List<TextInputFormatter>? inputFormatter;
@@ -122,18 +120,18 @@ class CustomTextFieldState extends State<CustomTextField> {
         ),
         AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2),
           decoration: BoxDecoration(
             color: widget.isEnabled
-                ? ColorsConst.disableGrey
-                : ColorsConst.disableGrey,
+                ? ColorsConst.lightGrey
+                : ColorsConst.lightGrey,
             borderRadius: BorderRadius.all(Radius.circular(10.sp)),
             border: type == TextFieldType.active
                 ? Border.all(
                     color: ColorsConst.black,
                   )
                 : Border.all(
-                    color: ColorsConst.disableGrey,
+                    color: ColorsConst.lightGrey,
                   ),
           ),
           width: widget.width,
@@ -165,41 +163,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                       border: InputBorder.none,
                       hintText: widget.placeHolderText,
                       hintStyle: context.textThemes.bodySmall?.regular
-                          .copyWith(color: ColorsConst.lightGrey)),
-                  buildCounter: widget.hasCounter
-                      ? (_,
-                              {required currentLength,
-                              maxLength,
-                              required isFocused}) =>
-                          Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Positioned(
-                                bottom: widget.height - 5,
-                                left: widget.textLanguage == "ar"
-                                    ? -15
-                                    : widget.width - 110,
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "${widget.counterText} " +
-                                          (maxLength! - currentLength)
-                                              .toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .copyWith(
-                                            color: ColorsConst.lightGrey,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                    )),
-                              ),
-                            ],
-                          )
-                      : null,
-                  maxLines: widget.hasCounter ? 5 : 1,
-                  minLines: widget.hasCounter ? 5 : 1,
-                  maxLength: widget.hasCounter ? 400 : null,
+                          .copyWith(color: ColorsConst.grey)),
                 ),
               ),
               const Spacer(),

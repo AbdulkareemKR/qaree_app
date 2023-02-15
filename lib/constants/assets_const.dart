@@ -1,3 +1,1 @@
-class AssetsConst {
-
-}
+class AssetsConst {}

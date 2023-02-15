@@ -53,6 +53,15 @@ dependencies:
   shimmer: ^2.0.0
   percent_indicator: ^4.2.2
 
+  # Tracking
+  sentry_flutter: ^6.5.1
+  amplitude_flutter: ^3.9.0
+
+  logger:
+    git:
+      url: https://github.com/GarageAppTeam/logger.git
+      ref: master # branch
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
