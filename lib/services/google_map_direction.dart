@@ -80,7 +80,7 @@ class DirectionApi {
         PolylineId id = const PolylineId("id");
         Polyline polyline = Polyline(
           polylineId: id,
-          color: ColorsConst.googleMapBlue,
+          color: ColorsConst.infoBlue,
           points: polylineCoordinates,
           width: 5,
         );

@@ -19,7 +19,7 @@ class LoadingContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
         period: const Duration(seconds: 1),
-        baseColor: ColorsConst.cultured,
+        baseColor: ColorsConst.disableGrey,
         highlightColor: Colors.grey.shade200,
         enabled: true,
         child: Container(

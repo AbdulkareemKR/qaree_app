@@ -41,12 +41,7 @@ dependencies:
   geocoding: ^2.0.4
   url_launcher: ^6.1.6
   syncfusion_flutter_charts: ^20.4.48
-  google_maps_flutter:
-    git:
-      url: https://github.com/lukaskurz/plugins
-      path: packages/google_maps_flutter/google_maps_flutter
-      ref: main
-
+  google_maps_flutter: ^2.2.3
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.1.3
   freezed: ^2.3.2
@@ -58,6 +53,15 @@ dependencies:
   shimmer: ^2.0.0
   percent_indicator: ^4.2.2
 
+  # Tracking
+  sentry_flutter: ^6.5.1
+  amplitude_flutter: ^3.9.0
+
+  logger:
+    git:
+      url: https://github.com/GarageAppTeam/logger.git
+      ref: master # branch
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,36 +70,12 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/logo_icon.png"
+  image_path: "assets/svg/logo.svg"
   min_sdk_android: 21 # android min sdk min:16, default 21
-  web:
-    generate: true
-    image_path: "assets/images/logo_icon.png"
-    background_color: "#hexcode"
-    theme_color: "#hexcode"
-  windows:
-    generate: true
-    image_path: "assets/images/logo_icon.png"
-    icon_size: 48 # min:48, max:256, default: 48
-  macos:
-    generate: true
-    image_path: "assets/images/logo_icon.png"
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -103,28 +83,7 @@ flutter:
     - assets/images/
     - assets/svg/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: JosefinSans
+      fonts:
+        - asset: assets/fonts/JosefinSans-Regular.ttf

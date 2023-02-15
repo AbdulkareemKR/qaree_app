@@ -21,6 +21,7 @@ class CustomButton extends StatefulWidget {
     this.height,
     this.color,
     this.textColor = ColorsConst.white,
+    this.textStyle,
   })  
 
   ///
@@ -42,6 +43,7 @@ class CustomButton extends StatefulWidget {
   final Widget? child;
   final Function() onPressed;
   final Color? textColor;
+  final TextStyle? textStyle;
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -60,7 +62,6 @@ class _CustomButtonState extends State<CustomButton> {
   late Color _textColor;
   bool _isHovered = false;
   bool isLoading = false;
-  late TextStyle? _textStyle;
 
   @override
   void didChangeDependencies() {
@@ -73,8 +74,8 @@ class _CustomButtonState extends State<CustomButton> {
       _border = _getBorderFromStyle();
       _hoverColor = _getHoverColorFromStyle();
     } else {
-      _color = widget.color ?? ColorsConst.cosmicCobalt.shade500;
-      _hoverColor = ColorsConst.cosmicCobalt.shade200;
+      _color = widget.color ?? ColorsConst.black;
+      _hoverColor = ColorsConst.black;
       _textColor = ColorsConst.white;
       _border = Border.all(style: BorderStyle.none);
     }
@@ -86,7 +87,6 @@ class _CustomButtonState extends State<CustomButton> {
       final size = _getButtonSize();
       _width = size.width;
       _height = size.height;
-      _textStyle = _getTextStyle();
       _iconBackgroundColor = _getIconBackgrounColor();
       _iconColor = _getIconColor();
 
@@ -100,7 +100,6 @@ class _CustomButtonState extends State<CustomButton> {
       _showLabel = true;
       _width = widget.width ?? 319.w;
       _height = widget.height ?? 50.h;
-      _textStyle = context.textThemes.bodyMedium;
       _iconBackgroundColor = ColorsConst.white;
       _iconColor = ColorsConst.black;
     }
@@ -110,27 +109,27 @@ class _CustomButtonState extends State<CustomButton> {
   Color _getColorFromStyle() {
     switch (widget.style) {
       case CustomButtonStyle.primary:
-        return ColorsConst.cosmicCobalt.shade500;
+        return ColorsConst.primaryPurple;
       case CustomButtonStyle.secondary:
-        return ColorsConst.cosmicCobalt.shade100.withOpacity(0.15);
+        return ColorsConst.primaryPurple.withOpacity(0.15);
       case CustomButtonStyle.thirdly:
-        return ColorsConst.white;
+        return ColorsConst.lightGrey;
       case CustomButtonStyle.disabled:
         return ColorsConst.disableGrey;
       default:
-        return ColorsConst.cosmicCobalt.shade500;
+        return ColorsConst.black;
     }
   }
 
   Color _getHoverColorFromStyle() {
     switch (widget.style) {
       case CustomButtonStyle.primary:
-        return ColorsConst.cosmicCobalt.shade200;
+        return ColorsConst.primaryPurple.withOpacity(0.8);
       case CustomButtonStyle.secondary:
-        return ColorsConst.cosmicCobalt.shade300.withOpacity(0.15);
+        return ColorsConst.lightGrey.withOpacity(0.15);
 
       default:
-        return ColorsConst.cosmicCobalt.shade200;
+        return ColorsConst.black;
     }
   }
 
@@ -159,11 +158,11 @@ class _CustomButtonState extends State<CustomButton> {
       case CustomButtonStyle.primary:
         return ColorsConst.white;
       case CustomButtonStyle.secondary:
-        return ColorsConst.cosmicCobalt.shade500;
+        return ColorsConst.black;
       case CustomButtonStyle.thirdly:
-        return ColorsConst.cosmicCobalt.shade500;
+        return ColorsConst.black;
       case CustomButtonStyle.disabled:
-        return ColorsConst.dartGrey;
+        return ColorsConst.darkGrey;
       default:
         return ColorsConst.white;
     }
@@ -173,9 +172,7 @@ class _CustomButtonState extends State<CustomButton> {
     switch (widget.style) {
       case CustomButtonStyle.thirdly:
         return Border.all(
-            color: ColorsConst.cosmicCobalt,
-            width: 1,
-            style: BorderStyle.solid);
+            color: ColorsConst.black, width: 1, style: BorderStyle.solid);
 
       default:
         return Border.all(style: BorderStyle.none);
@@ -309,8 +306,8 @@ class _CustomButtonState extends State<CustomButton> {
                                 condition: _showLabel,
                                 trueWidget: Text(
                                   widget.label ?? '',
-                                  style:
-                                      _textStyle?.copyWith(color: _textColor),
+                                  style: widget.textStyle
+                                      ?.copyWith(color: _textColor),
                                 )),
                           ),
                           ConditionaryWidget(

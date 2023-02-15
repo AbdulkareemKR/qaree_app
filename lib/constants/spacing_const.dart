@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpacingConst {
   static const spacing120 = 120;
-  static const spacing96 = 96;
+  static const spacing100 = 100;
   static const spacing80 = 80;
   static const spacing70 = 70;
   static const spacing60 = 60;
@@ -14,7 +14,7 @@ class SpacingConst {
   static const spacing6 = 6;
 
   static final hSpacing120 = spacing120.horizontalSpace;
-  static final hSpacing96 = spacing96.horizontalSpace;
+  static final hSpacing100 = spacing100.horizontalSpace;
   static final hSpacing80 = spacing80.horizontalSpace;
   static final hSpacing70 = spacing70.horizontalSpace;
   static final hSpacing60 = spacing60.horizontalSpace;
@@ -25,7 +25,7 @@ class SpacingConst {
   static final hSpacing6 = spacing6.horizontalSpace;
 
   static final vSpacing120 = spacing120.verticalSpace;
-  static final vSpacing96 = spacing96.verticalSpace;
+  static final vSpacing100 = spacing100.verticalSpace;
   static final vSpacing80 = spacing80.verticalSpace;
   static final vSpacing70 = spacing70.verticalSpace;
   static final vSpacing60 = spacing60.verticalSpace;
