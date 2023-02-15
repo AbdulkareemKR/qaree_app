@@ -1,5 +1,4 @@
 # This is a generated file; do not edit or check into version control.
-amplitude_flutter=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/amplitude_flutter-3.13.0/
 firebase_auth=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/firebase_auth-4.2.2/
 firebase_auth_web=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/firebase_auth_web-5.2.2/
 firebase_core=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/firebase_core-2.5.0/
@@ -14,8 +13,6 @@ geolocator_windows=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/geolocator_win
 google_maps_flutter=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/google_maps_flutter-2.2.3/
 google_maps_flutter_android=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.4.4/
 google_maps_flutter_ios=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.1.13/
-package_info_plus=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/package_info_plus-3.0.3/
-sentry_flutter=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/sentry_flutter-6.20.1/
 url_launcher=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/url_launcher-6.1.9/
 url_launcher_android=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/url_launcher_android-6.0.23/
 url_launcher_ios=/Users/abdulkareemkr/.pub-cache/hosted/pub.dev/url_launcher_ios-6.1.0/
