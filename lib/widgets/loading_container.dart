@@ -1,5 +1,5 @@
-import 'package:Naqaa/constants/border_radius_const.dart';
-import 'package:Naqaa/constants/colors_const.dart';
+import 'package:Qaree/constants/border_radius_const.dart';
+import 'package:Qaree/constants/colors_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 

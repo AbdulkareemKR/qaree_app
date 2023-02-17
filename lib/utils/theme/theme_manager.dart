@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:Naqaa/utils/theme/themes.dart';
+import 'package:Qaree/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 

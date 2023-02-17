@@ -1,6 +1,6 @@
-import 'package:Naqaa/firebase_options.dart';
-import 'package:Naqaa/utils/status_logger/extensions.dart';
-import 'package:Naqaa/utils/status_logger/status_logger.dart';
+import 'package:Qaree/firebase_options.dart';
+import 'package:Qaree/utils/status_logger/extensions.dart';
+import 'package:Qaree/utils/status_logger/status_logger.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/date_symbol_data_local.dart';
 

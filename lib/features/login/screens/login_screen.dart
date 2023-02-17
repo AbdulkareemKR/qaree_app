@@ -1,13 +1,13 @@
-import 'package:Naqaa/constants/border_radius_const.dart';
-import 'package:Naqaa/constants/colors_const.dart';
-import 'package:Naqaa/constants/spacing_const.dart';
-import 'package:Naqaa/features/login/controllers/login_screen_controller.dart';
-import 'package:Naqaa/utils/theme/extensions.dart';
-import 'package:Naqaa/widgets/bounce.dart';
-import 'package:Naqaa/widgets/custom_button/custom_button.dart';
-import 'package:Naqaa/widgets/custom_button/enums/button_style.dart';
-import 'package:Naqaa/widgets/custom_textfield/custom_textfield.dart';
-import 'package:Naqaa/widgets/custom_textfield/textfield_types.dart';
+import 'package:Qaree/constants/border_radius_const.dart';
+import 'package:Qaree/constants/colors_const.dart';
+import 'package:Qaree/constants/spacing_const.dart';
+import 'package:Qaree/features/login/controllers/login_screen_controller.dart';
+import 'package:Qaree/utils/theme/extensions.dart';
+import 'package:Qaree/widgets/bounce.dart';
+import 'package:Qaree/widgets/custom_button/custom_button.dart';
+import 'package:Qaree/widgets/custom_button/enums/button_style.dart';
+import 'package:Qaree/widgets/custom_textfield/custom_textfield.dart';
+import 'package:Qaree/widgets/custom_textfield/textfield_types.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "package:flutter_screenutil/flutter_screenutil.dart";
@@ -73,12 +73,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 width: 350.w,
                 height: 50.h,
                 placeHolderText: 'Password',
+                isPassword: true,
                 icon: Icons.lock_outline_rounded,
               ),
               SpacingConst.vSpacing40,
               CustomButton(
                 label: "Sign In",
-                onPressed: () => {},
+                onPressed: _controller.onLoginPressed,
                 style: CustomButtonStyle.primary,
                 textStyle: context.textThemes.bodyMedium?.copyWith(
                   color: ColorsConst.white,

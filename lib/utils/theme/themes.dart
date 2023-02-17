@@ -1,5 +1,5 @@
-import 'package:Naqaa/constants/colors_const.dart';
-import 'package:Naqaa/constants/fonts_const.dart';
+import 'package:Qaree/constants/colors_const.dart';
+import 'package:Qaree/constants/fonts_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

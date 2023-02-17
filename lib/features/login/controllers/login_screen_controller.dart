@@ -1,6 +1,10 @@
 import 'dart:developer';
 
-import 'package:Naqaa/features/login/auth_reo.dart';
+import 'package:Qaree/constants/colors_const.dart';
+import 'package:Qaree/features/home/screens/home_screen.dart';
+import 'package:Qaree/features/login/auth_reo.dart';
+import 'package:Qaree/utils/theme/extensions.dart';
+import 'package:Qaree/widgets/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +28,9 @@ class LoginScreenController {
      */
     if (emailController.text.isEmpty || passwordController.text.isEmpty) {
       // If not throw error that will be handled in the widget
-      throw Exception('Please enter email and password');
+      CustomSnackBar.showCustomSnackBar(
+          context: context, message: "Email or password is empty");
+      throw Exception('Email or password is empty');
     }
     final user = await ref
         .read(authRepo)
@@ -44,9 +50,8 @@ class LoginScreenController {
       await login();
 
       // If everything went good and the user was logged in
-      // TODO: make a home page
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => Container()));
+          MaterialPageRoute(builder: (context) => HomeScreen()));
     } catch (e) {
       // If the user enters invalid email/password, we will show an error dialog
       log(e.toString());

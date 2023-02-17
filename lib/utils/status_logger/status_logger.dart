@@ -1,5 +1,4 @@
-
-import 'package:Naqaa/services/sentry_service.dart';
+import 'package:Qaree/services/sentry_service.dart';
 import 'package:logger/logger.dart';
 
 class StatusLogger {

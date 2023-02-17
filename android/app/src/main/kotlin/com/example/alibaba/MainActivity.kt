@@ -1,4 +1,4 @@
-package com.example.Naqaa
+package com.example.Qaree
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -69,7 +69,7 @@ class DefaultFirebaseOptions {
     storageBucket: 'qaree-3d7b9.appspot.com',
     iosClientId:
         '283561677269-m0j5gmr2l9gt7a3ic6nutggktevjhbin.apps.googleusercontent.com',
-    iosBundleId: 'com.example.Naqaa',
+    iosBundleId: 'com.example.Qaree',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -80,6 +80,6 @@ class DefaultFirebaseOptions {
     storageBucket: 'qaree-3d7b9.appspot.com',
     iosClientId:
         '283561677269-m0j5gmr2l9gt7a3ic6nutggktevjhbin.apps.googleusercontent.com',
-    iosBundleId: 'com.example.Naqaa',
+    iosBundleId: 'com.example.Qaree',
   );
 }

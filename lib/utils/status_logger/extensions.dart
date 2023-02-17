@@ -1,4 +1,4 @@
-import 'package:Naqaa/utils/status_logger/status_logger.dart';
+import 'package:Qaree/utils/status_logger/status_logger.dart';
 
 extension ExceptionLogger on Object {
   /// An easy way to log the exception.

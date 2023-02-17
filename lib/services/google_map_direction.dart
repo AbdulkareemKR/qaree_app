@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:Naqaa/constants/colors_const.dart';
-import 'package:Naqaa/services/polyline_result.dart';
+import 'package:Qaree/constants/colors_const.dart';
+import 'package:Qaree/services/polyline_result.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
