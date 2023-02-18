@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/AnalyticsConnector.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		8VUaK4pY5WbAIRZzmpULQU04q1E=
+		WKIHaA7g2kZgQkBbtJB3V5mNHpE=
 		</data>
 		<key>Modules/AnalyticsConnector.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		crIq4Rhx7Ty6iMz8nHMxu6UA1rA=
+		h4NdDTCsMqZc5eG2VXUKmvWri4U=
 		</data>
 		<key>Modules/AnalyticsConnector.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -96,22 +96,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8VUaK4pY5WbAIRZzmpULQU04q1E=
+			WKIHaA7g2kZgQkBbtJB3V5mNHpE=
 			</data>
 			<key>hash2</key>
 			<data>
-			aTYGd7XaaAiMhiO0RVxmo0Anj2NtnWIPQryAQNBN9PI=
+			Mt7K3mWKtgaVIFFwNMKGoho24tJSHq9M68jzVkEgwqM=
 			</data>
 		</dict>
 		<key>Modules/AnalyticsConnector.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			crIq4Rhx7Ty6iMz8nHMxu6UA1rA=
+			h4NdDTCsMqZc5eG2VXUKmvWri4U=
 			</data>
 			<key>hash2</key>
 			<data>
-			vNT5ZLrk8uncqEcEvcL5cZU9gpIoiGeZM5Jv5G8VcY8=
+			F10R88AIkVMox5KJ+1R604kb0jRxICglMGPFT6/P53k=
 			</data>
 		</dict>
 		<key>Modules/AnalyticsConnector.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
