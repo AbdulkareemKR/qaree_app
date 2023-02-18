@@ -1,6 +1,5 @@
 import 'package:Qaree/features/login/screens/login_screen.dart';
 import 'package:Qaree/firebase_options.dart';
-import 'package:Qaree/services/initializer.dart';
 import 'package:Qaree/utils/theme/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Initializer.initAll();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // await Initializer.initAll();
   runApp(const MyApp());
 }
 
@@ -18,9 +20,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
     //Set the fit size (Find your UI design, look at the dimensions of the device screen and fill it in,unit in dp)
     return ScreenUtilInit(
       designSize: const Size(414, 896),
@@ -35,10 +34,7 @@ class MyApp extends StatelessWidget {
           home: child,
         ));
       },
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: const LoginScreen(),
-      ),
+      child: LoginScreen(),
     );
   }
 }

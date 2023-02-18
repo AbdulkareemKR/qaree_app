@@ -3,8 +3,7 @@ enum EducationLevel {
   primary,
   secondary,
   highSchool,
-  undergraduate,
-  graduate,
-  postGraduate,
+  bachelor,
+  master,
   doctorate,
 }

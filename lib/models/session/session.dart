@@ -1,5 +1,4 @@
 import 'package:Qaree/models/start_end_date/start_end_date.dart';
-import 'package:Qaree/models/user/education_level.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'session.freezed.dart';
 part 'session.g.dart';

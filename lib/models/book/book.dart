@@ -1,6 +1,5 @@
-import 'package:Qaree/models/book/book_genre.dart';
+import 'package:Qaree/enums/book_genre.dart';
 import 'package:Qaree/models/review/review.dart';
-import 'package:Qaree/models/user/education_level.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book.freezed.dart';
 part 'book.g.dart';

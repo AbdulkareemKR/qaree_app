@@ -1,28 +1,26 @@
+import 'package:Qaree/enums/education_level.dart';
 import 'package:Qaree/models/book_shelf/book_shelf.dart';
 import 'package:Qaree/models/group/group.dart';
 import 'package:Qaree/models/note/note.dart';
 import 'package:Qaree/models/session/session.dart';
-import 'package:Qaree/models/user/education_level.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'user.freezed.dart';
-part 'user.g.dart';
+part 'reader.freezed.dart';
+part 'reader.g.dart';
 
 @freezed
-class User with _$User {
-  factory User({
+class Reader with _$Reader {
+  factory Reader({
     required String id,
+    required String name,
+    required String email,
     @Default(EducationLevel.none) EducationLevel educationLevel,
     List<Group>? groups,
     List<String>? friendList,
     List<Note>? notes,
     BookShelf? bookShelf,
     List<Session>? sessions,
-    double? latitude,
-    double? longitude,
-    required String price,
-    required String size,
-    String? image,
-  }) = _User;
+    String? imageUrl,
+  }) = _Reader;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory Reader.fromJson(Map<String, dynamic> json) => _$ReaderFromJson(json);
 }

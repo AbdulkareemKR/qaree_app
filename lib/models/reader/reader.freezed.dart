@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user.dart';
+part of 'reader.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,56 +14,52 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+Reader _$ReaderFromJson(Map<String, dynamic> json) {
+  return _Reader.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
+mixin _$Reader {
   String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   EducationLevel get educationLevel => throw _privateConstructorUsedError;
   List<Group>? get groups => throw _privateConstructorUsedError;
   List<String>? get friendList => throw _privateConstructorUsedError;
   List<Note>? get notes => throw _privateConstructorUsedError;
   BookShelf? get bookShelf => throw _privateConstructorUsedError;
   List<Session>? get sessions => throw _privateConstructorUsedError;
-  double? get latitude => throw _privateConstructorUsedError;
-  double? get longitude => throw _privateConstructorUsedError;
-  String get price => throw _privateConstructorUsedError;
-  String get size => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $ReaderCopyWith<Reader> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+abstract class $ReaderCopyWith<$Res> {
+  factory $ReaderCopyWith(Reader value, $Res Function(Reader) then) =
+      _$ReaderCopyWithImpl<$Res, Reader>;
   @useResult
   $Res call(
       {String id,
+      String name,
+      String email,
       EducationLevel educationLevel,
       List<Group>? groups,
       List<String>? friendList,
       List<Note>? notes,
       BookShelf? bookShelf,
       List<Session>? sessions,
-      double? latitude,
-      double? longitude,
-      String price,
-      String size,
-      String? image});
+      String? imageUrl});
 
   $BookShelfCopyWith<$Res>? get bookShelf;
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$ReaderCopyWithImpl<$Res, $Val extends Reader>
+    implements $ReaderCopyWith<$Res> {
+  _$ReaderCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -74,22 +70,28 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
+    Object? name = null,
+    Object? email = null,
     Object? educationLevel = null,
     Object? groups = freezed,
     Object? friendList = freezed,
     Object? notes = freezed,
     Object? bookShelf = freezed,
     Object? sessions = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? price = null,
-    Object? size = null,
-    Object? image = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       educationLevel: null == educationLevel
           ? _value.educationLevel
@@ -115,25 +117,9 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<Session>?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -152,55 +138,60 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 }
 
 /// @nodoc
-abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
-      __$$_UserCopyWithImpl<$Res>;
+abstract class _$$_ReaderCopyWith<$Res> implements $ReaderCopyWith<$Res> {
+  factory _$$_ReaderCopyWith(_$_Reader value, $Res Function(_$_Reader) then) =
+      __$$_ReaderCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String id,
+      String name,
+      String email,
       EducationLevel educationLevel,
       List<Group>? groups,
       List<String>? friendList,
       List<Note>? notes,
       BookShelf? bookShelf,
       List<Session>? sessions,
-      double? latitude,
-      double? longitude,
-      String price,
-      String size,
-      String? image});
+      String? imageUrl});
 
   @override
   $BookShelfCopyWith<$Res>? get bookShelf;
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
-    implements _$$_UserCopyWith<$Res> {
-  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
+class __$$_ReaderCopyWithImpl<$Res>
+    extends _$ReaderCopyWithImpl<$Res, _$_Reader>
+    implements _$$_ReaderCopyWith<$Res> {
+  __$$_ReaderCopyWithImpl(_$_Reader _value, $Res Function(_$_Reader) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
+    Object? name = null,
+    Object? email = null,
     Object? educationLevel = null,
     Object? groups = freezed,
     Object? friendList = freezed,
     Object? notes = freezed,
     Object? bookShelf = freezed,
     Object? sessions = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? price = null,
-    Object? size = null,
-    Object? image = freezed,
+    Object? imageUrl = freezed,
   }) {
-    return _then(_$_User(
+    return _then(_$_Reader(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       educationLevel: null == educationLevel
           ? _value.educationLevel
@@ -226,25 +217,9 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<Session>?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      longitude: freezed == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -252,29 +227,32 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User implements _User {
-  _$_User(
+class _$_Reader implements _Reader {
+  _$_Reader(
       {required this.id,
+      required this.name,
+      required this.email,
       this.educationLevel = EducationLevel.none,
       final List<Group>? groups,
       final List<String>? friendList,
       final List<Note>? notes,
       this.bookShelf,
       final List<Session>? sessions,
-      this.latitude,
-      this.longitude,
-      required this.price,
-      required this.size,
-      this.image})
+      this.imageUrl})
       : _groups = groups,
         _friendList = friendList,
         _notes = notes,
         _sessions = sessions;
 
-  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
+  factory _$_Reader.fromJson(Map<String, dynamic> json) =>
+      _$$_ReaderFromJson(json);
 
   @override
   final String id;
+  @override
+  final String name;
+  @override
+  final String email;
   @override
   @JsonKey()
   final EducationLevel educationLevel;
@@ -321,27 +299,21 @@ class _$_User implements _User {
   }
 
   @override
-  final double? latitude;
-  @override
-  final double? longitude;
-  @override
-  final String price;
-  @override
-  final String size;
-  @override
-  final String? image;
+  final String? imageUrl;
 
   @override
   String toString() {
-    return 'User(id: $id, educationLevel: $educationLevel, groups: $groups, friendList: $friendList, notes: $notes, bookShelf: $bookShelf, sessions: $sessions, latitude: $latitude, longitude: $longitude, price: $price, size: $size, image: $image)';
+    return 'Reader(id: $id, name: $name, email: $email, educationLevel: $educationLevel, groups: $groups, friendList: $friendList, notes: $notes, bookShelf: $bookShelf, sessions: $sessions, imageUrl: $imageUrl)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_User &&
+            other is _$_Reader &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.educationLevel, educationLevel) ||
                 other.educationLevel == educationLevel) &&
             const DeepCollectionEquality().equals(other._groups, _groups) &&
@@ -351,13 +323,8 @@ class _$_User implements _User {
             (identical(other.bookShelf, bookShelf) ||
                 other.bookShelf == bookShelf) &&
             const DeepCollectionEquality().equals(other._sessions, _sessions) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.size, size) || other.size == size) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @JsonKey(ignore: true)
@@ -365,51 +332,51 @@ class _$_User implements _User {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      name,
+      email,
       educationLevel,
       const DeepCollectionEquality().hash(_groups),
       const DeepCollectionEquality().hash(_friendList),
       const DeepCollectionEquality().hash(_notes),
       bookShelf,
       const DeepCollectionEquality().hash(_sessions),
-      latitude,
-      longitude,
-      price,
-      size,
-      image);
+      imageUrl);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserCopyWith<_$_User> get copyWith =>
-      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+  _$$_ReaderCopyWith<_$_Reader> get copyWith =>
+      __$$_ReaderCopyWithImpl<_$_Reader>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserToJson(
+    return _$$_ReaderToJson(
       this,
     );
   }
 }
 
-abstract class _User implements User {
-  factory _User(
+abstract class _Reader implements Reader {
+  factory _Reader(
       {required final String id,
+      required final String name,
+      required final String email,
       final EducationLevel educationLevel,
       final List<Group>? groups,
       final List<String>? friendList,
       final List<Note>? notes,
       final BookShelf? bookShelf,
       final List<Session>? sessions,
-      final double? latitude,
-      final double? longitude,
-      required final String price,
-      required final String size,
-      final String? image}) = _$_User;
+      final String? imageUrl}) = _$_Reader;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
+  factory _Reader.fromJson(Map<String, dynamic> json) = _$_Reader.fromJson;
 
   @override
   String get id;
+  @override
+  String get name;
+  @override
+  String get email;
   @override
   EducationLevel get educationLevel;
   @override
@@ -423,16 +390,9 @@ abstract class _User implements User {
   @override
   List<Session>? get sessions;
   @override
-  double? get latitude;
-  @override
-  double? get longitude;
-  @override
-  String get price;
-  @override
-  String get size;
-  @override
-  String? get image;
+  String? get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
+  _$$_ReaderCopyWith<_$_Reader> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,5 +1,4 @@
 import 'package:Qaree/models/book/book.dart';
-import 'package:Qaree/models/user/education_level.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book_shelf.freezed.dart';
 part 'book_shelf.g.dart';

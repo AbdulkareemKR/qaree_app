@@ -1,4 +1,3 @@
-import 'package:Qaree/models/user/education_level.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'review.freezed.dart';
 part 'review.g.dart';

@@ -1,7 +1,7 @@
 import 'package:Qaree/constants/border_radius_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/spacing_const.dart';
-import 'package:Qaree/features/login/controllers/login_screen_controller.dart';
+import 'package:Qaree/features/login/controllers/sign_up_screen_controller.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/bounce.dart';
 import 'package:Qaree/widgets/custom_button/custom_button.dart';
@@ -13,19 +13,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "package:flutter_screenutil/flutter_screenutil.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends ConsumerStatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
-  late final LoginScreenController _controller;
+class _SignUpScreenState extends ConsumerState<SignUpScreen> {
+  late final SignUpScreenController _controller;
 
   @override
   void didChangeDependencies() {
-    _controller = LoginScreenController(context: context, ref: ref);
+    _controller = SignUpScreenController(context: context, ref: ref);
     super.didChangeDependencies();
   }
 
@@ -54,11 +54,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadiusConst.circularBorderRadius,
                   ),
-                  width: 230.w,
+                  width: 230.h,
                   child:
                       Image(image: AssetImage("assets/images/white_logo.png")),
                 ),
                 SpacingConst.vSpacing80,
+                CustomTextField(
+                  type: TextFieldType.normal,
+                  controller: _controller.nameController,
+                  width: 350.w,
+                  height: 50.h,
+                  placeHolderText: 'Name',
+                  icon: Icons.person,
+                ),
+                SpacingConst.vSpacing20,
                 CustomTextField(
                   type: TextFieldType.normal,
                   controller: _controller.emailController,
@@ -79,8 +88,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 SpacingConst.vSpacing40,
                 CustomButton(
-                  label: "Login",
-                  onPressed: _controller.onLoginPressed,
+                  label: "Sign Up",
+                  onPressed: _controller.onSignUpPressed,
                   style: CustomButtonStyle.primary,
                   textStyle: context.textThemes.bodyMedium?.copyWith(
                     color: ColorsConst.white,
@@ -88,7 +97,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 SpacingConst.vSpacing20,
                 Bounce(
-                  onTap: _controller.onSignUpPressed,
+                  onTap: _controller.onLoginPressed,
                   child: RichText(
                     text: TextSpan(
                       style: context.textThemes.bodyMedium?.copyWith(
@@ -97,17 +106,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: "you don't have an account? ",
+                          text: 'Already have an account? ',
                         ),
                         TextSpan(
-                            text: 'Sign Up',
+                            text: 'Log in',
                             style: TextStyle(
                               color: ColorsConst.primaryPurple,
                             ))
                       ],
                     ),
                   ),
-                ),
+                )
               ],
             ),
           )),

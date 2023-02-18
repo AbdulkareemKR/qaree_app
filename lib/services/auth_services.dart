@@ -10,7 +10,14 @@ class FirebaseAuthServices {
   }
 
   Future<User?> singInWithEmail(String email, String password) async {
-    final user = await instance.signInWithEmailAndPassword(email: email, password: password);
+    final user = await instance.signInWithEmailAndPassword(
+        email: email, password: password);
+    return user.user;
+  }
+
+  Future<User?> createUserWithEmail(String email, String password) async {
+    final user = await instance.createUserWithEmailAndPassword(
+        email: email, password: password);
     return user.user;
   }
 }

@@ -1,13 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'reader.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
+_$_Reader _$$_ReaderFromJson(Map<String, dynamic> json) => _$_Reader(
       id: json['id'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
       educationLevel: $enumDecodeNullable(
               _$EducationLevelEnumMap, json['educationLevel']) ??
           EducationLevel.none,
@@ -26,26 +28,20 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       sessions: (json['sessions'] as List<dynamic>?)
           ?.map((e) => Session.fromJson(e as Map<String, dynamic>))
           .toList(),
-      latitude: (json['latitude'] as num?)?.toDouble(),
-      longitude: (json['longitude'] as num?)?.toDouble(),
-      price: json['price'] as String,
-      size: json['size'] as String,
-      image: json['image'] as String?,
+      imageUrl: json['imageUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
+Map<String, dynamic> _$$_ReaderToJson(_$_Reader instance) => <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
+      'email': instance.email,
       'educationLevel': _$EducationLevelEnumMap[instance.educationLevel]!,
       'groups': instance.groups,
       'friendList': instance.friendList,
       'notes': instance.notes,
       'bookShelf': instance.bookShelf,
       'sessions': instance.sessions,
-      'latitude': instance.latitude,
-      'longitude': instance.longitude,
-      'price': instance.price,
-      'size': instance.size,
-      'image': instance.image,
+      'imageUrl': instance.imageUrl,
     };
 
 const _$EducationLevelEnumMap = {
@@ -53,8 +49,7 @@ const _$EducationLevelEnumMap = {
   EducationLevel.primary: 'primary',
   EducationLevel.secondary: 'secondary',
   EducationLevel.highSchool: 'highSchool',
-  EducationLevel.undergraduate: 'undergraduate',
-  EducationLevel.graduate: 'graduate',
-  EducationLevel.postGraduate: 'postGraduate',
+  EducationLevel.bachelor: 'bachelor',
+  EducationLevel.master: 'master',
   EducationLevel.doctorate: 'doctorate',
 };
