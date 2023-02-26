@@ -14,38 +14,72 @@ class MainTheme {
         secondary: ColorsConst.white,
       ),
       textTheme: TextTheme(
-          headlineLarge: TextStyle(
-              fontSize: 70.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey),
-          headlineMedium: TextStyle(
-              fontSize: 50.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey),
-          titleLarge: TextStyle(
-              fontSize: 30.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey),
-          titleMedium: TextStyle(
-              fontSize: 25.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey),
-          bodyLarge: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey),
-          bodyMedium: TextStyle(
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey),
-          bodySmall: TextStyle(
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey),
-          displaySmall: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorsConst.darkGrey)),
+        headline1: TextStyle(
+          fontSize: 96.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        headline2: TextStyle(
+          fontSize: 60.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        headline3: TextStyle(
+          fontSize: 48.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        headline4: TextStyle(
+          fontSize: 34.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        headline5: TextStyle(
+          fontSize: 24.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        headline6: TextStyle(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        subtitle1: TextStyle(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        subtitle2: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        bodyText1: TextStyle(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        bodyText2: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        button: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        caption: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        overline: TextStyle(
+          fontSize: 10.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+      ),
       bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: Colors.transparent,
       ),
