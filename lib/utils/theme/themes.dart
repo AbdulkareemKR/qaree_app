@@ -14,67 +14,77 @@ class MainTheme {
         secondary: ColorsConst.white,
       ),
       textTheme: TextTheme(
-        headline1: TextStyle(
-          fontSize: 96.sp,
-          fontWeight: FontWeight.w500,
-          color: ColorsConst.darkGrey,
-        ),
-        headline2: TextStyle(
-          fontSize: 60.sp,
-          fontWeight: FontWeight.w500,
-          color: ColorsConst.darkGrey,
-        ),
-        headline3: TextStyle(
+        displayLarge: TextStyle(
           fontSize: 48.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),
-        headline4: TextStyle(
-          fontSize: 34.sp,
+        displayMedium: TextStyle(
+          fontSize: 36.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),
-        headline5: TextStyle(
+        displaySmall: TextStyle(
           fontSize: 24.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),
-        headline6: TextStyle(
+        headlineLarge: TextStyle(
+          fontSize: 28.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        headlineMedium: TextStyle(
+          fontSize: 24.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        headlineSmall: TextStyle(
           fontSize: 20.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),
-        subtitle1: TextStyle(
+        titleLarge: TextStyle(
+          fontSize: 22.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        titleMedium: TextStyle(
+          fontSize: 20.sp, 
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        titleSmall: TextStyle(
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        bodyLarge: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),
-        subtitle2: TextStyle(
+        bodyMedium: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),
-        bodyText1: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
-          color: ColorsConst.darkGrey,
-        ),
-        bodyText2: TextStyle(
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-          color: ColorsConst.darkGrey,
-        ),
-        button: TextStyle(
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-          color: ColorsConst.darkGrey,
-        ),
-        caption: TextStyle(
+        bodySmall: TextStyle(
           fontSize: 12.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),
-        overline: TextStyle(
+        labelLarge: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        labelMedium: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsConst.darkGrey,
+        ),
+        labelSmall: TextStyle(
           fontSize: 10.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
