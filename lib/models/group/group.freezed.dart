@@ -24,7 +24,6 @@ mixin _$Group {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  double? get latitude => throw _privateConstructorUsedError;
   List<String> get members => throw _privateConstructorUsedError;
   List<GroupBook>? get groupBooks => throw _privateConstructorUsedError;
   String? get groupLink => throw _privateConstructorUsedError;
@@ -45,7 +44,6 @@ abstract class $GroupCopyWith<$Res> {
       String id,
       String name,
       String? description,
-      double? latitude,
       List<String> members,
       List<GroupBook>? groupBooks,
       String? groupLink,
@@ -69,7 +67,6 @@ class _$GroupCopyWithImpl<$Res, $Val extends Group>
     Object? id = null,
     Object? name = null,
     Object? description = freezed,
-    Object? latitude = freezed,
     Object? members = null,
     Object? groupBooks = freezed,
     Object? groupLink = freezed,
@@ -92,10 +89,6 @@ class _$GroupCopyWithImpl<$Res, $Val extends Group>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
       members: null == members
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
@@ -127,7 +120,6 @@ abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
       String id,
       String name,
       String? description,
-      double? latitude,
       List<String> members,
       List<GroupBook>? groupBooks,
       String? groupLink,
@@ -147,7 +139,6 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
     Object? id = null,
     Object? name = null,
     Object? description = freezed,
-    Object? latitude = freezed,
     Object? members = null,
     Object? groupBooks = freezed,
     Object? groupLink = freezed,
@@ -170,10 +161,6 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
       members: null == members
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
@@ -202,7 +189,6 @@ class _$_Group implements _Group {
       required this.id,
       required this.name,
       this.description,
-      this.latitude,
       required final List<String> members,
       required final List<GroupBook>? groupBooks,
       this.groupLink,
@@ -228,8 +214,6 @@ class _$_Group implements _Group {
   final String name;
   @override
   final String? description;
-  @override
-  final double? latitude;
   final List<String> _members;
   @override
   List<String> get members {
@@ -255,7 +239,7 @@ class _$_Group implements _Group {
 
   @override
   String toString() {
-    return 'Group(GroupAdmins: $GroupAdmins, id: $id, name: $name, description: $description, latitude: $latitude, members: $members, groupBooks: $groupBooks, groupLink: $groupLink, image: $image)';
+    return 'Group(GroupAdmins: $GroupAdmins, id: $id, name: $name, description: $description, members: $members, groupBooks: $groupBooks, groupLink: $groupLink, image: $image)';
   }
 
   @override
@@ -269,8 +253,6 @@ class _$_Group implements _Group {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
             const DeepCollectionEquality()
                 .equals(other._groupBooks, _groupBooks) &&
@@ -287,7 +269,6 @@ class _$_Group implements _Group {
       id,
       name,
       description,
-      latitude,
       const DeepCollectionEquality().hash(_members),
       const DeepCollectionEquality().hash(_groupBooks),
       groupLink,
@@ -313,7 +294,6 @@ abstract class _Group implements Group {
       required final String id,
       required final String name,
       final String? description,
-      final double? latitude,
       required final List<String> members,
       required final List<GroupBook>? groupBooks,
       final String? groupLink,
@@ -329,8 +309,6 @@ abstract class _Group implements Group {
   String get name;
   @override
   String? get description;
-  @override
-  double? get latitude;
   @override
   List<String> get members;
   @override

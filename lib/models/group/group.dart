@@ -10,7 +10,6 @@ class Group with _$Group {
     required String id,
     required String name,
     String? description,
-    double? latitude,
     required List<String> members,
     required List<GroupBook>? groupBooks,
     String? groupLink,

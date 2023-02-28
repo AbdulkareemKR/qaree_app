@@ -9,7 +9,6 @@ class BookShelf with _$BookShelf {
     required String id,
     required String userId,
     List<Book>? books,
-    @Default(false) bool isPublic,
   }) = _BookShelf;
 
   factory BookShelf.fromJson(Map<String, dynamic> json) =>

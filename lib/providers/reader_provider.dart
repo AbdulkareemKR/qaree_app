@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:Qaree/models/reader/reader.dart';
 import 'package:Qaree/repos/reader_repo.dart';
 import 'package:Qaree/services/auth_services.dart';
@@ -12,8 +10,8 @@ final readerProvider = StreamProvider<Reader?>((ref) {
         error: ((error, stackTrace) => Stream.value(null)),
         data: (user) {
           if (user != null) {
-            final carOwnerStream = ReaderRepo.getReaderStream(user.uid);
-            return carOwnerStream;
+            final readerStream = ReaderRepo.getReaderStream(user.uid);
+            return readerStream;
           } else {
             return Stream.value(null);
           }
@@ -21,12 +19,12 @@ final readerProvider = StreamProvider<Reader?>((ref) {
       );
 });
 
-final readerStateProvider = StateProvider<Reader?>((ref) {
-  return ref.watch(readerProvider).when(
-      data: (carOwner) => carOwner,
-      error: (error, stack) => null,
-      loading: () => null);
-});
+// final readerStateProvider = StateProvider<Reader?>((ref) {
+//   return ref.watch(readerProvider).when(
+//       data: (carOwner) => carOwner,
+//       error: (error, stack) => null,
+//       loading: () => null);
+// });
 
 final authStreamProvider =
     StreamProvider<User?>(((ref) => FirebaseAuthServices.authChange));

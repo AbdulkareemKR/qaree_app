@@ -13,7 +13,6 @@ _$_Group _$$_GroupFromJson(Map<String, dynamic> json) => _$_Group(
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String?,
-      latitude: (json['latitude'] as num?)?.toDouble(),
       members:
           (json['members'] as List<dynamic>).map((e) => e as String).toList(),
       groupBooks: (json['groupBooks'] as List<dynamic>?)
@@ -28,7 +27,6 @@ Map<String, dynamic> _$$_GroupToJson(_$_Group instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'latitude': instance.latitude,
       'members': instance.members,
       'groupBooks': instance.groupBooks,
       'groupLink': instance.groupLink,

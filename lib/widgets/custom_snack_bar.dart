@@ -12,7 +12,7 @@ class CustomSnackBar {
       content: Center(
         child: Text(
           message,
-          style: context.textThemes.bodyMedium?.copyWith(
+          style: context.textThemes.bodyText2?.copyWith(
             color: ColorsConst.white,
           ),
         ),

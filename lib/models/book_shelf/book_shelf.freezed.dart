@@ -23,7 +23,6 @@ mixin _$BookShelf {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   List<Book>? get books => throw _privateConstructorUsedError;
-  bool get isPublic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +35,7 @@ abstract class $BookShelfCopyWith<$Res> {
   factory $BookShelfCopyWith(BookShelf value, $Res Function(BookShelf) then) =
       _$BookShelfCopyWithImpl<$Res, BookShelf>;
   @useResult
-  $Res call({String id, String userId, List<Book>? books, bool isPublic});
+  $Res call({String id, String userId, List<Book>? books});
 }
 
 /// @nodoc
@@ -55,7 +54,6 @@ class _$BookShelfCopyWithImpl<$Res, $Val extends BookShelf>
     Object? id = null,
     Object? userId = null,
     Object? books = freezed,
-    Object? isPublic = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -70,10 +68,6 @@ class _$BookShelfCopyWithImpl<$Res, $Val extends BookShelf>
           ? _value.books
           : books // ignore: cast_nullable_to_non_nullable
               as List<Book>?,
-      isPublic: null == isPublic
-          ? _value.isPublic
-          : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -85,7 +79,7 @@ abstract class _$$_BookShelfCopyWith<$Res> implements $BookShelfCopyWith<$Res> {
       __$$_BookShelfCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String userId, List<Book>? books, bool isPublic});
+  $Res call({String id, String userId, List<Book>? books});
 }
 
 /// @nodoc
@@ -102,7 +96,6 @@ class __$$_BookShelfCopyWithImpl<$Res>
     Object? id = null,
     Object? userId = null,
     Object? books = freezed,
-    Object? isPublic = null,
   }) {
     return _then(_$_BookShelf(
       id: null == id
@@ -117,10 +110,6 @@ class __$$_BookShelfCopyWithImpl<$Res>
           ? _value._books
           : books // ignore: cast_nullable_to_non_nullable
               as List<Book>?,
-      isPublic: null == isPublic
-          ? _value.isPublic
-          : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -129,10 +118,7 @@ class __$$_BookShelfCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BookShelf implements _BookShelf {
   _$_BookShelf(
-      {required this.id,
-      required this.userId,
-      final List<Book>? books,
-      this.isPublic = false})
+      {required this.id, required this.userId, final List<Book>? books})
       : _books = books;
 
   factory _$_BookShelf.fromJson(Map<String, dynamic> json) =>
@@ -153,12 +139,8 @@ class _$_BookShelf implements _BookShelf {
   }
 
   @override
-  @JsonKey()
-  final bool isPublic;
-
-  @override
   String toString() {
-    return 'BookShelf(id: $id, userId: $userId, books: $books, isPublic: $isPublic)';
+    return 'BookShelf(id: $id, userId: $userId, books: $books)';
   }
 
   @override
@@ -168,15 +150,13 @@ class _$_BookShelf implements _BookShelf {
             other is _$_BookShelf &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            const DeepCollectionEquality().equals(other._books, _books) &&
-            (identical(other.isPublic, isPublic) ||
-                other.isPublic == isPublic));
+            const DeepCollectionEquality().equals(other._books, _books));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId,
-      const DeepCollectionEquality().hash(_books), isPublic);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, const DeepCollectionEquality().hash(_books));
 
   @JsonKey(ignore: true)
   @override
@@ -196,8 +176,7 @@ abstract class _BookShelf implements BookShelf {
   factory _BookShelf(
       {required final String id,
       required final String userId,
-      final List<Book>? books,
-      final bool isPublic}) = _$_BookShelf;
+      final List<Book>? books}) = _$_BookShelf;
 
   factory _BookShelf.fromJson(Map<String, dynamic> json) =
       _$_BookShelf.fromJson;
@@ -208,8 +187,6 @@ abstract class _BookShelf implements BookShelf {
   String get userId;
   @override
   List<Book>? get books;
-  @override
-  bool get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$_BookShelfCopyWith<_$_BookShelf> get copyWith =>

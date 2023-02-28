@@ -12,12 +12,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class LoginScreenController {
   BuildContext context;
   WidgetRef ref;
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+
   LoginScreenController({
     required this.context,
     required this.ref,
   });
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   /// This method will be called from onLoginPressed method to login the user
   /// It will call the [FirebaseAuthServices] to sign in the user
@@ -55,8 +57,8 @@ class LoginScreenController {
       await login();
 
       // If everything went good and the user was logged in
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeScreen()));
+      EasyNavigator.openPage(
+          context: context, page: HomeScreen(), isPushReplaced: true);
     } catch (e) {
       // If the user enters invalid email/password, we will show an error dialog
       log(e.toString());

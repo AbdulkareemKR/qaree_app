@@ -197,15 +197,15 @@ class _CustomButtonState extends State<CustomButton> {
   TextStyle? _getTextStyle() {
     switch (widget.size) {
       case ButtonSize.large:
-        return context.textThemes.bodyMedium;
+        return context.textThemes.bodyText2;
       case ButtonSize.medium:
-        return context.textThemes.bodyLarge;
+        return context.textThemes.bodyText1;
       case ButtonSize.micro:
-        return context.textThemes.bodyMedium;
+        return context.textThemes.bodyText2;
       case ButtonSize.small:
-        return context.textThemes.bodySmall;
+        return context.textThemes.caption;
       default:
-        return context.textThemes.bodyMedium;
+        return context.textThemes.bodyText2;
     }
   }
 

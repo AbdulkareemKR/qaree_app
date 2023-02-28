@@ -23,7 +23,7 @@ class SignUpScreenController {
   });
 
   /// This method will be called from onLoginPressed method to login the user
-  /// It will call the [FirebaseAuthServices] to sign in the user
+  /// It will call the [FirebaseAuthServices] to sign up the user
   Future<void> signUp() async {
     try {
       /**
