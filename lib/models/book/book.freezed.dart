@@ -20,16 +20,20 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Book {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
-  DateTime get publishDate => throw _privateConstructorUsedError;
-  List<String> get author => throw _privateConstructorUsedError;
+  DateTime? get publishDate => throw _privateConstructorUsedError;
+  List<String>? get authors => throw _privateConstructorUsedError;
   int? get pages => throw _privateConstructorUsedError;
-  String get isbn => throw _privateConstructorUsedError;
+  String? get publisher => throw _privateConstructorUsedError;
+  List<String>? get isbn => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   List<Review>? get reviews => throw _privateConstructorUsedError;
-  List<BookGenre>? get genres => throw _privateConstructorUsedError;
+  String? get bookType => throw _privateConstructorUsedError;
+  List<String>? get genres => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,16 +46,20 @@ abstract class $BookCopyWith<$Res> {
       _$BookCopyWithImpl<$Res, Book>;
   @useResult
   $Res call(
-      {String id,
-      String name,
+      {String? id,
+      String? name,
+      String? description,
       double? rating,
-      DateTime publishDate,
-      List<String> author,
+      DateTime? publishDate,
+      List<String>? authors,
       int? pages,
-      String isbn,
+      String? publisher,
+      List<String>? isbn,
       String? image,
       List<Review>? reviews,
-      List<BookGenre>? genres});
+      String? bookType,
+      List<String>? genres,
+      String? language});
 }
 
 /// @nodoc
@@ -67,46 +75,58 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? description = freezed,
     Object? rating = freezed,
-    Object? publishDate = null,
-    Object? author = null,
+    Object? publishDate = freezed,
+    Object? authors = freezed,
     Object? pages = freezed,
-    Object? isbn = null,
+    Object? publisher = freezed,
+    Object? isbn = freezed,
     Object? image = freezed,
     Object? reviews = freezed,
+    Object? bookType = freezed,
     Object? genres = freezed,
+    Object? language = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double?,
-      publishDate: null == publishDate
+      publishDate: freezed == publishDate
           ? _value.publishDate
           : publishDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      author: null == author
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as DateTime?,
+      authors: freezed == authors
+          ? _value.authors
+          : authors // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       pages: freezed == pages
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as int?,
-      isbn: null == isbn
+      publisher: freezed == publisher
+          ? _value.publisher
+          : publisher // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isbn: freezed == isbn
           ? _value.isbn
           : isbn // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -115,10 +135,18 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<Review>?,
+      bookType: freezed == bookType
+          ? _value.bookType
+          : bookType // ignore: cast_nullable_to_non_nullable
+              as String?,
       genres: freezed == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<BookGenre>?,
+              as List<String>?,
+      language: freezed == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -130,16 +158,20 @@ abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      String name,
+      {String? id,
+      String? name,
+      String? description,
       double? rating,
-      DateTime publishDate,
-      List<String> author,
+      DateTime? publishDate,
+      List<String>? authors,
       int? pages,
-      String isbn,
+      String? publisher,
+      List<String>? isbn,
       String? image,
       List<Review>? reviews,
-      List<BookGenre>? genres});
+      String? bookType,
+      List<String>? genres,
+      String? language});
 }
 
 /// @nodoc
@@ -151,46 +183,58 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? description = freezed,
     Object? rating = freezed,
-    Object? publishDate = null,
-    Object? author = null,
+    Object? publishDate = freezed,
+    Object? authors = freezed,
     Object? pages = freezed,
-    Object? isbn = null,
+    Object? publisher = freezed,
+    Object? isbn = freezed,
     Object? image = freezed,
     Object? reviews = freezed,
+    Object? bookType = freezed,
     Object? genres = freezed,
+    Object? language = freezed,
   }) {
     return _then(_$_Book(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double?,
-      publishDate: null == publishDate
+      publishDate: freezed == publishDate
           ? _value.publishDate
           : publishDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      author: null == author
-          ? _value._author
-          : author // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as DateTime?,
+      authors: freezed == authors
+          ? _value._authors
+          : authors // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       pages: freezed == pages
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as int?,
-      isbn: null == isbn
-          ? _value.isbn
+      publisher: freezed == publisher
+          ? _value.publisher
+          : publisher // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isbn: freezed == isbn
+          ? _value._isbn
           : isbn // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -199,10 +243,18 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
           ? _value._reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<Review>?,
+      bookType: freezed == bookType
+          ? _value.bookType
+          : bookType // ignore: cast_nullable_to_non_nullable
+              as String?,
       genres: freezed == genres
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<BookGenre>?,
+              as List<String>?,
+      language: freezed == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -211,42 +263,61 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
 @JsonSerializable()
 class _$_Book implements _Book {
   _$_Book(
-      {required this.id,
-      required this.name,
+      {this.id,
+      this.name,
+      this.description,
       this.rating,
-      required this.publishDate,
-      required final List<String> author,
+      this.publishDate,
+      final List<String>? authors,
       this.pages,
-      required this.isbn,
+      this.publisher,
+      final List<String>? isbn,
       this.image,
       final List<Review>? reviews,
-      final List<BookGenre>? genres})
-      : _author = author,
+      this.bookType,
+      final List<String>? genres,
+      this.language})
+      : _authors = authors,
+        _isbn = isbn,
         _reviews = reviews,
         _genres = genres;
 
   factory _$_Book.fromJson(Map<String, dynamic> json) => _$$_BookFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
+  @override
+  final String? description;
   @override
   final double? rating;
   @override
-  final DateTime publishDate;
-  final List<String> _author;
+  final DateTime? publishDate;
+  final List<String>? _authors;
   @override
-  List<String> get author {
-    if (_author is EqualUnmodifiableListView) return _author;
+  List<String>? get authors {
+    final value = _authors;
+    if (value == null) return null;
+    if (_authors is EqualUnmodifiableListView) return _authors;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_author);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   final int? pages;
   @override
-  final String isbn;
+  final String? publisher;
+  final List<String>? _isbn;
+  @override
+  List<String>? get isbn {
+    final value = _isbn;
+    if (value == null) return null;
+    if (_isbn is EqualUnmodifiableListView) return _isbn;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? image;
   final List<Review>? _reviews;
@@ -259,9 +330,11 @@ class _$_Book implements _Book {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<BookGenre>? _genres;
   @override
-  List<BookGenre>? get genres {
+  final String? bookType;
+  final List<String>? _genres;
+  @override
+  List<String>? get genres {
     final value = _genres;
     if (value == null) return null;
     if (_genres is EqualUnmodifiableListView) return _genres;
@@ -270,8 +343,11 @@ class _$_Book implements _Book {
   }
 
   @override
+  final String? language;
+
+  @override
   String toString() {
-    return 'Book(id: $id, name: $name, rating: $rating, publishDate: $publishDate, author: $author, pages: $pages, isbn: $isbn, image: $image, reviews: $reviews, genres: $genres)';
+    return 'Book(id: $id, name: $name, description: $description, rating: $rating, publishDate: $publishDate, authors: $authors, pages: $pages, publisher: $publisher, isbn: $isbn, image: $image, reviews: $reviews, bookType: $bookType, genres: $genres, language: $language)';
   }
 
   @override
@@ -281,15 +357,23 @@ class _$_Book implements _Book {
             other is _$_Book &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.publishDate, publishDate) ||
                 other.publishDate == publishDate) &&
-            const DeepCollectionEquality().equals(other._author, _author) &&
+            const DeepCollectionEquality().equals(other._authors, _authors) &&
             (identical(other.pages, pages) || other.pages == pages) &&
-            (identical(other.isbn, isbn) || other.isbn == isbn) &&
+            (identical(other.publisher, publisher) ||
+                other.publisher == publisher) &&
+            const DeepCollectionEquality().equals(other._isbn, _isbn) &&
             (identical(other.image, image) || other.image == image) &&
             const DeepCollectionEquality().equals(other._reviews, _reviews) &&
-            const DeepCollectionEquality().equals(other._genres, _genres));
+            (identical(other.bookType, bookType) ||
+                other.bookType == bookType) &&
+            const DeepCollectionEquality().equals(other._genres, _genres) &&
+            (identical(other.language, language) ||
+                other.language == language));
   }
 
   @JsonKey(ignore: true)
@@ -298,14 +382,18 @@ class _$_Book implements _Book {
       runtimeType,
       id,
       name,
+      description,
       rating,
       publishDate,
-      const DeepCollectionEquality().hash(_author),
+      const DeepCollectionEquality().hash(_authors),
       pages,
-      isbn,
+      publisher,
+      const DeepCollectionEquality().hash(_isbn),
       image,
       const DeepCollectionEquality().hash(_reviews),
-      const DeepCollectionEquality().hash(_genres));
+      bookType,
+      const DeepCollectionEquality().hash(_genres),
+      language);
 
   @JsonKey(ignore: true)
   @override
@@ -323,39 +411,51 @@ class _$_Book implements _Book {
 
 abstract class _Book implements Book {
   factory _Book(
-      {required final String id,
-      required final String name,
+      {final String? id,
+      final String? name,
+      final String? description,
       final double? rating,
-      required final DateTime publishDate,
-      required final List<String> author,
+      final DateTime? publishDate,
+      final List<String>? authors,
       final int? pages,
-      required final String isbn,
+      final String? publisher,
+      final List<String>? isbn,
       final String? image,
       final List<Review>? reviews,
-      final List<BookGenre>? genres}) = _$_Book;
+      final String? bookType,
+      final List<String>? genres,
+      final String? language}) = _$_Book;
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$_Book.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get name;
+  String? get name;
+  @override
+  String? get description;
   @override
   double? get rating;
   @override
-  DateTime get publishDate;
+  DateTime? get publishDate;
   @override
-  List<String> get author;
+  List<String>? get authors;
   @override
   int? get pages;
   @override
-  String get isbn;
+  String? get publisher;
+  @override
+  List<String>? get isbn;
   @override
   String? get image;
   @override
   List<Review>? get reviews;
   @override
-  List<BookGenre>? get genres;
+  String? get bookType;
+  @override
+  List<String>? get genres;
+  @override
+  String? get language;
   @override
   @JsonKey(ignore: true)
   _$$_BookCopyWith<_$_Book> get copyWith => throw _privateConstructorUsedError;
