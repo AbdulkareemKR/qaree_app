@@ -18,11 +18,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
-  void initState() {
-    retrieveAllGoogleBooks();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
