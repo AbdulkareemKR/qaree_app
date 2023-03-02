@@ -1,7 +1,7 @@
 import 'dart:developer';
-import 'package:Qaree/features/home/screens/home_screen.dart';
 import 'package:Qaree/features/login/auth_reo.dart';
 import 'package:Qaree/features/login/screens/sign_up_screen.dart';
+import 'package:Qaree/features/navigation_bar/screens/navigation_bar.dart';
 import 'package:Qaree/services/easy_navigator.dart';
 import 'package:Qaree/widgets/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +58,7 @@ class LoginScreenController {
 
       // If everything went good and the user was logged in
       EasyNavigator.openPage(
-          context: context, page: HomeScreen(), isPushReplaced: true);
+          context: context, page: MainNavigationBar(), isPushReplaced: true);
     } catch (e) {
       // If the user enters invalid email/password, we will show an error dialog
       log(e.toString());
