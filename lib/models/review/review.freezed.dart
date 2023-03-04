@@ -25,6 +25,7 @@ mixin _$Review {
   String? get bookId => throw _privateConstructorUsedError;
   String? get reviewContent => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: 'date', fromJson: _dateFromJson)
   DateTime? get date => throw _privateConstructorUsedError;
   bool? get isPublic => throw _privateConstructorUsedError;
 
@@ -44,7 +45,7 @@ abstract class $ReviewCopyWith<$Res> {
       String? bookId,
       String? reviewContent,
       double? rating,
-      DateTime? date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
       bool? isPublic});
 }
 
@@ -114,7 +115,7 @@ abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
       String? bookId,
       String? reviewContent,
       double? rating,
-      DateTime? date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
       bool? isPublic});
 }
 
@@ -178,7 +179,7 @@ class _$_Review implements _Review {
       this.bookId,
       this.reviewContent,
       this.rating,
-      this.date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson) this.date,
       this.isPublic = false});
 
   factory _$_Review.fromJson(Map<String, dynamic> json) =>
@@ -195,6 +196,7 @@ class _$_Review implements _Review {
   @override
   final double? rating;
   @override
+  @JsonKey(name: 'date', fromJson: _dateFromJson)
   final DateTime? date;
   @override
   @JsonKey()
@@ -247,7 +249,7 @@ abstract class _Review implements Review {
       final String? bookId,
       final String? reviewContent,
       final double? rating,
-      final DateTime? date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson) final DateTime? date,
       final bool? isPublic}) = _$_Review;
 
   factory _Review.fromJson(Map<String, dynamic> json) = _$_Review.fromJson;
@@ -263,6 +265,7 @@ abstract class _Review implements Review {
   @override
   double? get rating;
   @override
+  @JsonKey(name: 'date', fromJson: _dateFromJson)
   DateTime? get date;
   @override
   bool? get isPublic;

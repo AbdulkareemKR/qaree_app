@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'review.freezed.dart';
 part 'review.g.dart';
@@ -10,9 +11,12 @@ class Review with _$Review {
     String? bookId,
     String? reviewContent,
     double? rating,
-    DateTime? date,
+    @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
     @Default(false) bool? isPublic,
   }) = _Review;
 
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);
 }
+
+DateTime _dateFromJson(Timestamp timestamp) =>
+    DateTime.fromMillisecondsSinceEpoch(timestamp.millisecondsSinceEpoch);

@@ -178,63 +178,67 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
             ),
           )),
       body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              SpacingConst.vSpacing80,
-              ListView.separated(
-                itemCount: widget.notes?.length ?? 0,
-                separatorBuilder: ((context, index) => SpacingConst.vSpacing20),
-                itemBuilder: (context, index) => Container(
-                  width: 330.w,
-                  height: 150.h,
-                  decoration: BoxDecoration(
-                    color: ColorsConst.lightPurple.withOpacity(0.80),
-                    borderRadius: BorderRadiusConst.smallBorderRadius,
-                    boxShadow: [BoxShadowConst.allSidesBoxShadow],
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              widget.notes![index].date.toString(),
-                              style: context.textThemes.bodyMedium?.copyWith(
-                                fontFamily: "JosefinSans",
-                                color: ColorsConst.grey,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.h),
+          child: Center(
+            child: Column(
+              children: [
+                SpacingConst.vSpacing80,
+                ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: widget.notes?.length ?? 0,
+                  separatorBuilder: ((context, index) =>
+                      SpacingConst.vSpacing20),
+                  itemBuilder: (context, index) => Container(
+                    height: 150.h,
+                    decoration: BoxDecoration(
+                      color: ColorsConst.lightPurple.withOpacity(0.80),
+                      borderRadius: BorderRadiusConst.smallBorderRadius,
+                      boxShadow: [BoxShadowConst.allSidesBoxShadow],
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.w, vertical: 10.h),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                widget.notes![index].date.toString(),
+                                style: context.textThemes.bodyMedium?.copyWith(
+                                  fontFamily: "JosefinSans",
+                                  color: ColorsConst.grey,
+                                ),
                               ),
+                            ],
+                          ),
+                          SpacingConst.vSpacing8,
+                          Text(
+                            widget.notes![index].noteTitle.toString(),
+                            style: context.textThemes.titleLarge?.copyWith(
+                              fontFamily: "JosefinSans",
+                              color: ColorsConst.primaryBlack,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
-                        ),
-                        SpacingConst.vSpacing8,
-                        Text(
-                          widget.notes![index].noteTitle.toString(),
-                          style: context.textThemes.titleLarge?.copyWith(
-                            fontFamily: "JosefinSans",
-                            color: ColorsConst.primaryBlack,
-                            fontWeight: FontWeight.bold,
                           ),
-                        ),
-                        Divider(color: ColorsConst.grey, thickness: 1.sp),
-                        SpacingConst.vSpacing8,
-                        Text(
-                          widget.notes![index].noteContent.toString(),
-                          style: context.textThemes.bodyMedium?.copyWith(
-                            fontFamily: "JosefinSans",
-                            color: ColorsConst.primaryBlack,
+                          Divider(color: ColorsConst.grey, thickness: 1.sp),
+                          SpacingConst.vSpacing8,
+                          Text(
+                            widget.notes![index].noteContent.toString(),
+                            style: context.textThemes.bodyMedium?.copyWith(
+                              fontFamily: "JosefinSans",
+                              color: ColorsConst.primaryBlack,
+                            ),
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

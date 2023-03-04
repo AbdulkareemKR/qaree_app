@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'note.freezed.dart';
 part 'note.g.dart';
@@ -10,9 +11,12 @@ class Note with _$Note {
     String? bookId,
     String? noteTitle,
     String? noteContent,
-    DateTime? date,
+    @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
     @Default(false) bool? isPublic,
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);
 }
+
+DateTime _dateFromJson(Timestamp timestamp) =>
+    DateTime.fromMillisecondsSinceEpoch(timestamp.millisecondsSinceEpoch);

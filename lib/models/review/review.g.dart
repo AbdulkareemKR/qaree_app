@@ -12,8 +12,7 @@ _$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
       bookId: json['bookId'] as String?,
       reviewContent: json['reviewContent'] as String?,
       rating: (json['rating'] as num?)?.toDouble(),
-      date:
-          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      date: _dateFromJson(json['date'] as Timestamp),
       isPublic: json['isPublic'] as bool? ?? false,
     );
 

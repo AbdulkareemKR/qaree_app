@@ -20,7 +20,9 @@ StartEndDate _$StartEndDateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StartEndDate {
-  DateTime get startDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  DateTime? get startDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
   DateTime? get endDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +37,9 @@ abstract class $StartEndDateCopyWith<$Res> {
           StartEndDate value, $Res Function(StartEndDate) then) =
       _$StartEndDateCopyWithImpl<$Res, StartEndDate>;
   @useResult
-  $Res call({DateTime startDate, DateTime? endDate});
+  $Res call(
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate});
 }
 
 /// @nodoc
@@ -51,14 +55,14 @@ class _$StartEndDateCopyWithImpl<$Res, $Val extends StartEndDate>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = null,
+    Object? startDate = freezed,
     Object? endDate = freezed,
   }) {
     return _then(_value.copyWith(
-      startDate: null == startDate
+      startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
@@ -75,7 +79,9 @@ abstract class _$$_StartEndDateCopyWith<$Res>
       __$$_StartEndDateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime startDate, DateTime? endDate});
+  $Res call(
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate});
 }
 
 /// @nodoc
@@ -89,14 +95,14 @@ class __$$_StartEndDateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = null,
+    Object? startDate = freezed,
     Object? endDate = freezed,
   }) {
     return _then(_$_StartEndDate(
-      startDate: null == startDate
+      startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
@@ -108,14 +114,18 @@ class __$$_StartEndDateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_StartEndDate implements _StartEndDate {
-  _$_StartEndDate({required this.startDate, this.endDate});
+  _$_StartEndDate(
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson) this.startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson) this.endDate});
 
   factory _$_StartEndDate.fromJson(Map<String, dynamic> json) =>
       _$$_StartEndDateFromJson(json);
 
   @override
-  final DateTime startDate;
+  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  final DateTime? startDate;
   @override
+  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
   final DateTime? endDate;
 
   @override
@@ -153,15 +163,19 @@ class _$_StartEndDate implements _StartEndDate {
 
 abstract class _StartEndDate implements StartEndDate {
   factory _StartEndDate(
-      {required final DateTime startDate,
-      final DateTime? endDate}) = _$_StartEndDate;
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson)
+          final DateTime? startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+          final DateTime? endDate}) = _$_StartEndDate;
 
   factory _StartEndDate.fromJson(Map<String, dynamic> json) =
       _$_StartEndDate.fromJson;
 
   @override
-  DateTime get startDate;
+  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  DateTime? get startDate;
   @override
+  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
   DateTime? get endDate;
   @override
   @JsonKey(ignore: true)

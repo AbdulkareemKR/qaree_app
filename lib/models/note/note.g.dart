@@ -12,8 +12,7 @@ _$_Note _$$_NoteFromJson(Map<String, dynamic> json) => _$_Note(
       bookId: json['bookId'] as String?,
       noteTitle: json['noteTitle'] as String?,
       noteContent: json['noteContent'] as String?,
-      date:
-          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      date: _dateFromJson(json['date'] as Timestamp),
       isPublic: json['isPublic'] as bool? ?? false,
     );
 
