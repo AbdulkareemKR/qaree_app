@@ -21,8 +21,8 @@ BookShelf _$BookShelfFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BookShelf {
   String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  List<Book>? get books => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
+  List<String>? get books => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $BookShelfCopyWith<$Res> {
   factory $BookShelfCopyWith(BookShelf value, $Res Function(BookShelf) then) =
       _$BookShelfCopyWithImpl<$Res, BookShelf>;
   @useResult
-  $Res call({String id, String userId, List<Book>? books});
+  $Res call({String id, String? userId, List<String>? books});
 }
 
 /// @nodoc
@@ -52,7 +52,7 @@ class _$BookShelfCopyWithImpl<$Res, $Val extends BookShelf>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
+    Object? userId = freezed,
     Object? books = freezed,
   }) {
     return _then(_value.copyWith(
@@ -60,14 +60,14 @@ class _$BookShelfCopyWithImpl<$Res, $Val extends BookShelf>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       books: freezed == books
           ? _value.books
           : books // ignore: cast_nullable_to_non_nullable
-              as List<Book>?,
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -79,7 +79,7 @@ abstract class _$$_BookShelfCopyWith<$Res> implements $BookShelfCopyWith<$Res> {
       __$$_BookShelfCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String userId, List<Book>? books});
+  $Res call({String id, String? userId, List<String>? books});
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ class __$$_BookShelfCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
+    Object? userId = freezed,
     Object? books = freezed,
   }) {
     return _then(_$_BookShelf(
@@ -102,14 +102,14 @@ class __$$_BookShelfCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       books: freezed == books
           ? _value._books
           : books // ignore: cast_nullable_to_non_nullable
-              as List<Book>?,
+              as List<String>?,
     ));
   }
 }
@@ -117,8 +117,7 @@ class __$$_BookShelfCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BookShelf implements _BookShelf {
-  _$_BookShelf(
-      {required this.id, required this.userId, final List<Book>? books})
+  _$_BookShelf({required this.id, this.userId, final List<String>? books})
       : _books = books;
 
   factory _$_BookShelf.fromJson(Map<String, dynamic> json) =>
@@ -127,10 +126,10 @@ class _$_BookShelf implements _BookShelf {
   @override
   final String id;
   @override
-  final String userId;
-  final List<Book>? _books;
+  final String? userId;
+  final List<String>? _books;
   @override
-  List<Book>? get books {
+  List<String>? get books {
     final value = _books;
     if (value == null) return null;
     if (_books is EqualUnmodifiableListView) return _books;
@@ -175,8 +174,8 @@ class _$_BookShelf implements _BookShelf {
 abstract class _BookShelf implements BookShelf {
   factory _BookShelf(
       {required final String id,
-      required final String userId,
-      final List<Book>? books}) = _$_BookShelf;
+      final String? userId,
+      final List<String>? books}) = _$_BookShelf;
 
   factory _BookShelf.fromJson(Map<String, dynamic> json) =
       _$_BookShelf.fromJson;
@@ -184,9 +183,9 @@ abstract class _BookShelf implements BookShelf {
   @override
   String get id;
   @override
-  String get userId;
+  String? get userId;
   @override
-  List<Book>? get books;
+  List<String>? get books;
   @override
   @JsonKey(ignore: true)
   _$$_BookShelfCopyWith<_$_BookShelf> get copyWith =>

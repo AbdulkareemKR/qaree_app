@@ -1,4 +1,3 @@
-import 'package:Qaree/enums/book_genre.dart';
 import 'package:Qaree/models/review/review.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book.freezed.dart';

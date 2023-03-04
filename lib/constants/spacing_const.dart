@@ -8,6 +8,7 @@ class SpacingConst {
   static const spacing70 = 70;
   static const spacing60 = 60;
   static const spacing40 = 40;
+  static const spacing30 = 30;
   static const spacing20 = 20;
   static const spacing16 = 16;
   static const spacing8 = 8;
@@ -19,6 +20,7 @@ class SpacingConst {
   static final hSpacing70 = spacing70.horizontalSpace;
   static final hSpacing60 = spacing60.horizontalSpace;
   static final hSpacing40 = spacing40.horizontalSpace;
+  static final hSpacing30 = spacing30.horizontalSpace;
   static final hSpacing20 = spacing20.horizontalSpace;
   static final hSpacing16 = spacing16.horizontalSpace;
   static final hSpacing8 = spacing8.horizontalSpace;
@@ -30,6 +32,7 @@ class SpacingConst {
   static final vSpacing70 = spacing70.verticalSpace;
   static final vSpacing60 = spacing60.verticalSpace;
   static final vSpacing40 = spacing40.verticalSpace;
+  static final vSpacing30 = spacing30.verticalSpace;
   static final vSpacing20 = spacing20.verticalSpace;
   static final vSpacing16 = spacing16.verticalSpace;
   static final vSpacing8 = spacing8.verticalSpace;

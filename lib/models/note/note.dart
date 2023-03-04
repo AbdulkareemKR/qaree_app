@@ -6,11 +6,12 @@ part 'note.g.dart';
 class Note with _$Note {
   factory Note({
     required String id,
-    required String userId,
-    required String bookId,
-    required String noteContent,
-    required DateTime date,
-    @Default(false) bool isPublic,
+    String? userId,
+    String? bookId,
+    String? noteTitle,
+    String? noteContent,
+    DateTime? date,
+    @Default(false) bool? isPublic,
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);

@@ -6,12 +6,12 @@ part 'group.g.dart';
 @freezed
 class Group with _$Group {
   factory Group({
-    required List<Group> GroupAdmins,
+    List<Group>? GroupAdmins,
     required String id,
-    required String name,
+    String? name,
     String? description,
-    required List<String> members,
-    required List<GroupBook>? groupBooks,
+    List<String>? members,
+    List<GroupBook>? groupBooks,
     String? groupLink,
     String? image,
   }) = _Group;

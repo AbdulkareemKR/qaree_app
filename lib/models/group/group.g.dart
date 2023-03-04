@@ -7,14 +7,14 @@ part of 'group.dart';
 // **************************************************************************
 
 _$_Group _$$_GroupFromJson(Map<String, dynamic> json) => _$_Group(
-      GroupAdmins: (json['GroupAdmins'] as List<dynamic>)
-          .map((e) => Group.fromJson(e as Map<String, dynamic>))
+      GroupAdmins: (json['GroupAdmins'] as List<dynamic>?)
+          ?.map((e) => Group.fromJson(e as Map<String, dynamic>))
           .toList(),
       id: json['id'] as String,
-      name: json['name'] as String,
+      name: json['name'] as String?,
       description: json['description'] as String?,
       members:
-          (json['members'] as List<dynamic>).map((e) => e as String).toList(),
+          (json['members'] as List<dynamic>?)?.map((e) => e as String).toList(),
       groupBooks: (json['groupBooks'] as List<dynamic>?)
           ?.map((e) => GroupBook.fromJson(e as Map<String, dynamic>))
           .toList(),

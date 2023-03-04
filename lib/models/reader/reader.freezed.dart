@@ -24,11 +24,11 @@ mixin _$Reader {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   EducationLevel get educationLevel => throw _privateConstructorUsedError;
-  List<Group>? get groups => throw _privateConstructorUsedError;
+  List<String>? get groups => throw _privateConstructorUsedError;
   List<String>? get friendList => throw _privateConstructorUsedError;
   List<Note>? get notes => throw _privateConstructorUsedError;
-  BookShelf? get bookShelf => throw _privateConstructorUsedError;
-  List<Session>? get sessions => throw _privateConstructorUsedError;
+  List<String>? get books => throw _privateConstructorUsedError;
+  List<String>? get sessions => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,14 +46,12 @@ abstract class $ReaderCopyWith<$Res> {
       String name,
       String email,
       EducationLevel educationLevel,
-      List<Group>? groups,
+      List<String>? groups,
       List<String>? friendList,
       List<Note>? notes,
-      BookShelf? bookShelf,
-      List<Session>? sessions,
+      List<String>? books,
+      List<String>? sessions,
       String? imageUrl});
-
-  $BookShelfCopyWith<$Res>? get bookShelf;
 }
 
 /// @nodoc
@@ -76,7 +74,7 @@ class _$ReaderCopyWithImpl<$Res, $Val extends Reader>
     Object? groups = freezed,
     Object? friendList = freezed,
     Object? notes = freezed,
-    Object? bookShelf = freezed,
+    Object? books = freezed,
     Object? sessions = freezed,
     Object? imageUrl = freezed,
   }) {
@@ -100,7 +98,7 @@ class _$ReaderCopyWithImpl<$Res, $Val extends Reader>
       groups: freezed == groups
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<Group>?,
+              as List<String>?,
       friendList: freezed == friendList
           ? _value.friendList
           : friendList // ignore: cast_nullable_to_non_nullable
@@ -109,31 +107,19 @@ class _$ReaderCopyWithImpl<$Res, $Val extends Reader>
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
               as List<Note>?,
-      bookShelf: freezed == bookShelf
-          ? _value.bookShelf
-          : bookShelf // ignore: cast_nullable_to_non_nullable
-              as BookShelf?,
+      books: freezed == books
+          ? _value.books
+          : books // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       sessions: freezed == sessions
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<Session>?,
+              as List<String>?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BookShelfCopyWith<$Res>? get bookShelf {
-    if (_value.bookShelf == null) {
-      return null;
-    }
-
-    return $BookShelfCopyWith<$Res>(_value.bookShelf!, (value) {
-      return _then(_value.copyWith(bookShelf: value) as $Val);
-    });
   }
 }
 
@@ -148,15 +134,12 @@ abstract class _$$_ReaderCopyWith<$Res> implements $ReaderCopyWith<$Res> {
       String name,
       String email,
       EducationLevel educationLevel,
-      List<Group>? groups,
+      List<String>? groups,
       List<String>? friendList,
       List<Note>? notes,
-      BookShelf? bookShelf,
-      List<Session>? sessions,
+      List<String>? books,
+      List<String>? sessions,
       String? imageUrl});
-
-  @override
-  $BookShelfCopyWith<$Res>? get bookShelf;
 }
 
 /// @nodoc
@@ -176,7 +159,7 @@ class __$$_ReaderCopyWithImpl<$Res>
     Object? groups = freezed,
     Object? friendList = freezed,
     Object? notes = freezed,
-    Object? bookShelf = freezed,
+    Object? books = freezed,
     Object? sessions = freezed,
     Object? imageUrl = freezed,
   }) {
@@ -200,7 +183,7 @@ class __$$_ReaderCopyWithImpl<$Res>
       groups: freezed == groups
           ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<Group>?,
+              as List<String>?,
       friendList: freezed == friendList
           ? _value._friendList
           : friendList // ignore: cast_nullable_to_non_nullable
@@ -209,14 +192,14 @@ class __$$_ReaderCopyWithImpl<$Res>
           ? _value._notes
           : notes // ignore: cast_nullable_to_non_nullable
               as List<Note>?,
-      bookShelf: freezed == bookShelf
-          ? _value.bookShelf
-          : bookShelf // ignore: cast_nullable_to_non_nullable
-              as BookShelf?,
+      books: freezed == books
+          ? _value._books
+          : books // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       sessions: freezed == sessions
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<Session>?,
+              as List<String>?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -233,15 +216,16 @@ class _$_Reader implements _Reader {
       required this.name,
       required this.email,
       this.educationLevel = EducationLevel.none,
-      final List<Group>? groups,
+      final List<String>? groups,
       final List<String>? friendList,
       final List<Note>? notes,
-      this.bookShelf,
-      final List<Session>? sessions,
+      final List<String>? books,
+      final List<String>? sessions,
       this.imageUrl})
       : _groups = groups,
         _friendList = friendList,
         _notes = notes,
+        _books = books,
         _sessions = sessions;
 
   factory _$_Reader.fromJson(Map<String, dynamic> json) =>
@@ -256,9 +240,9 @@ class _$_Reader implements _Reader {
   @override
   @JsonKey()
   final EducationLevel educationLevel;
-  final List<Group>? _groups;
+  final List<String>? _groups;
   @override
-  List<Group>? get groups {
+  List<String>? get groups {
     final value = _groups;
     if (value == null) return null;
     if (_groups is EqualUnmodifiableListView) return _groups;
@@ -286,11 +270,19 @@ class _$_Reader implements _Reader {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _books;
   @override
-  final BookShelf? bookShelf;
-  final List<Session>? _sessions;
+  List<String>? get books {
+    final value = _books;
+    if (value == null) return null;
+    if (_books is EqualUnmodifiableListView) return _books;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _sessions;
   @override
-  List<Session>? get sessions {
+  List<String>? get sessions {
     final value = _sessions;
     if (value == null) return null;
     if (_sessions is EqualUnmodifiableListView) return _sessions;
@@ -303,7 +295,7 @@ class _$_Reader implements _Reader {
 
   @override
   String toString() {
-    return 'Reader(id: $id, name: $name, email: $email, educationLevel: $educationLevel, groups: $groups, friendList: $friendList, notes: $notes, bookShelf: $bookShelf, sessions: $sessions, imageUrl: $imageUrl)';
+    return 'Reader(id: $id, name: $name, email: $email, educationLevel: $educationLevel, groups: $groups, friendList: $friendList, notes: $notes, books: $books, sessions: $sessions, imageUrl: $imageUrl)';
   }
 
   @override
@@ -320,8 +312,7 @@ class _$_Reader implements _Reader {
             const DeepCollectionEquality()
                 .equals(other._friendList, _friendList) &&
             const DeepCollectionEquality().equals(other._notes, _notes) &&
-            (identical(other.bookShelf, bookShelf) ||
-                other.bookShelf == bookShelf) &&
+            const DeepCollectionEquality().equals(other._books, _books) &&
             const DeepCollectionEquality().equals(other._sessions, _sessions) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
@@ -338,7 +329,7 @@ class _$_Reader implements _Reader {
       const DeepCollectionEquality().hash(_groups),
       const DeepCollectionEquality().hash(_friendList),
       const DeepCollectionEquality().hash(_notes),
-      bookShelf,
+      const DeepCollectionEquality().hash(_books),
       const DeepCollectionEquality().hash(_sessions),
       imageUrl);
 
@@ -362,11 +353,11 @@ abstract class _Reader implements Reader {
       required final String name,
       required final String email,
       final EducationLevel educationLevel,
-      final List<Group>? groups,
+      final List<String>? groups,
       final List<String>? friendList,
       final List<Note>? notes,
-      final BookShelf? bookShelf,
-      final List<Session>? sessions,
+      final List<String>? books,
+      final List<String>? sessions,
       final String? imageUrl}) = _$_Reader;
 
   factory _Reader.fromJson(Map<String, dynamic> json) = _$_Reader.fromJson;
@@ -380,15 +371,15 @@ abstract class _Reader implements Reader {
   @override
   EducationLevel get educationLevel;
   @override
-  List<Group>? get groups;
+  List<String>? get groups;
   @override
   List<String>? get friendList;
   @override
   List<Note>? get notes;
   @override
-  BookShelf? get bookShelf;
+  List<String>? get books;
   @override
-  List<Session>? get sessions;
+  List<String>? get sessions;
   @override
   String? get imageUrl;
   @override

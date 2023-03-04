@@ -13,20 +13,18 @@ _$_Reader _$$_ReaderFromJson(Map<String, dynamic> json) => _$_Reader(
       educationLevel: $enumDecodeNullable(
               _$EducationLevelEnumMap, json['educationLevel']) ??
           EducationLevel.none,
-      groups: (json['groups'] as List<dynamic>?)
-          ?.map((e) => Group.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      groups:
+          (json['groups'] as List<dynamic>?)?.map((e) => e as String).toList(),
       friendList: (json['friendList'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       notes: (json['notes'] as List<dynamic>?)
           ?.map((e) => Note.fromJson(e as Map<String, dynamic>))
           .toList(),
-      bookShelf: json['bookShelf'] == null
-          ? null
-          : BookShelf.fromJson(json['bookShelf'] as Map<String, dynamic>),
+      books:
+          (json['books'] as List<dynamic>?)?.map((e) => e as String).toList(),
       sessions: (json['sessions'] as List<dynamic>?)
-          ?.map((e) => Session.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => e as String)
           .toList(),
       imageUrl: json['imageUrl'] as String?,
     );
@@ -39,7 +37,7 @@ Map<String, dynamic> _$$_ReaderToJson(_$_Reader instance) => <String, dynamic>{
       'groups': instance.groups,
       'friendList': instance.friendList,
       'notes': instance.notes,
-      'bookShelf': instance.bookShelf,
+      'books': instance.books,
       'sessions': instance.sessions,
       'imageUrl': instance.imageUrl,
     };
