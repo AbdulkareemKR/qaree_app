@@ -1,3 +1,4 @@
+import 'package:Qaree/features/book_search/screens/book_search_screen.dart';
 import 'package:Qaree/features/login/screens/login_screen.dart';
 import 'package:Qaree/firebase_options.dart';
 import 'package:Qaree/utils/theme/themes.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           home: child,
         ));
       },
-      child: LoginScreen(),
+      child: BookSearchScreen(),
     );
   }
 }

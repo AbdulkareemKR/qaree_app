@@ -30,6 +30,7 @@ class CustomTextField extends StatefulWidget {
     this.counterText = "",
     this.initialValue,
     this.keyboardType = TextInputType.text,
+    this.color = ColorsConst.lightGrey,
   }) : super(key: key);
 
   final bool indicateValid;
@@ -55,6 +56,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType keyboardType;
 
   final List<TextInputFormatter>? inputFormatter;
+  final Color? color;
 
   @override
   State<CustomTextField> createState() => CustomTextFieldState();
@@ -122,9 +124,7 @@ class CustomTextFieldState extends State<CustomTextField> {
           duration: const Duration(milliseconds: 100),
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2),
           decoration: BoxDecoration(
-            color: widget.isEnabled
-                ? ColorsConst.lightGrey
-                : ColorsConst.lightGrey,
+            color: widget.color,
             borderRadius: BorderRadius.all(Radius.circular(10.sp)),
             border: type == TextFieldType.active
                 ? Border.all(
@@ -162,7 +162,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: widget.placeHolderText,
-                      hintStyle: context.textThemes.bodySmall?.regular
+                      hintStyle: context.textThemes.bodyLarge?.regular
                           .copyWith(color: ColorsConst.grey)),
                 ),
               ),

@@ -23,5 +23,6 @@ class ColorsConst {
   static const grey = Color(0xff828282);
   static const beige = Color(0xffFFE4C9);
   static const lightGrey = Color(0xffD9D9D9);
+  static const lightGreyPrimary = Color.fromARGB(255, 242, 240, 240);
   static const disableGrey = Color(0xffE2E7EC);
 }
