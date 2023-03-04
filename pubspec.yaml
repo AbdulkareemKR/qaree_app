@@ -59,9 +59,9 @@ dependencies:
   http: ^0.13.5
   flutter_svg: ^1.1.6
   shimmer: ^2.0.0
-  percent_indicator: ^4.2.2
   visibility_detector: ^0.3.3
   animate_do: ^3.0.2
+  percent_indicator: ^4.2.3
 
   # Tracking
   sentry_flutter: ^6.5.1

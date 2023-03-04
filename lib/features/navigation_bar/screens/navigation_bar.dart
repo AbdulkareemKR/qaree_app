@@ -1,6 +1,8 @@
 import 'package:Qaree/constants/border_radius_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
+import 'package:Qaree/features/groups/screens/groups_screen.dart';
 import 'package:Qaree/features/home/screens/home_screen.dart';
+import 'package:Qaree/features/statistics/screens/statistics_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -60,12 +62,8 @@ class _MainNavigationBarState extends State<MainNavigationBar> {
       Container(
         child: Center(child: Text("Search")),
       ),
-      Container(
-        child: Center(child: Text("Statistics")),
-      ),
-      Container(
-        child: Center(child: Text("Groups")),
-      ),
+      StatisticsScreen(),
+      GroupsScreen(),
       Container(
         child: Center(child: Text("Profile")),
       ),
