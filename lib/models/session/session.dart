@@ -7,10 +7,10 @@ part 'session.g.dart';
 class Session with _$Session {
   factory Session({
     required String id,
-    required String userId,
-    required String bookId,
-    required StartEndDate startEndDate,
-    required int numberOfPages,
+    String? userId,
+    String? bookId,
+    StartEndDate? startEndDate,
+    int? numberOfPages,
   }) = _Session;
 
   factory Session.fromJson(Map<String, dynamic> json) =>

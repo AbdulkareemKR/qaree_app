@@ -1,4 +1,3 @@
-import 'package:Qaree/enums/book_genre.dart';
 import 'package:Qaree/models/review/review.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book.freezed.dart';
@@ -7,16 +6,20 @@ part 'book.g.dart';
 @freezed
 class Book with _$Book {
   factory Book({
-    required String id,
-    required String name,
+    String? id,
+    String? name,
+    String? description,
     double? rating,
-    required DateTime publishDate,
-    required List<String> author,
+    DateTime? publishDate,
+    List<String>? authors,
     int? pages,
-    required String isbn,
+    String? publisher,
+    List<String>? isbn,
     String? image,
     List<Review>? reviews,
-    List<BookGenre>? genres,
+    String? bookType,
+    List<String>? genres,
+    String? language,
   }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);

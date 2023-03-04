@@ -11,7 +11,6 @@ import 'package:Qaree/widgets/custom_textfield/textfield_types.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "package:flutter_screenutil/flutter_screenutil.dart";
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -97,13 +96,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: "you don't have an account? ",
+                          text: "Don't have an account? ",
                         ),
                         TextSpan(
-                            text: 'Sign Up',
-                            style: TextStyle(
-                              color: ColorsConst.primaryPurple,
-                            ))
+                          text: 'Sign Up',
+                          style: TextStyle(
+                            color: ColorsConst.primaryPurple,
+                          ),
+                        ),
                       ],
                     ),
                   ),

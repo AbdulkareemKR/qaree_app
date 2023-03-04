@@ -113,7 +113,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                 padding: EdgeInsets.symmetric(horizontal: 5.w),
                 child: Text(
                   widget.label,
-                  style: context.textThemes.bodyMedium?.regular,
+                  style: context.textThemes.bodyText2?.regular,
                 ),
               )
             : const SizedBox.shrink(),
@@ -153,7 +153,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                   obscureText: widget.isPassword,
                   enableSuggestions: false,
                   autocorrect: false,
-                  style: context.textThemes.bodySmall?.regular,
+                  style: context.textThemes.caption?.regular,
                   focusNode: _focusNode,
                   controller: widget.controller,
                   keyboardType: widget.keyboardType,
@@ -162,7 +162,7 @@ class CustomTextFieldState extends State<CustomTextField> {
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: widget.placeHolderText,
-                      hintStyle: context.textThemes.bodyLarge?.regular
+                      hintStyle: context.textThemes.caption?.regular
                           .copyWith(color: ColorsConst.grey)),
                 ),
               ),

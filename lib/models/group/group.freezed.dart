@@ -20,12 +20,11 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Group {
-  List<Group> get GroupAdmins => throw _privateConstructorUsedError;
+  List<Group>? get GroupAdmins => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  double? get latitude => throw _privateConstructorUsedError;
-  List<String> get members => throw _privateConstructorUsedError;
+  List<String>? get members => throw _privateConstructorUsedError;
   List<GroupBook>? get groupBooks => throw _privateConstructorUsedError;
   String? get groupLink => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
@@ -41,12 +40,11 @@ abstract class $GroupCopyWith<$Res> {
       _$GroupCopyWithImpl<$Res, Group>;
   @useResult
   $Res call(
-      {List<Group> GroupAdmins,
+      {List<Group>? GroupAdmins,
       String id,
-      String name,
+      String? name,
       String? description,
-      double? latitude,
-      List<String> members,
+      List<String>? members,
       List<GroupBook>? groupBooks,
       String? groupLink,
       String? image});
@@ -65,41 +63,36 @@ class _$GroupCopyWithImpl<$Res, $Val extends Group>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? GroupAdmins = null,
+    Object? GroupAdmins = freezed,
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? description = freezed,
-    Object? latitude = freezed,
-    Object? members = null,
+    Object? members = freezed,
     Object? groupBooks = freezed,
     Object? groupLink = freezed,
     Object? image = freezed,
   }) {
     return _then(_value.copyWith(
-      GroupAdmins: null == GroupAdmins
+      GroupAdmins: freezed == GroupAdmins
           ? _value.GroupAdmins
           : GroupAdmins // ignore: cast_nullable_to_non_nullable
-              as List<Group>,
+              as List<Group>?,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      members: null == members
+      members: freezed == members
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       groupBooks: freezed == groupBooks
           ? _value.groupBooks
           : groupBooks // ignore: cast_nullable_to_non_nullable
@@ -123,12 +116,11 @@ abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<Group> GroupAdmins,
+      {List<Group>? GroupAdmins,
       String id,
-      String name,
+      String? name,
       String? description,
-      double? latitude,
-      List<String> members,
+      List<String>? members,
       List<GroupBook>? groupBooks,
       String? groupLink,
       String? image});
@@ -143,41 +135,36 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? GroupAdmins = null,
+    Object? GroupAdmins = freezed,
     Object? id = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? description = freezed,
-    Object? latitude = freezed,
-    Object? members = null,
+    Object? members = freezed,
     Object? groupBooks = freezed,
     Object? groupLink = freezed,
     Object? image = freezed,
   }) {
     return _then(_$_Group(
-      GroupAdmins: null == GroupAdmins
+      GroupAdmins: freezed == GroupAdmins
           ? _value._GroupAdmins
           : GroupAdmins // ignore: cast_nullable_to_non_nullable
-              as List<Group>,
+              as List<Group>?,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as double?,
-      members: null == members
+      members: freezed == members
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       groupBooks: freezed == groupBooks
           ? _value._groupBooks
           : groupBooks // ignore: cast_nullable_to_non_nullable
@@ -198,13 +185,12 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
 @JsonSerializable()
 class _$_Group implements _Group {
   _$_Group(
-      {required final List<Group> GroupAdmins,
+      {final List<Group>? GroupAdmins,
       required this.id,
-      required this.name,
+      this.name,
       this.description,
-      this.latitude,
-      required final List<String> members,
-      required final List<GroupBook>? groupBooks,
+      final List<String>? members,
+      final List<GroupBook>? groupBooks,
       this.groupLink,
       this.image})
       : _GroupAdmins = GroupAdmins,
@@ -214,28 +200,30 @@ class _$_Group implements _Group {
   factory _$_Group.fromJson(Map<String, dynamic> json) =>
       _$$_GroupFromJson(json);
 
-  final List<Group> _GroupAdmins;
+  final List<Group>? _GroupAdmins;
   @override
-  List<Group> get GroupAdmins {
+  List<Group>? get GroupAdmins {
+    final value = _GroupAdmins;
+    if (value == null) return null;
     if (_GroupAdmins is EqualUnmodifiableListView) return _GroupAdmins;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_GroupAdmins);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   final String id;
   @override
-  final String name;
+  final String? name;
   @override
   final String? description;
+  final List<String>? _members;
   @override
-  final double? latitude;
-  final List<String> _members;
-  @override
-  List<String> get members {
+  List<String>? get members {
+    final value = _members;
+    if (value == null) return null;
     if (_members is EqualUnmodifiableListView) return _members;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_members);
+    return EqualUnmodifiableListView(value);
   }
 
   final List<GroupBook>? _groupBooks;
@@ -255,7 +243,7 @@ class _$_Group implements _Group {
 
   @override
   String toString() {
-    return 'Group(GroupAdmins: $GroupAdmins, id: $id, name: $name, description: $description, latitude: $latitude, members: $members, groupBooks: $groupBooks, groupLink: $groupLink, image: $image)';
+    return 'Group(GroupAdmins: $GroupAdmins, id: $id, name: $name, description: $description, members: $members, groupBooks: $groupBooks, groupLink: $groupLink, image: $image)';
   }
 
   @override
@@ -269,8 +257,6 @@ class _$_Group implements _Group {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
             const DeepCollectionEquality()
                 .equals(other._groupBooks, _groupBooks) &&
@@ -287,7 +273,6 @@ class _$_Group implements _Group {
       id,
       name,
       description,
-      latitude,
       const DeepCollectionEquality().hash(_members),
       const DeepCollectionEquality().hash(_groupBooks),
       groupLink,
@@ -309,30 +294,27 @@ class _$_Group implements _Group {
 
 abstract class _Group implements Group {
   factory _Group(
-      {required final List<Group> GroupAdmins,
+      {final List<Group>? GroupAdmins,
       required final String id,
-      required final String name,
+      final String? name,
       final String? description,
-      final double? latitude,
-      required final List<String> members,
-      required final List<GroupBook>? groupBooks,
+      final List<String>? members,
+      final List<GroupBook>? groupBooks,
       final String? groupLink,
       final String? image}) = _$_Group;
 
   factory _Group.fromJson(Map<String, dynamic> json) = _$_Group.fromJson;
 
   @override
-  List<Group> get GroupAdmins;
+  List<Group>? get GroupAdmins;
   @override
   String get id;
   @override
-  String get name;
+  String? get name;
   @override
   String? get description;
   @override
-  double? get latitude;
-  @override
-  List<String> get members;
+  List<String>? get members;
   @override
   List<GroupBook>? get groupBooks;
   @override

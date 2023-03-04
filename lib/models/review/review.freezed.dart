@@ -21,12 +21,12 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Review {
   String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  String get bookId => throw _privateConstructorUsedError;
-  String get reviewContent => throw _privateConstructorUsedError;
-  double get rating => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
-  bool get isPublic => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
+  String? get bookId => throw _privateConstructorUsedError;
+  String? get reviewContent => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
+  bool? get isPublic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,12 +40,12 @@ abstract class $ReviewCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
-      String bookId,
-      String reviewContent,
-      double rating,
-      DateTime date,
-      bool isPublic});
+      String? userId,
+      String? bookId,
+      String? reviewContent,
+      double? rating,
+      DateTime? date,
+      bool? isPublic});
 }
 
 /// @nodoc
@@ -62,42 +62,42 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? bookId = null,
-    Object? reviewContent = null,
-    Object? rating = null,
-    Object? date = null,
-    Object? isPublic = null,
+    Object? userId = freezed,
+    Object? bookId = freezed,
+    Object? reviewContent = freezed,
+    Object? rating = freezed,
+    Object? date = freezed,
+    Object? isPublic = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      bookId: null == bookId
+              as String?,
+      bookId: freezed == bookId
           ? _value.bookId
           : bookId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewContent: null == reviewContent
+              as String?,
+      reviewContent: freezed == reviewContent
           ? _value.reviewContent
           : reviewContent // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
+              as String?,
+      rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      date: null == date
+              as double?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isPublic: null == isPublic
+              as DateTime?,
+      isPublic: freezed == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -110,12 +110,12 @@ abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
-      String bookId,
-      String reviewContent,
-      double rating,
-      DateTime date,
-      bool isPublic});
+      String? userId,
+      String? bookId,
+      String? reviewContent,
+      double? rating,
+      DateTime? date,
+      bool? isPublic});
 }
 
 /// @nodoc
@@ -129,42 +129,42 @@ class __$$_ReviewCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? bookId = null,
-    Object? reviewContent = null,
-    Object? rating = null,
-    Object? date = null,
-    Object? isPublic = null,
+    Object? userId = freezed,
+    Object? bookId = freezed,
+    Object? reviewContent = freezed,
+    Object? rating = freezed,
+    Object? date = freezed,
+    Object? isPublic = freezed,
   }) {
     return _then(_$_Review(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      bookId: null == bookId
+              as String?,
+      bookId: freezed == bookId
           ? _value.bookId
           : bookId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewContent: null == reviewContent
+              as String?,
+      reviewContent: freezed == reviewContent
           ? _value.reviewContent
           : reviewContent // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
+              as String?,
+      rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      date: null == date
+              as double?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isPublic: null == isPublic
+              as DateTime?,
+      isPublic: freezed == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -174,11 +174,11 @@ class __$$_ReviewCopyWithImpl<$Res>
 class _$_Review implements _Review {
   _$_Review(
       {required this.id,
-      required this.userId,
-      required this.bookId,
-      required this.reviewContent,
-      required this.rating,
-      required this.date,
+      this.userId,
+      this.bookId,
+      this.reviewContent,
+      this.rating,
+      this.date,
       this.isPublic = false});
 
   factory _$_Review.fromJson(Map<String, dynamic> json) =>
@@ -187,18 +187,18 @@ class _$_Review implements _Review {
   @override
   final String id;
   @override
-  final String userId;
+  final String? userId;
   @override
-  final String bookId;
+  final String? bookId;
   @override
-  final String reviewContent;
+  final String? reviewContent;
   @override
-  final double rating;
+  final double? rating;
   @override
-  final DateTime date;
+  final DateTime? date;
   @override
   @JsonKey()
-  final bool isPublic;
+  final bool? isPublic;
 
   @override
   String toString() {
@@ -243,29 +243,29 @@ class _$_Review implements _Review {
 abstract class _Review implements Review {
   factory _Review(
       {required final String id,
-      required final String userId,
-      required final String bookId,
-      required final String reviewContent,
-      required final double rating,
-      required final DateTime date,
-      final bool isPublic}) = _$_Review;
+      final String? userId,
+      final String? bookId,
+      final String? reviewContent,
+      final double? rating,
+      final DateTime? date,
+      final bool? isPublic}) = _$_Review;
 
   factory _Review.fromJson(Map<String, dynamic> json) = _$_Review.fromJson;
 
   @override
   String get id;
   @override
-  String get userId;
+  String? get userId;
   @override
-  String get bookId;
+  String? get bookId;
   @override
-  String get reviewContent;
+  String? get reviewContent;
   @override
-  double get rating;
+  double? get rating;
   @override
-  DateTime get date;
+  DateTime? get date;
   @override
-  bool get isPublic;
+  bool? get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewCopyWith<_$_Review> get copyWith =>

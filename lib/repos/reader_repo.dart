@@ -38,8 +38,8 @@ class ReaderRepo {
       final user =
           FirestoreRepo.readersCollection.doc(uid).snapshots().map((doc) {
         try {
-          final carOwner = Reader.fromJson(doc.data()!);
-          return carOwner;
+          final reader = Reader.fromJson(doc.data()!);
+          return reader;
         } catch (e) {
           // Ensure that the user is logged out when any error is encountered
 

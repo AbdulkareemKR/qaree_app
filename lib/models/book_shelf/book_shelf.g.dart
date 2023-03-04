@@ -8,11 +8,9 @@ part of 'book_shelf.dart';
 
 _$_BookShelf _$$_BookShelfFromJson(Map<String, dynamic> json) => _$_BookShelf(
       id: json['id'] as String,
-      userId: json['userId'] as String,
-      books: (json['books'] as List<dynamic>?)
-          ?.map((e) => Book.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      isPublic: json['isPublic'] as bool? ?? false,
+      userId: json['userId'] as String?,
+      books:
+          (json['books'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$_BookShelfToJson(_$_BookShelf instance) =>
@@ -20,5 +18,4 @@ Map<String, dynamic> _$$_BookShelfToJson(_$_BookShelf instance) =>
       'id': instance.id,
       'userId': instance.userId,
       'books': instance.books,
-      'isPublic': instance.isPublic,
     };

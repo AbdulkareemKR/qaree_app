@@ -7,9 +7,8 @@ part 'book_shelf.g.dart';
 class BookShelf with _$BookShelf {
   factory BookShelf({
     required String id,
-    required String userId,
-    List<Book>? books,
-    @Default(false) bool isPublic,
+    String? userId,
+    List<String>? books,
   }) = _BookShelf;
 
   factory BookShelf.fromJson(Map<String, dynamic> json) =>

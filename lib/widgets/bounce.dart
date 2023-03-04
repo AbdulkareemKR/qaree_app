@@ -8,13 +8,13 @@ class Bounce extends StatefulWidget {
   Duration duration;
   final bool enabled;
 
-  Bounce(
-      {Key? key,
-      required this.child,
-      this.duration = const Duration(milliseconds: 900),
-      required this.onTap,
-      this.enabled = true})
-      : super(key: key);
+  Bounce({
+    Key? key,
+    required this.child,
+    this.duration = const Duration(milliseconds: 900),
+    required this.onTap,
+    this.enabled = true,
+  }) : super(key: key);
 
   @override
   BounceState createState() => BounceState();
@@ -34,11 +34,11 @@ class BounceState extends State<Bounce> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     _animate = AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 50),
-        lowerBound: 0.0,
-        upperBound: 0.1)
-      ..addListener(() {
+      vsync: this,
+      duration: const Duration(milliseconds: 50),
+      lowerBound: 0.0,
+      upperBound: 0.05,
+    )..addListener(() {
         setState(() {});
       });
     onTapDownDuration =

@@ -6,12 +6,12 @@ part 'review.g.dart';
 class Review with _$Review {
   factory Review({
     required String id,
-    required String userId,
-    required String bookId,
-    required String reviewContent,
-    required double rating,
-    required DateTime date,
-    @Default(false) bool isPublic,
+    String? userId,
+    String? bookId,
+    String? reviewContent,
+    double? rating,
+    DateTime? date,
+    @Default(false) bool? isPublic,
   }) = _Review;
 
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);

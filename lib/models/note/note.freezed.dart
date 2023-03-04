@@ -21,11 +21,12 @@ Note _$NoteFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Note {
   String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  String get bookId => throw _privateConstructorUsedError;
-  String get noteContent => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
-  bool get isPublic => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
+  String? get bookId => throw _privateConstructorUsedError;
+  String? get noteTitle => throw _privateConstructorUsedError;
+  String? get noteContent => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
+  bool? get isPublic => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,11 +40,12 @@ abstract class $NoteCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
-      String bookId,
-      String noteContent,
-      DateTime date,
-      bool isPublic});
+      String? userId,
+      String? bookId,
+      String? noteTitle,
+      String? noteContent,
+      DateTime? date,
+      bool? isPublic});
 }
 
 /// @nodoc
@@ -60,37 +62,42 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? bookId = null,
-    Object? noteContent = null,
-    Object? date = null,
-    Object? isPublic = null,
+    Object? userId = freezed,
+    Object? bookId = freezed,
+    Object? noteTitle = freezed,
+    Object? noteContent = freezed,
+    Object? date = freezed,
+    Object? isPublic = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      bookId: null == bookId
+              as String?,
+      bookId: freezed == bookId
           ? _value.bookId
           : bookId // ignore: cast_nullable_to_non_nullable
-              as String,
-      noteContent: null == noteContent
+              as String?,
+      noteTitle: freezed == noteTitle
+          ? _value.noteTitle
+          : noteTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noteContent: freezed == noteContent
           ? _value.noteContent
           : noteContent // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
+              as String?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isPublic: null == isPublic
+              as DateTime?,
+      isPublic: freezed == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -103,11 +110,12 @@ abstract class _$$_NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
-      String bookId,
-      String noteContent,
-      DateTime date,
-      bool isPublic});
+      String? userId,
+      String? bookId,
+      String? noteTitle,
+      String? noteContent,
+      DateTime? date,
+      bool? isPublic});
 }
 
 /// @nodoc
@@ -120,37 +128,42 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
-    Object? bookId = null,
-    Object? noteContent = null,
-    Object? date = null,
-    Object? isPublic = null,
+    Object? userId = freezed,
+    Object? bookId = freezed,
+    Object? noteTitle = freezed,
+    Object? noteContent = freezed,
+    Object? date = freezed,
+    Object? isPublic = freezed,
   }) {
     return _then(_$_Note(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      bookId: null == bookId
+              as String?,
+      bookId: freezed == bookId
           ? _value.bookId
           : bookId // ignore: cast_nullable_to_non_nullable
-              as String,
-      noteContent: null == noteContent
+              as String?,
+      noteTitle: freezed == noteTitle
+          ? _value.noteTitle
+          : noteTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noteContent: freezed == noteContent
           ? _value.noteContent
           : noteContent // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
+              as String?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isPublic: null == isPublic
+              as DateTime?,
+      isPublic: freezed == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -160,10 +173,11 @@ class __$$_NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res, _$_Note>
 class _$_Note implements _Note {
   _$_Note(
       {required this.id,
-      required this.userId,
-      required this.bookId,
-      required this.noteContent,
-      required this.date,
+      this.userId,
+      this.bookId,
+      this.noteTitle,
+      this.noteContent,
+      this.date,
       this.isPublic = false});
 
   factory _$_Note.fromJson(Map<String, dynamic> json) => _$$_NoteFromJson(json);
@@ -171,20 +185,22 @@ class _$_Note implements _Note {
   @override
   final String id;
   @override
-  final String userId;
+  final String? userId;
   @override
-  final String bookId;
+  final String? bookId;
   @override
-  final String noteContent;
+  final String? noteTitle;
   @override
-  final DateTime date;
+  final String? noteContent;
+  @override
+  final DateTime? date;
   @override
   @JsonKey()
-  final bool isPublic;
+  final bool? isPublic;
 
   @override
   String toString() {
-    return 'Note(id: $id, userId: $userId, bookId: $bookId, noteContent: $noteContent, date: $date, isPublic: $isPublic)';
+    return 'Note(id: $id, userId: $userId, bookId: $bookId, noteTitle: $noteTitle, noteContent: $noteContent, date: $date, isPublic: $isPublic)';
   }
 
   @override
@@ -195,6 +211,8 @@ class _$_Note implements _Note {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.bookId, bookId) || other.bookId == bookId) &&
+            (identical(other.noteTitle, noteTitle) ||
+                other.noteTitle == noteTitle) &&
             (identical(other.noteContent, noteContent) ||
                 other.noteContent == noteContent) &&
             (identical(other.date, date) || other.date == date) &&
@@ -204,8 +222,8 @@ class _$_Note implements _Note {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, userId, bookId, noteContent, date, isPublic);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, bookId, noteTitle, noteContent, date, isPublic);
 
   @JsonKey(ignore: true)
   @override
@@ -224,26 +242,29 @@ class _$_Note implements _Note {
 abstract class _Note implements Note {
   factory _Note(
       {required final String id,
-      required final String userId,
-      required final String bookId,
-      required final String noteContent,
-      required final DateTime date,
-      final bool isPublic}) = _$_Note;
+      final String? userId,
+      final String? bookId,
+      final String? noteTitle,
+      final String? noteContent,
+      final DateTime? date,
+      final bool? isPublic}) = _$_Note;
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$_Note.fromJson;
 
   @override
   String get id;
   @override
-  String get userId;
+  String? get userId;
   @override
-  String get bookId;
+  String? get bookId;
   @override
-  String get noteContent;
+  String? get noteTitle;
   @override
-  DateTime get date;
+  String? get noteContent;
   @override
-  bool get isPublic;
+  DateTime? get date;
+  @override
+  bool? get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$_NoteCopyWith<_$_Note> get copyWith => throw _privateConstructorUsedError;
