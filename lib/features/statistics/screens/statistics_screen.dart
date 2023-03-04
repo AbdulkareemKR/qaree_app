@@ -31,53 +31,61 @@ class _StatisticsScreenState extends ConsumerState<StatisticsScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
     return user.when(
-      data: (user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        color: ColorsConst.lightGrey,
-        child: SafeArea(
-          child: Column(
-            children: [
-              SpacingConst.vSpacing16,
-              Center(
-                child: Text(
-                  'Statistics',
-                  style: context.textThemes.displayMedium?.copyWith(
-                    fontFamily: "JosefinSans",
-                    color: ColorsConst.darkGrey,
-                  ),
-                ),
-              ),
-              ListView(
-                shrinkWrap: true,
-                children: [
-                  SpacingConst.vSpacing20,
-                  Text(
-                    'Daily',
-                    style: context.textThemes.displaySmall?.copyWith(
-                      color: ColorsConst.darkGrey,
+      data: (user) => Scaffold(
+        backgroundColor: ColorsConst.lightGrey,
+        appBar: AppBar(
+          backgroundColor: ColorsConst.primaryBlack,
+          title: Text(
+            'Statistics',
+            style: context.textThemes.displayMedium?.copyWith(
+              fontFamily: "JosefinSans",
+              color: ColorsConst.white,
+            ),
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              children: [
+                SpacingConst.vSpacing16,
+                ListView(
+                  shrinkWrap: true,
+                  children: [
+                    SpacingConst.vSpacing20,
+                    Text(
+                      'Daily',
+                      style: context.textThemes.displaySmall?.copyWith(
+                        color: ColorsConst.darkGrey,
+                      ),
                     ),
-                  ),
-                  SpacingConst.vSpacing16,
-                  StatisticsItem(
-                    title: 'Pages Read',
-                    value: '0',
-                    average: '0',
-                  ),
-                  SpacingConst.vSpacing20,
-                  StatisticsItem(
-                    title: 'Pages Read',
-                    value: '0',
-                    average: '0',
-                  ),
-                  SpacingConst.vSpacing20,
-                  StatisticsItem(
-                    title: 'Pages Read',
-                    value: '0',
-                    average: '0',
-                  ),
-                ],
-              ),
-            ],
+                    SpacingConst.vSpacing16,
+                    StatisticsItem(
+                      title: 'Pages Read',
+                      value: '0',
+                      average: '0',
+                    ),
+                    SpacingConst.vSpacing20,
+                    StatisticsItem(
+                      title: 'Pages Read',
+                      value: '0',
+                      average: '0',
+                    ),
+                    SpacingConst.vSpacing20,
+                    StatisticsItem(
+                      title: 'Pages Read',
+                      value: '0',
+                      average: '0',
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

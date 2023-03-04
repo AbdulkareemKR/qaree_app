@@ -30,33 +30,41 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
     return user.when(
-      data: (user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        color: ColorsConst.lightGrey,
-        child: SafeArea(
-          child: Column(
-            children: [
-              SpacingConst.vSpacing16,
-              Center(
-                child: Text(
-                  'Groups',
-                  style: context.textThemes.displayMedium?.copyWith(
-                    fontFamily: "JosefinSans",
-                    color: ColorsConst.darkGrey,
-                  ),
+      data: (user) => Scaffold(
+        backgroundColor: ColorsConst.lightGrey,
+        appBar: AppBar(
+          backgroundColor: ColorsConst.primaryBlack,
+          title: Text(
+            'Groups',
+            style: context.textThemes.displayMedium?.copyWith(
+              fontFamily: "JosefinSans",
+              color: ColorsConst.white,
+            ),
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              children: [
+                SpacingConst.vSpacing16,
+                ListView(
+                  shrinkWrap: true,
+                  children: [
+                    SpacingConst.vSpacing16,
+                    GroupItem(
+                      name: '0',
+                      members: '0',
+                    ),
+                  ],
                 ),
-              ),
-              ListView(
-                shrinkWrap: true,
-                children: [
-                  SpacingConst.vSpacing16,
-                  GroupItem(
-                    name: '0',
-                    members: '0',
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

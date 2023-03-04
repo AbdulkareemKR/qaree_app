@@ -36,19 +36,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
     return user.when(
-      data: (user) => Container(
-        color: ColorsConst.lightGrey,
-        child: SafeArea(
+      data: (user) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: ColorsConst.primaryBlack,
+          title: Text(
+            'Book Shelf',
+            style: context.textThemes.displayMedium?.copyWith(
+              fontFamily: "JosefinSans",
+              color: ColorsConst.white,
+            ),
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),
+        ),
+        backgroundColor: ColorsConst.lightGrey,
+        body: SafeArea(
           child: Column(
             children: [
-              SpacingConst.vSpacing16,
-              Text(
-                'Book Shelf',
-                style: context.textThemes.displayMedium?.copyWith(
-                  fontFamily: "JosefinSans",
-                  color: ColorsConst.darkGrey,
-                ),
-              ),
               SpacingConst.vSpacing60,
               Container(
                 height: 310.h,
@@ -125,7 +132,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   },
                 ),
               ),
-              SpacingConst.vSpacing80,
+              SpacingConst.vSpacing60,
               Consumer(builder: ((context, ref, child) {
                 final selectedBook = ref.watch(selectedBookIndexProvider);
                 return user?.books == null
@@ -147,7 +154,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 25.w),
                                       width: 385.w,
-                                      height: 231.h,
+                                      height: 250.h,
                                       decoration: BoxDecoration(
                                         boxShadow: [
                                           BoxShadowConst.rightBottomBoxShadow
