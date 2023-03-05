@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpacingConst {
+  static const spacing180 = 180;
   static const spacing120 = 120;
   static const spacing100 = 100;
   static const spacing80 = 80;
@@ -26,6 +27,7 @@ class SpacingConst {
   static final hSpacing8 = spacing8.horizontalSpace;
   static final hSpacing6 = spacing6.horizontalSpace;
 
+  static final vSpacing180 = spacing180.verticalSpace;
   static final vSpacing120 = spacing120.verticalSpace;
   static final vSpacing100 = spacing100.verticalSpace;
   static final vSpacing80 = spacing80.verticalSpace;
