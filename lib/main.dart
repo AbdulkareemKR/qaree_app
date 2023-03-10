@@ -17,24 +17,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Set the fit size (Find your UI design, look at the dimensions of the device screen and fill it in,unit in dp)
-    return FutureBuilder(
-        future: Initializer.initAll(),
-        builder: (context, snapshot) {
-          return ScreenUtilInit(
-            designSize: const Size(414, 896),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) {
-              return ProviderScope(
-                  child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: 'Qaree App',
-                theme: MainTheme.main,
-                home: child,
-              ));
-            },
-            child: SplashScreen(),
-          );
-        });
+    return ScreenUtilInit(
+      designSize: const Size(414, 896),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return ProviderScope(
+            child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Qaree App',
+          theme: MainTheme.main,
+          home: child,
+        ));
+      },
+      child: SplashScreen(),
+    );
   }
 }

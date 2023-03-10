@@ -43,7 +43,7 @@ class Initializer {
 
   static Future<void> initFirebase() async {
     try {
-      Firebase.initializeApp(
+      await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
 

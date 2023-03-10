@@ -28,7 +28,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             future: Initializer.initAll(),
             builder: (context, snapshot) {
               controller.checkInitialization(snapshot: snapshot);
-
               return Container(
                 color: ColorsConst.primaryBlack,
                 child: Center(
