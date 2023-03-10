@@ -8,7 +8,7 @@ part 'group_book.g.dart';
 class GroupBook with _$GroupBook {
   factory GroupBook({
     required StartEndDate period,
-    required Book book,
+    required String bookId,
   }) = _GroupBook;
 
   factory GroupBook.fromJson(Map<String, dynamic> json) =>

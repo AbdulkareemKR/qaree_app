@@ -2,11 +2,13 @@ import 'package:Qaree/firebase_options.dart';
 import 'package:Qaree/utils/status_logger/extensions.dart';
 import 'package:Qaree/utils/status_logger/status_logger.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 class Initializer {
   static Future<bool> initAll() async {
     try {
+      WidgetsFlutterBinding.ensureInitialized();
       await initFirebase();
 
       // For Amplitude Services

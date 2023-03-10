@@ -62,12 +62,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemCount: user?.books?.length ?? 0,
+                  itemCount: user.books?.length ?? 0,
                   itemBuilder: (context, index) {
                     return Consumer(
                         builder: ((context, ref, child) => ref
                             .watch(BookRepo.getBookByIdProvider(
-                                user!.books![index]))
+                                user.books![index]))
                             .when(
                                 data: (book) => FadeInUp(
                                       duration: Duration(milliseconds: 500),
@@ -135,11 +135,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               SpacingConst.vSpacing60,
               Consumer(builder: ((context, ref, child) {
                 final selectedBook = ref.watch(selectedBookIndexProvider);
-                return user?.books == null
+                return user.books == null
                     ? Text("No Books")
                     : ref
                         .watch(BookRepo.getBookByIdProvider(
-                            user!.books![selectedBook]))
+                            user.books![selectedBook]))
                         .when(
                             data: (book) => FadeInUp(
                                   duration: Duration(milliseconds: 500),

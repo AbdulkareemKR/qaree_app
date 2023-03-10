@@ -10,8 +10,8 @@ _$_Session _$$_SessionFromJson(Map<String, dynamic> json) => _$_Session(
       id: json['id'] as String,
       userId: json['userId'] as String?,
       bookId: json['bookId'] as String?,
-      startDate: _dateFromJson(json['startDate']),
-      endDate: _dateFromJson(json['endDate']),
+      startDate: _dateFromJson(json['startDate'] as Timestamp),
+      endDate: _dateFromJson(json['endDate'] as Timestamp),
       numberOfPages: json['numberOfPages'] as int?,
     );
 

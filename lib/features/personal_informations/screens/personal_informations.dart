@@ -66,14 +66,14 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
                 ),
                 SpacingConst.vSpacing6,
                 Text(
-                  '${user?.name}',
+                  '${user.name}',
                   style: TextStyle(
                     fontSize: 20,
                     color: ColorsConst.black,
                   ),
                 ),
                 Text(
-                  '${user?.email}',
+                  '${user.email}',
                   style: TextStyle(
                     fontSize: 12,
                     color: ColorsConst.grey,

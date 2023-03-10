@@ -4,6 +4,7 @@ import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/groups/controllers/groups_controller.dart';
 import 'package:Qaree/providers/reader_provider.dart';
+import 'package:Qaree/repos/group_repo.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/loading_container.dart';
 import 'package:flutter/material.dart';
@@ -53,35 +54,48 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
             child: Column(
               children: [
                 SpacingConst.vSpacing16,
-                ListView(
+                ListView.separated(
                   shrinkWrap: true,
-                  children: [
-                    SpacingConst.vSpacing16,
-                    GroupItem(
-                      name: '0',
-                      members: '0',
-                    ),
-                  ],
+                  separatorBuilder: (context, index) => SpacingConst.vSpacing8,
+                  itemCount: user.groups?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    return Consumer(
+                      builder: (context, ref, child) {
+                        final group = ref.watch(GroupRepo.getGroupByIdProvider(
+                            user.groups![index]));
+                        return group.when(
+                            data: (group) => GroupItem(
+                                name: group?.name,
+                                members: group?.members?.length),
+                            error: (error, stack) => Text("An error Occurred"),
+                            loading: () => Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 15.w, vertical: 10.h),
+                                  child: LoadingContainer(height: 161.h),
+                                ));
+                      },
+                    );
+                  },
                 ),
               ],
             ),
           ),
         ),
       ),
-      error: (error, stackTrace) => Text("An error Ocurred"),
+      error: (error, stackTrace) => Text("An error Occurred"),
       loading: () => LoadingContainer(),
     );
   }
 }
 
 class GroupItem extends StatelessWidget {
-  final String name;
-  final String members;
+  final String? name;
+  final int? members;
 
   const GroupItem({
     Key? key,
-    required this.name,
-    required this.members,
+    this.name,
+    this.members,
   }) : super(key: key);
 
   @override
@@ -116,7 +130,7 @@ class GroupItem extends StatelessWidget {
             ),
             SpacingConst.vSpacing16,
             Text(
-              name,
+              name ?? "",
               style: context.textThemes.displayMedium?.copyWith(
                 fontFamily: "JosefinSans",
                 color: ColorsConst.primaryBlack,
@@ -134,7 +148,7 @@ class GroupItem extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(
-                    text: members,
+                    text: members.toString(),
                     style: context.textThemes.bodyMedium?.copyWith(
                       color: ColorsConst.primaryBlack,
                       fontWeight: FontWeight.bold,
