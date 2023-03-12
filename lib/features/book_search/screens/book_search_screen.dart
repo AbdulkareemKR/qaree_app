@@ -1,3 +1,4 @@
+import 'package:Qaree/models/book/book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +23,7 @@ class BookSearchScreen extends ConsumerStatefulWidget {
 
 class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
   late final BookSearchController _controller;
+  // late final List<Book>? books;
   var genres = BookGenre.values;
 
   @override
@@ -55,7 +57,7 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
               color: ColorsConst.lightPurple,
               icon: Icons.search,
               onSubmit: (value) {
-                _controller.fetchBooks(query: value);
+                _controller.getBooksByQueryProvider(value);
               },
             ),
             SpacingConst.vSpacing40,
@@ -117,3 +119,4 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
     );
   }
 }
+

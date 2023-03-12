@@ -12,19 +12,18 @@ class BookSearchController {
   TextEditingController bookSearch = TextEditingController();
 
   // Providers
-  // static final getBooks =
-  //     FutureProvider.family<dynamic?, String>((ref, query) async {
-  //   return fetchBooks(query: query);
-  // });
+  final getBooksByQueryProvider =
+      FutureProvider.family<dynamic, String?>((ref, query) async {
+    return fetchBooks(query: query);
+  });
 
-  Future fetchBooks({String? query}) async {
+  static Future fetchBooks({String? query}) async {
     try {
       print(query);
       final booksDocs = await FirestoreRepo.booksCollection
           .where("name", isGreaterThan: query)
           .where('name', isLessThanOrEqualTo: (query! + "\uf8ff"))
           .get();
-
       if (booksDocs.docs.isNotEmpty) {
         final books = booksDocs.docs.map((book) => book.data()).toList();
         print(books[0]);
