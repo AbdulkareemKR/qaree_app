@@ -1,6 +1,8 @@
 import 'package:Qaree/features/book_search/screens/book_search_screen.dart';
 import 'package:Qaree/features/login/screens/login_screen.dart';
+import 'package:Qaree/features/splash_screen/views/splash_screen.dart';
 import 'package:Qaree/firebase_options.dart';
+import 'package:Qaree/services/initializer.dart';
 import 'package:Qaree/utils/theme/themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,6 @@ void main() async {
   Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // await Initializer.initAll()ss;
   runApp(const MyApp());
 }
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
           home: child,
         ));
       },
-      child: BookSearchScreen(),
+      child: SplashScreen(),
     );
   }
 }

@@ -36,31 +36,38 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
     return user.when(
-      data: (user) => Container(
-        color: ColorsConst.lightGrey,
-        child: SafeArea(
+      data: (user) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: ColorsConst.primaryBlack,
+          title: Text(
+            'Book Shelf',
+            style: context.textThemes.displayMedium?.copyWith(
+              fontFamily: "JosefinSans",
+              color: ColorsConst.white,
+            ),
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),
+        ),
+        backgroundColor: ColorsConst.lightGrey,
+        body: SafeArea(
           child: Column(
             children: [
-              SpacingConst.vSpacing16,
-              Text(
-                'Book Shelf',
-                style: context.textThemes.displayMedium?.copyWith(
-                  fontFamily: "JosefinSans",
-                  color: ColorsConst.darkGrey,
-                ),
-              ),
               SpacingConst.vSpacing60,
               Container(
                 height: 310.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemCount: user?.books?.length ?? 0,
+                  itemCount: user.books?.length ?? 0,
                   itemBuilder: (context, index) {
                     return Consumer(
                         builder: ((context, ref, child) => ref
                             .watch(BookRepo.getBookByIdProvider(
-                                user!.books![index]))
+                                user.books![index]))
                             .when(
                                 data: (book) => FadeInUp(
                                       duration: Duration(milliseconds: 500),
@@ -125,14 +132,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   },
                 ),
               ),
-              SpacingConst.vSpacing80,
+              SpacingConst.vSpacing60,
               Consumer(builder: ((context, ref, child) {
                 final selectedBook = ref.watch(selectedBookIndexProvider);
-                return user?.books == null
+                return user.books == null
                     ? Text("No Books")
                     : ref
                         .watch(BookRepo.getBookByIdProvider(
-                            user!.books![selectedBook]))
+                            user.books![selectedBook]))
                         .when(
                             data: (book) => FadeInUp(
                                   duration: Duration(milliseconds: 500),
@@ -147,7 +154,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 25.w),
                                       width: 385.w,
-                                      height: 231.h,
+                                      height: 250.h,
                                       decoration: BoxDecoration(
                                         boxShadow: [
                                           BoxShadowConst.rightBottomBoxShadow

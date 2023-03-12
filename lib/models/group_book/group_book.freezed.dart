@@ -21,7 +21,7 @@ GroupBook _$GroupBookFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GroupBook {
   StartEndDate get period => throw _privateConstructorUsedError;
-  Book get book => throw _privateConstructorUsedError;
+  String get bookId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,10 +34,9 @@ abstract class $GroupBookCopyWith<$Res> {
   factory $GroupBookCopyWith(GroupBook value, $Res Function(GroupBook) then) =
       _$GroupBookCopyWithImpl<$Res, GroupBook>;
   @useResult
-  $Res call({StartEndDate period, Book book});
+  $Res call({StartEndDate period, String bookId});
 
   $StartEndDateCopyWith<$Res> get period;
-  $BookCopyWith<$Res> get book;
 }
 
 /// @nodoc
@@ -54,17 +53,17 @@ class _$GroupBookCopyWithImpl<$Res, $Val extends GroupBook>
   @override
   $Res call({
     Object? period = null,
-    Object? book = null,
+    Object? bookId = null,
   }) {
     return _then(_value.copyWith(
       period: null == period
           ? _value.period
           : period // ignore: cast_nullable_to_non_nullable
               as StartEndDate,
-      book: null == book
-          ? _value.book
-          : book // ignore: cast_nullable_to_non_nullable
-              as Book,
+      bookId: null == bookId
+          ? _value.bookId
+          : bookId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -73,14 +72,6 @@ class _$GroupBookCopyWithImpl<$Res, $Val extends GroupBook>
   $StartEndDateCopyWith<$Res> get period {
     return $StartEndDateCopyWith<$Res>(_value.period, (value) {
       return _then(_value.copyWith(period: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BookCopyWith<$Res> get book {
-    return $BookCopyWith<$Res>(_value.book, (value) {
-      return _then(_value.copyWith(book: value) as $Val);
     });
   }
 }
@@ -92,12 +83,10 @@ abstract class _$$_GroupBookCopyWith<$Res> implements $GroupBookCopyWith<$Res> {
       __$$_GroupBookCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StartEndDate period, Book book});
+  $Res call({StartEndDate period, String bookId});
 
   @override
   $StartEndDateCopyWith<$Res> get period;
-  @override
-  $BookCopyWith<$Res> get book;
 }
 
 /// @nodoc
@@ -112,17 +101,17 @@ class __$$_GroupBookCopyWithImpl<$Res>
   @override
   $Res call({
     Object? period = null,
-    Object? book = null,
+    Object? bookId = null,
   }) {
     return _then(_$_GroupBook(
       period: null == period
           ? _value.period
           : period // ignore: cast_nullable_to_non_nullable
               as StartEndDate,
-      book: null == book
-          ? _value.book
-          : book // ignore: cast_nullable_to_non_nullable
-              as Book,
+      bookId: null == bookId
+          ? _value.bookId
+          : bookId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -130,7 +119,7 @@ class __$$_GroupBookCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_GroupBook implements _GroupBook {
-  _$_GroupBook({required this.period, required this.book});
+  _$_GroupBook({required this.period, required this.bookId});
 
   factory _$_GroupBook.fromJson(Map<String, dynamic> json) =>
       _$$_GroupBookFromJson(json);
@@ -138,11 +127,11 @@ class _$_GroupBook implements _GroupBook {
   @override
   final StartEndDate period;
   @override
-  final Book book;
+  final String bookId;
 
   @override
   String toString() {
-    return 'GroupBook(period: $period, book: $book)';
+    return 'GroupBook(period: $period, bookId: $bookId)';
   }
 
   @override
@@ -151,12 +140,12 @@ class _$_GroupBook implements _GroupBook {
         (other.runtimeType == runtimeType &&
             other is _$_GroupBook &&
             (identical(other.period, period) || other.period == period) &&
-            (identical(other.book, book) || other.book == book));
+            (identical(other.bookId, bookId) || other.bookId == bookId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, period, book);
+  int get hashCode => Object.hash(runtimeType, period, bookId);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +164,7 @@ class _$_GroupBook implements _GroupBook {
 abstract class _GroupBook implements GroupBook {
   factory _GroupBook(
       {required final StartEndDate period,
-      required final Book book}) = _$_GroupBook;
+      required final String bookId}) = _$_GroupBook;
 
   factory _GroupBook.fromJson(Map<String, dynamic> json) =
       _$_GroupBook.fromJson;
@@ -183,7 +172,7 @@ abstract class _GroupBook implements GroupBook {
   @override
   StartEndDate get period;
   @override
-  Book get book;
+  String get bookId;
   @override
   @JsonKey(ignore: true)
   _$$_GroupBookCopyWith<_$_GroupBook> get copyWith =>
