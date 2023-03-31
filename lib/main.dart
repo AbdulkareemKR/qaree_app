@@ -1,8 +1,5 @@
 import 'package:Qaree/features/splash_screen/views/splash_screen.dart';
-import 'package:Qaree/firebase_options.dart';
-import 'package:Qaree/services/initializer.dart';
 import 'package:Qaree/utils/theme/themes.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

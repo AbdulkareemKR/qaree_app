@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
-class Bounce extends StatefulWidget {
+class BounceAnimation extends StatefulWidget {
   VoidCallback? onTap;
   final Widget child;
   Duration duration;
   final bool enabled;
 
-  Bounce({
+  BounceAnimation({
     Key? key,
     required this.child,
     this.duration = const Duration(milliseconds: 900),
@@ -17,10 +17,11 @@ class Bounce extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  BounceState createState() => BounceState();
+  BounceAnimationState createState() => BounceAnimationState();
 }
 
-class BounceState extends State<Bounce> with SingleTickerProviderStateMixin {
+class BounceAnimationState extends State<BounceAnimation>
+    with SingleTickerProviderStateMixin {
   late double _scale;
 
   late AnimationController _animate;

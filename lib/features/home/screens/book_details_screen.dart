@@ -5,6 +5,7 @@ import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/home/controllers/home_screen_controller.dart';
 import 'package:Qaree/models/book/book.dart';
 import 'package:Qaree/models/note/note.dart';
+import 'package:Qaree/widgets/start_session_widget.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,6 +93,10 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                                     maxLines: 7,
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
+                                  ),
+                                  StartSessionWidget(
+                                    onTap: () => _controller
+                                        .onStartSessionTap(widget.book),
                                   ),
                                 ],
                               ),

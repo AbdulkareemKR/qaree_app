@@ -8,8 +8,9 @@ import 'package:Qaree/features/home/providers/home_screen_providers.dart';
 import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/repos/book_repo.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
-import 'package:Qaree/widgets/bounce.dart' as Bounce;
+import 'package:Qaree/widgets/bounce.dart';
 import 'package:Qaree/widgets/loading_container.dart';
+import 'package:Qaree/widgets/start_session_widget.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +75,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 15.w),
-                                        child: Bounce.Bounce(
+                                        child: BounceAnimation(
                                           duration:
                                               Duration(milliseconds: 2000),
                                           onTap: () =>
@@ -143,7 +144,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         .when(
                             data: (book) => FadeInUp(
                                   duration: Duration(milliseconds: 500),
-                                  child: Bounce.Bounce(
+                                  child: BounceAnimation(
                                     onTap: () => _controller.onBookCardTap(
                                         book!,
                                         user.notes
@@ -220,50 +221,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                       TextOverflow.ellipsis,
                                                 ),
                                                 SpacingConst.vSpacing16,
-                                                Bounce.Bounce(
-                                                  onTap: () => {},
-                                                  child: Container(
-                                                    width: 70.w,
-                                                    height: 24.h,
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
-                                                    ),
-                                                    decoration: BoxDecoration(
-                                                      color: ColorsConst
-                                                          .primaryPurple,
-                                                      borderRadius:
-                                                          BorderRadiusConst
-                                                              .circularBorderRadius,
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                        Icon(
-                                                          Icons
-                                                              .play_circle_outline_rounded,
-                                                          color:
-                                                              ColorsConst.white,
-                                                          size: 20.sp,
-                                                        ),
-                                                        SizedBox(
-                                                          height: 17.h,
-                                                          child:
-                                                              VerticalDivider(
-                                                            thickness: 2.sp,
-                                                            color: ColorsConst
-                                                                .white,
-                                                          ),
-                                                        ),
-                                                        Icon(
-                                                          CupertinoIcons.pen,
-                                                          color:
-                                                              ColorsConst.white,
-                                                          size: 20.sp,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
+                                                StartSessionWidget(
+                                                  onTap: () => _controller
+                                                      .onStartSessionTap(book!),
+                                                ),
                                               ],
                                             ),
                                           )

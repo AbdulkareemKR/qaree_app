@@ -1,7 +1,5 @@
-import 'package:Qaree/features/home/providers/home_screen_providers.dart';
-import 'package:Qaree/features/home/screens/book_details_screen.dart';
-import 'package:Qaree/models/book/book.dart';
-import 'package:Qaree/models/note/note.dart';
+import 'package:Qaree/features/groups/screens/group_details_screen.dart';
+import 'package:Qaree/models/group/group.dart';
 import 'package:Qaree/services/easy_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,12 +13,8 @@ class GroupsScreenController {
     required this.ref,
   });
 
-  void onBookTap(int bookIndex) {
-    ref.read(selectedBookIndexProvider.notifier).state = bookIndex;
-  }
-
-  void onBookCardTap(Book book, List<Note>? notes) {
+  void onGroupCardTap(Group? group) {
     EasyNavigator.openPage(
-        context: context, page: BookDetailsScreen(book: book, notes: notes));
+        context: context, page: GroupDetailsScreen(group: group));
   }
 }

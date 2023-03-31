@@ -9,13 +9,12 @@ class CustomSnackBar {
       required String message}) {
     final snackBar = SnackBar(
       backgroundColor: color,
-      content: Center(
-        child: Text(
-          message,
-          style: context.textThemes.bodyText2?.copyWith(
-            color: ColorsConst.white,
-          ),
+      content: Text(
+        message,
+        style: context.textThemes.bodyText2?.copyWith(
+          color: ColorsConst.white,
         ),
+        textAlign: TextAlign.center,
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);

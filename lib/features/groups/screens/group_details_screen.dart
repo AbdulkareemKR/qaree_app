@@ -3,7 +3,10 @@ import 'package:Qaree/constants/box_shadow_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/groups/controllers/groups_controller.dart';
-import 'package:Qaree/features/statistics/controllers/statistics_controller.dart';
+import 'package:Qaree/features/groups/screens/group_books_screen.dart';
+import 'package:Qaree/features/groups/screens/group_messages_screen.dart';
+import 'package:Qaree/features/groups/screens/group_statistics_screen.dart';
+import 'package:Qaree/models/group/group.dart';
 import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/loading_container.dart';
@@ -12,13 +15,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GroupDetailsScreen extends ConsumerStatefulWidget {
-  const GroupDetailsScreen({super.key});
+  final Group? group;
+  const GroupDetailsScreen({required this.group, super.key});
 
   @override
   ConsumerState<GroupDetailsScreen> createState() => _GroupDetailsScreenState();
 }
 
-class _GroupDetailsScreenState extends ConsumerState<GroupDetailsScreen> {
+class _GroupDetailsScreenState extends ConsumerState<GroupDetailsScreen>
+    with SingleTickerProviderStateMixin {
   late final GroupsScreenController _controller;
 
   @override
@@ -31,32 +36,32 @@ class _GroupDetailsScreenState extends ConsumerState<GroupDetailsScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
     return user.when(
-      data: (user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        color: ColorsConst.lightGrey,
-        child: SafeArea(
-          child: Column(
+      data: (user) => DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          backgroundColor: ColorsConst.lightGrey,
+          appBar: AppBar(
+            // automaticallyImplyLeading: false,
+            backgroundColor: ColorsConst.primaryBlack,
+            bottom: TabBar(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              indicator: BoxDecoration(
+                borderRadius:
+                    BorderRadiusConst.smallBorderRadius, // Creates border
+                color: ColorsConst.primaryPurple,
+              ),
+              tabs: [
+                Tab(text: "Messages"),
+                Tab(text: "Statistics"),
+                Tab(text: "Books"),
+              ],
+            ),
+          ),
+          body: TabBarView(
             children: [
-              SpacingConst.vSpacing16,
-              Center(
-                child: Text(
-                  'Groups',
-                  style: context.textThemes.displayMedium?.copyWith(
-                    fontFamily: "JosefinSans",
-                    color: ColorsConst.darkGrey,
-                  ),
-                ),
-              ),
-              ListView(
-                shrinkWrap: true,
-                children: [
-                  SpacingConst.vSpacing16,
-                  GroupItem(
-                    name: '0',
-                    members: '0',
-                  ),
-                ],
-              ),
+              GroupMessagesScreen(messages: widget.group?.messages),
+              GroupStatisticsScreen(),
+              GroupBooksScreen(groupBook: widget.group?.groupBooks),
             ],
           ),
         ),

@@ -6,6 +6,7 @@ import 'package:Qaree/features/groups/controllers/groups_controller.dart';
 import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/repos/group_repo.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
+import 'package:Qaree/widgets/bounce.dart';
 import 'package:Qaree/widgets/loading_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -64,9 +65,13 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
                         final group = ref.watch(GroupRepo.getGroupByIdProvider(
                             user.groups![index]));
                         return group.when(
-                            data: (group) => GroupItem(
-                                name: group?.name,
-                                members: group?.members?.length),
+                            data: (group) => BounceAnimation(
+                                  onTap: () =>
+                                      _controller.onGroupCardTap(group),
+                                  child: GroupItem(
+                                      name: group?.name,
+                                      members: group?.members?.length),
+                                ),
                             error: (error, stack) => Text("An error Occurred"),
                             loading: () => Padding(
                                   padding: EdgeInsets.symmetric(

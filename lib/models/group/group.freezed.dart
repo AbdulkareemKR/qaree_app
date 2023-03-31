@@ -28,6 +28,9 @@ mixin _$Group {
   List<GroupBook>? get groupBooks => throw _privateConstructorUsedError;
   String? get groupLink => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: 'createdAt', fromJson: _dateFromJson)
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  List<String>? get messages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +50,9 @@ abstract class $GroupCopyWith<$Res> {
       List<String>? members,
       List<GroupBook>? groupBooks,
       String? groupLink,
-      String? image});
+      String? image,
+      @JsonKey(name: 'createdAt', fromJson: _dateFromJson) DateTime? createdAt,
+      List<String>? messages});
 }
 
 /// @nodoc
@@ -71,6 +76,8 @@ class _$GroupCopyWithImpl<$Res, $Val extends Group>
     Object? groupBooks = freezed,
     Object? groupLink = freezed,
     Object? image = freezed,
+    Object? createdAt = freezed,
+    Object? messages = freezed,
   }) {
     return _then(_value.copyWith(
       GroupAdmins: freezed == GroupAdmins
@@ -105,6 +112,14 @@ class _$GroupCopyWithImpl<$Res, $Val extends Group>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      messages: freezed == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -123,7 +138,9 @@ abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
       List<String>? members,
       List<GroupBook>? groupBooks,
       String? groupLink,
-      String? image});
+      String? image,
+      @JsonKey(name: 'createdAt', fromJson: _dateFromJson) DateTime? createdAt,
+      List<String>? messages});
 }
 
 /// @nodoc
@@ -143,6 +160,8 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
     Object? groupBooks = freezed,
     Object? groupLink = freezed,
     Object? image = freezed,
+    Object? createdAt = freezed,
+    Object? messages = freezed,
   }) {
     return _then(_$_Group(
       GroupAdmins: freezed == GroupAdmins
@@ -177,6 +196,14 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res, _$_Group>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      messages: freezed == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -192,10 +219,13 @@ class _$_Group implements _Group {
       final List<String>? members,
       final List<GroupBook>? groupBooks,
       this.groupLink,
-      this.image})
+      this.image,
+      @JsonKey(name: 'createdAt', fromJson: _dateFromJson) this.createdAt,
+      final List<String>? messages})
       : _GroupAdmins = GroupAdmins,
         _members = members,
-        _groupBooks = groupBooks;
+        _groupBooks = groupBooks,
+        _messages = messages;
 
   factory _$_Group.fromJson(Map<String, dynamic> json) =>
       _$$_GroupFromJson(json);
@@ -240,10 +270,22 @@ class _$_Group implements _Group {
   final String? groupLink;
   @override
   final String? image;
+  @override
+  @JsonKey(name: 'createdAt', fromJson: _dateFromJson)
+  final DateTime? createdAt;
+  final List<String>? _messages;
+  @override
+  List<String>? get messages {
+    final value = _messages;
+    if (value == null) return null;
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Group(GroupAdmins: $GroupAdmins, id: $id, name: $name, description: $description, members: $members, groupBooks: $groupBooks, groupLink: $groupLink, image: $image)';
+    return 'Group(GroupAdmins: $GroupAdmins, id: $id, name: $name, description: $description, members: $members, groupBooks: $groupBooks, groupLink: $groupLink, image: $image, createdAt: $createdAt, messages: $messages)';
   }
 
   @override
@@ -262,7 +304,10 @@ class _$_Group implements _Group {
                 .equals(other._groupBooks, _groupBooks) &&
             (identical(other.groupLink, groupLink) ||
                 other.groupLink == groupLink) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
   @JsonKey(ignore: true)
@@ -276,7 +321,9 @@ class _$_Group implements _Group {
       const DeepCollectionEquality().hash(_members),
       const DeepCollectionEquality().hash(_groupBooks),
       groupLink,
-      image);
+      image,
+      createdAt,
+      const DeepCollectionEquality().hash(_messages));
 
   @JsonKey(ignore: true)
   @override
@@ -301,7 +348,10 @@ abstract class _Group implements Group {
       final List<String>? members,
       final List<GroupBook>? groupBooks,
       final String? groupLink,
-      final String? image}) = _$_Group;
+      final String? image,
+      @JsonKey(name: 'createdAt', fromJson: _dateFromJson)
+          final DateTime? createdAt,
+      final List<String>? messages}) = _$_Group;
 
   factory _Group.fromJson(Map<String, dynamic> json) = _$_Group.fromJson;
 
@@ -321,6 +371,11 @@ abstract class _Group implements Group {
   String? get groupLink;
   @override
   String? get image;
+  @override
+  @JsonKey(name: 'createdAt', fromJson: _dateFromJson)
+  DateTime? get createdAt;
+  @override
+  List<String>? get messages;
   @override
   @JsonKey(ignore: true)
   _$$_GroupCopyWith<_$_Group> get copyWith =>

@@ -20,6 +20,10 @@ _$_Group _$$_GroupFromJson(Map<String, dynamic> json) => _$_Group(
           .toList(),
       groupLink: json['groupLink'] as String?,
       image: json['image'] as String?,
+      createdAt: _dateFromJson(json['createdAt'] as Timestamp),
+      messages: (json['messages'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_GroupToJson(_$_Group instance) => <String, dynamic>{
@@ -31,4 +35,6 @@ Map<String, dynamic> _$$_GroupToJson(_$_Group instance) => <String, dynamic>{
       'groupBooks': instance.groupBooks,
       'groupLink': instance.groupLink,
       'image': instance.image,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'messages': instance.messages,
     };

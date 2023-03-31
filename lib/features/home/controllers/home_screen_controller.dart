@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:Qaree/features/home/providers/home_screen_providers.dart';
 import 'package:Qaree/features/home/screens/book_details_screen.dart';
+import 'package:Qaree/features/reading_session/reading_session.dart';
 import 'package:Qaree/models/book/book.dart';
 import 'package:Qaree/models/note/note.dart';
 import 'package:Qaree/services/easy_navigator.dart';
@@ -22,5 +25,9 @@ class HomeScreenController {
   void onBookCardTap(Book book, List<Note>? notes) {
     EasyNavigator.openPage(
         context: context, page: BookDetailsScreen(book: book, notes: notes));
+  }
+
+  void onStartSessionTap(Book book) {
+    EasyNavigator.openPage(context: context, page: ReadingSession());
   }
 }

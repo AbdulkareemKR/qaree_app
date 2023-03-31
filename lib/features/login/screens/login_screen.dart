@@ -86,7 +86,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                 ),
                 SpacingConst.vSpacing20,
-                Bounce(
+                BounceAnimation(
                   onTap: _controller.onSignUpPressed,
                   child: RichText(
                     text: TextSpan(
