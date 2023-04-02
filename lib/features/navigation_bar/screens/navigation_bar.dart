@@ -1,5 +1,6 @@
 import 'package:Qaree/constants/border_radius_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
+import 'package:Qaree/features/book_search/screens/book_search_screen.dart';
 import 'package:Qaree/features/groups/screens/groups_screen.dart';
 import 'package:Qaree/features/home/screens/home_screen.dart';
 import 'package:Qaree/features/personal_informations/screens/personal_informations.dart';
@@ -60,9 +61,7 @@ class _MainNavigationBarState extends State<MainNavigationBar> {
   List<Widget> _buildScreens() {
     return [
       HomeScreen(),
-      Container(
-        child: Center(child: Text("Search")),
-      ),
+      BookSearchScreen(),
       StatisticsScreen(),
       GroupsScreen(),
       PersonalInformations()

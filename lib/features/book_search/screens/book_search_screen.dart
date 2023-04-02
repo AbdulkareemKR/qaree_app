@@ -1,4 +1,5 @@
 import 'package:Qaree/models/book/book.dart';
+import 'package:Qaree/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,15 +39,11 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
 
     return Scaffold(
       backgroundColor: ColorsConst.lightGreyPrimary,
+      appBar: CustomAppBar(context: context, title: "Book Search"),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SpacingConst.vSpacing16,
-            Text(
-              "Book Search",
-              style: context.textThemes.titleLarge,
-            ),
             SpacingConst.vSpacing16,
             CustomTextField(
               type: TextFieldType.normal,
@@ -119,4 +116,3 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
     );
   }
 }
-

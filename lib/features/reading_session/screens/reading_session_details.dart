@@ -169,7 +169,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                       ),
                     ),
                   ),
-                  onChanged: onChanged,
+                  onChanged: (ss) {},
                 ),
               ),
               SpacingConst.hSpacing40,
@@ -205,7 +205,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                       ),
                     ),
                   ),
-                  onChanged: onChanged,
+                  onChanged: (ss) {},
                 ),
               ),
             ],
@@ -253,7 +253,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CustomButton(
-                onPressed: onPressed,
+                onPressed: () {},
                 label: 'Cancel',
                 size: ButtonSize.small,
                 textStyle: context.textThemes.bodyMedium?.copyWith(
@@ -261,7 +261,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                 ),
               ),
               CustomButton(
-                onPressed: onPressed,
+                onPressed: () {},
                 label: 'Save',
                 size: ButtonSize.small,
                 style: CustomButtonStyle.primary,
