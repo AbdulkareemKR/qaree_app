@@ -23,7 +23,7 @@ class ContainerBoxForHorizontalButtons extends StatelessWidget {
             BoxShadow(
               blurRadius: 2.0,
               offset: Offset(0, 1),
-              color: ColorsConst.lightGrey,
+              color: ColorsConst.veryLightGrey,
             ),
           ],
           borderRadius: BorderRadius.all(

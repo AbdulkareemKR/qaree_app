@@ -13,6 +13,9 @@ class Session with _$Session {
     @JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
     @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate,
     int? numberOfPages,
+    @Default(0) double? totalReadingTime,
+    @Default(false) bool? isFinished,
+    StartEndDate? pausesStartEndTime,
   }) = _Session;
 
   factory Session.fromJson(Map<String, dynamic> json) =>

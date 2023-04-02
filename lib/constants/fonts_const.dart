@@ -1,3 +1,3 @@
 class FontConst {
-  static const fontFamily = 'DinNext';
+  static const mainFontFamily = 'DinNext';
 }

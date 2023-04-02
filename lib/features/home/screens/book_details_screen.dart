@@ -5,6 +5,7 @@ import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/home/controllers/home_screen_controller.dart';
 import 'package:Qaree/models/book/book.dart';
 import 'package:Qaree/models/note/note.dart';
+import 'package:Qaree/widgets/book_image.dart';
 import 'package:Qaree/widgets/start_session_widget.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +35,7 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsConst.lightGrey,
+      backgroundColor: ColorsConst.veryLightGrey,
       appBar: AppBar(
           backgroundColor: ColorsConst.primaryBlack,
           bottom: PreferredSize(
@@ -51,20 +52,10 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              width: 90.0,
-                              height: 134.h,
-                              decoration: BoxDecoration(),
-                              child: widget.book.image != null
-                                  ? ClipRRect(
-                                      borderRadius: BorderRadiusConst
-                                          .verySmallBorderRadius,
-                                      child: Image.network(
-                                        widget.book.image!,
-                                        fit: BoxFit.fill,
-                                      ),
-                                    )
-                                  : Text(widget.book.name ?? "Unknown"),
+                            BookImage(
+                              book: widget.book,
+                              width: 90,
+                              height: 134,
                             ),
                             SpacingConst.hSpacing20,
                             Container(

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:Qaree/constants/border_radius_const.dart';
 import 'package:Qaree/constants/box_shadow_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
@@ -9,10 +8,10 @@ import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/repos/book_repo.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/bounce.dart';
+import 'package:Qaree/widgets/custom_app_bar.dart';
 import 'package:Qaree/widgets/loading_container.dart';
 import 'package:Qaree/widgets/start_session_widget.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,22 +37,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final user = ref.watch(readerProvider);
     return user.when(
       data: (user) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorsConst.primaryBlack,
-          title: Text(
-            'Book Shelf',
-            style: context.textThemes.displayMedium?.copyWith(
-              fontFamily: "JosefinSans",
-              color: ColorsConst.white,
-            ),
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-          ),
-        ),
-        backgroundColor: ColorsConst.lightGrey,
+        appBar: CustomAppBar(context: context, title: 'Book Shelf'),
+        backgroundColor: ColorsConst.veryLightGrey,
         body: SafeArea(
           child: Column(
             children: [
@@ -220,11 +205,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                 ),
-                                                SpacingConst.vSpacing16,
+                                                Spacer(),
                                                 StartSessionWidget(
                                                   onTap: () => _controller
                                                       .onStartSessionTap(book!),
                                                 ),
+                                                SpacingConst.vSpacing30,
                                               ],
                                             ),
                                           )

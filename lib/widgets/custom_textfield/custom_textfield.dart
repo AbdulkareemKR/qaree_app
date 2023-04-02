@@ -123,15 +123,15 @@ class CustomTextFieldState extends State<CustomTextField> {
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2),
           decoration: BoxDecoration(
             color: widget.isEnabled
-                ? ColorsConst.lightGrey
-                : ColorsConst.lightGrey,
+                ? ColorsConst.veryLightGrey
+                : ColorsConst.veryLightGrey,
             borderRadius: BorderRadius.all(Radius.circular(10.sp)),
             border: type == TextFieldType.active
                 ? Border.all(
                     color: ColorsConst.black,
                   )
                 : Border.all(
-                    color: ColorsConst.lightGrey,
+                    color: ColorsConst.veryLightGrey,
                   ),
           ),
           width: widget.width,

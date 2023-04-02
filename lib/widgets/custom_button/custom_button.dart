@@ -113,7 +113,7 @@ class _CustomButtonState extends State<CustomButton> {
       case CustomButtonStyle.secondary:
         return ColorsConst.primaryPurple.withOpacity(0.15);
       case CustomButtonStyle.thirdly:
-        return ColorsConst.lightGrey;
+        return ColorsConst.veryLightGrey;
       case CustomButtonStyle.disabled:
         return ColorsConst.disableGrey;
       default:
@@ -126,7 +126,7 @@ class _CustomButtonState extends State<CustomButton> {
       case CustomButtonStyle.primary:
         return ColorsConst.primaryPurple.withOpacity(0.8);
       case CustomButtonStyle.secondary:
-        return ColorsConst.lightGrey.withOpacity(0.15);
+        return ColorsConst.veryLightGrey.withOpacity(0.15);
 
       default:
         return ColorsConst.black;

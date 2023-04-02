@@ -39,7 +39,7 @@ class _GroupDetailsScreenState extends ConsumerState<GroupDetailsScreen>
       data: (user) => DefaultTabController(
         length: 3,
         child: Scaffold(
-          backgroundColor: ColorsConst.lightGrey,
+          backgroundColor: ColorsConst.veryLightGrey,
           appBar: AppBar(
             // automaticallyImplyLeading: false,
             backgroundColor: ColorsConst.primaryBlack,

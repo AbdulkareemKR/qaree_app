@@ -22,6 +22,7 @@ class ColorsConst {
   static const primaryBlack = Color(0xff333333);
   static const grey = Color(0xff828282);
   static const beige = Color(0xffFFE4C9);
+  static const veryLightGrey = Color(0xFFE5E5E5);
   static const lightGrey = Color(0xffD9D9D9);
   static const disableGrey = Color(0xffE2E7EC);
 }

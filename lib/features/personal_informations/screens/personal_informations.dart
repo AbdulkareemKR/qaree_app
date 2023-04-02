@@ -31,7 +31,7 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
               child: Container(
                 width: double.infinity,
                 height: 250,
-                color: ColorsConst.lightPurple,
+                color: ColorsConst.primaryBlack,
                 child: SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 38.0),
@@ -41,7 +41,7 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
                       style: TextStyle(
                         fontSize: 52,
                         fontFamily: "JosefinSans",
-                        color: ColorsConst.black,
+                        color: ColorsConst.white,
                       ),
                     ),
                   ),
@@ -56,7 +56,7 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
                     radius: 60,
                     backgroundColor: ColorsConst.white,
                     child: CircleAvatar(
-                      backgroundColor: ColorsConst.lightGrey,
+                      backgroundColor: ColorsConst.veryLightGrey,
                       radius: 55,
                       backgroundImage: AssetImage(
                         "assets/images/default_user_avatar.png",

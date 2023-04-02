@@ -36,7 +36,7 @@ class HorizontalButtonUsedInList extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 20,
                     color: ColorsConst.darkGrey,
-                    fontFamily: FontConst.fontFamily,
+                    fontFamily: FontConst.mainFontFamily,
                   ),
                 ),
               ],

@@ -5,6 +5,7 @@ import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/statistics/controllers/statistics_controller.dart';
 import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
+import 'package:Qaree/widgets/custom_app_bar.dart';
 import 'package:Qaree/widgets/loading_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,22 +33,8 @@ class _StatisticsScreenState extends ConsumerState<StatisticsScreen> {
     final user = ref.watch(readerProvider);
     return user.when(
       data: (user) => Scaffold(
-        backgroundColor: ColorsConst.lightGrey,
-        appBar: AppBar(
-          backgroundColor: ColorsConst.primaryBlack,
-          title: Text(
-            'Statistics',
-            style: context.textThemes.displayMedium?.copyWith(
-              fontFamily: "JosefinSans",
-              color: ColorsConst.white,
-            ),
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-          ),
-        ),
+        backgroundColor: ColorsConst.veryLightGrey,
+        appBar: CustomAppBar(context: context, title: 'Statistics'),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),

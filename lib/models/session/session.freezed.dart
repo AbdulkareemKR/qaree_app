@@ -28,6 +28,9 @@ mixin _$Session {
   @JsonKey(name: 'endDate', fromJson: _dateFromJson)
   DateTime? get endDate => throw _privateConstructorUsedError;
   int? get numberOfPages => throw _privateConstructorUsedError;
+  double? get totalReadingTime => throw _privateConstructorUsedError;
+  bool? get isFinished => throw _privateConstructorUsedError;
+  StartEndDate? get pausesStartEndTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +48,12 @@ abstract class $SessionCopyWith<$Res> {
       String? bookId,
       @JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
       @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate,
-      int? numberOfPages});
+      int? numberOfPages,
+      double? totalReadingTime,
+      bool? isFinished,
+      StartEndDate? pausesStartEndTime});
+
+  $StartEndDateCopyWith<$Res>? get pausesStartEndTime;
 }
 
 /// @nodoc
@@ -67,6 +75,9 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? numberOfPages = freezed,
+    Object? totalReadingTime = freezed,
+    Object? isFinished = freezed,
+    Object? pausesStartEndTime = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -93,7 +104,31 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.numberOfPages
           : numberOfPages // ignore: cast_nullable_to_non_nullable
               as int?,
+      totalReadingTime: freezed == totalReadingTime
+          ? _value.totalReadingTime
+          : totalReadingTime // ignore: cast_nullable_to_non_nullable
+              as double?,
+      isFinished: freezed == isFinished
+          ? _value.isFinished
+          : isFinished // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      pausesStartEndTime: freezed == pausesStartEndTime
+          ? _value.pausesStartEndTime
+          : pausesStartEndTime // ignore: cast_nullable_to_non_nullable
+              as StartEndDate?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StartEndDateCopyWith<$Res>? get pausesStartEndTime {
+    if (_value.pausesStartEndTime == null) {
+      return null;
+    }
+
+    return $StartEndDateCopyWith<$Res>(_value.pausesStartEndTime!, (value) {
+      return _then(_value.copyWith(pausesStartEndTime: value) as $Val);
+    });
   }
 }
 
@@ -110,7 +145,13 @@ abstract class _$$_SessionCopyWith<$Res> implements $SessionCopyWith<$Res> {
       String? bookId,
       @JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
       @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate,
-      int? numberOfPages});
+      int? numberOfPages,
+      double? totalReadingTime,
+      bool? isFinished,
+      StartEndDate? pausesStartEndTime});
+
+  @override
+  $StartEndDateCopyWith<$Res>? get pausesStartEndTime;
 }
 
 /// @nodoc
@@ -129,6 +170,9 @@ class __$$_SessionCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? numberOfPages = freezed,
+    Object? totalReadingTime = freezed,
+    Object? isFinished = freezed,
+    Object? pausesStartEndTime = freezed,
   }) {
     return _then(_$_Session(
       id: null == id
@@ -155,6 +199,18 @@ class __$$_SessionCopyWithImpl<$Res>
           ? _value.numberOfPages
           : numberOfPages // ignore: cast_nullable_to_non_nullable
               as int?,
+      totalReadingTime: freezed == totalReadingTime
+          ? _value.totalReadingTime
+          : totalReadingTime // ignore: cast_nullable_to_non_nullable
+              as double?,
+      isFinished: freezed == isFinished
+          ? _value.isFinished
+          : isFinished // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      pausesStartEndTime: freezed == pausesStartEndTime
+          ? _value.pausesStartEndTime
+          : pausesStartEndTime // ignore: cast_nullable_to_non_nullable
+              as StartEndDate?,
     ));
   }
 }
@@ -168,7 +224,10 @@ class _$_Session implements _Session {
       this.bookId,
       @JsonKey(name: 'startDate', fromJson: _dateFromJson) this.startDate,
       @JsonKey(name: 'endDate', fromJson: _dateFromJson) this.endDate,
-      this.numberOfPages});
+      this.numberOfPages,
+      this.totalReadingTime = 0,
+      this.isFinished = false,
+      this.pausesStartEndTime});
 
   factory _$_Session.fromJson(Map<String, dynamic> json) =>
       _$$_SessionFromJson(json);
@@ -187,10 +246,18 @@ class _$_Session implements _Session {
   final DateTime? endDate;
   @override
   final int? numberOfPages;
+  @override
+  @JsonKey()
+  final double? totalReadingTime;
+  @override
+  @JsonKey()
+  final bool? isFinished;
+  @override
+  final StartEndDate? pausesStartEndTime;
 
   @override
   String toString() {
-    return 'Session(id: $id, userId: $userId, bookId: $bookId, startDate: $startDate, endDate: $endDate, numberOfPages: $numberOfPages)';
+    return 'Session(id: $id, userId: $userId, bookId: $bookId, startDate: $startDate, endDate: $endDate, numberOfPages: $numberOfPages, totalReadingTime: $totalReadingTime, isFinished: $isFinished, pausesStartEndTime: $pausesStartEndTime)';
   }
 
   @override
@@ -205,13 +272,19 @@ class _$_Session implements _Session {
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.numberOfPages, numberOfPages) ||
-                other.numberOfPages == numberOfPages));
+                other.numberOfPages == numberOfPages) &&
+            (identical(other.totalReadingTime, totalReadingTime) ||
+                other.totalReadingTime == totalReadingTime) &&
+            (identical(other.isFinished, isFinished) ||
+                other.isFinished == isFinished) &&
+            (identical(other.pausesStartEndTime, pausesStartEndTime) ||
+                other.pausesStartEndTime == pausesStartEndTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, userId, bookId, startDate, endDate, numberOfPages);
+  int get hashCode => Object.hash(runtimeType, id, userId, bookId, startDate,
+      endDate, numberOfPages, totalReadingTime, isFinished, pausesStartEndTime);
 
   @JsonKey(ignore: true)
   @override
@@ -236,7 +309,10 @@ abstract class _Session implements Session {
           final DateTime? startDate,
       @JsonKey(name: 'endDate', fromJson: _dateFromJson)
           final DateTime? endDate,
-      final int? numberOfPages}) = _$_Session;
+      final int? numberOfPages,
+      final double? totalReadingTime,
+      final bool? isFinished,
+      final StartEndDate? pausesStartEndTime}) = _$_Session;
 
   factory _Session.fromJson(Map<String, dynamic> json) = _$_Session.fromJson;
 
@@ -254,6 +330,12 @@ abstract class _Session implements Session {
   DateTime? get endDate;
   @override
   int? get numberOfPages;
+  @override
+  double? get totalReadingTime;
+  @override
+  bool? get isFinished;
+  @override
+  StartEndDate? get pausesStartEndTime;
   @override
   @JsonKey(ignore: true)
   _$$_SessionCopyWith<_$_Session> get copyWith =>

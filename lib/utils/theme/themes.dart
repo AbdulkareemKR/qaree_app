@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainTheme {
   static final main = ThemeData(
-      fontFamily: FontConst.fontFamily,
+      fontFamily: FontConst.mainFontFamily,
       scaffoldBackgroundColor: ColorsConst.white,
       primaryColor: ColorsConst.black,
       dividerColor: Colors.transparent,
@@ -50,7 +50,7 @@ class MainTheme {
           color: ColorsConst.darkGrey,
         ),
         titleMedium: TextStyle(
-          fontSize: 20.sp, 
+          fontSize: 20.sp,
           fontWeight: FontWeight.w500,
           color: ColorsConst.darkGrey,
         ),

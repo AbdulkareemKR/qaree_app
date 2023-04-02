@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/custom_button/custom_button.dart';
 import 'package:Qaree/widgets/custom_button/enums/button_size.dart';
@@ -6,10 +5,10 @@ import 'package:Qaree/widgets/custom_button/enums/button_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../constants/border_radius_const.dart';
-import '../../constants/colors_const.dart';
-import '../../constants/fonts_const.dart';
-import '../../constants/spacing_const.dart';
+import '../../../constants/border_radius_const.dart';
+import '../../../constants/colors_const.dart';
+import '../../../constants/fonts_const.dart';
+import '../../../constants/spacing_const.dart';
 
 class ReadingSessionDetails extends StatefulWidget {
   const ReadingSessionDetails({super.key});
@@ -22,7 +21,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE5E5E5),
+      backgroundColor: ColorsConst.veryLightGrey,
       body: SafeArea(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,7 +40,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                   'Reading Session',
                   style: TextStyle(
                     color: Color(0xFF4D506C),
-                    fontFamily: FontConst.fontFamily,
+                    fontFamily: FontConst.mainFontFamily,
                     fontSize: 25.0,
                     fontWeight: FontWeight.w400,
                   ),
@@ -56,7 +55,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                   width: 200.6.w,
                   height: 250.02.h,
                   decoration: BoxDecoration(
-                    color: ColorsConst.lightGrey,
+                    color: ColorsConst.veryLightGrey,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(360),
                       bottomRight: Radius.circular(360),
@@ -84,7 +83,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                           Text(
                             'The Midnight Library',
                             style: TextStyle(
-                              fontFamily: FontConst.fontFamily,
+                              fontFamily: FontConst.mainFontFamily,
                               fontSize: 15.0,
                               fontWeight: FontWeight.w600,
                               color: ColorsConst.primaryBlack,
@@ -98,7 +97,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                           Text(
                             'Matt Haig',
                             style: TextStyle(
-                              fontFamily: FontConst.fontFamily,
+                              fontFamily: FontConst.mainFontFamily,
                               fontWeight: FontWeight.w500,
                               fontSize: 13.0,
                               color: Color(0xFF9D9D9D),
@@ -138,7 +137,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                 'Pages',
                 style: TextStyle(
                   color: ColorsConst.primaryBlack,
-                  fontFamily: FontConst.fontFamily,
+                  fontFamily: FontConst.mainFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -163,9 +162,9 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                     child: Text(
                       'From',
                       style: TextStyle(
-                        fontFamily: FontConst.fontFamily,
+                        fontFamily: FontConst.mainFontFamily,
                         fontWeight: FontWeight.w400,
-                        color: ColorsConst.lightGrey,
+                        color: ColorsConst.veryLightGrey,
                         fontSize: 12,
                       ),
                     ),
@@ -177,9 +176,9 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
               Text(
                 '-',
                 style: TextStyle(
-                  fontFamily: FontConst.fontFamily,
+                  fontFamily: FontConst.mainFontFamily,
                   fontWeight: FontWeight.w900,
-                  color: ColorsConst.lightGrey,
+                  color: ColorsConst.veryLightGrey,
                   fontSize: 20,
                 ),
               ),
@@ -199,9 +198,9 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                     child: Text(
                       'To',
                       style: TextStyle(
-                        fontFamily: FontConst.fontFamily,
+                        fontFamily: FontConst.mainFontFamily,
                         fontWeight: FontWeight.w400,
-                        color: ColorsConst.lightGrey,
+                        color: ColorsConst.veryLightGrey,
                         fontSize: 12,
                       ),
                     ),
@@ -218,7 +217,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                 'Note',
                 style: TextStyle(
                   color: ColorsConst.primaryBlack,
-                  fontFamily: FontConst.fontFamily,
+                  fontFamily: FontConst.mainFontFamily,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -242,7 +241,7 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Color(0xFF9091A0),
-                        fontFamily: FontConst.fontFamily,
+                        fontFamily: FontConst.mainFontFamily,
                       ),
                       hintText: 'Write Down Your Thoughts'),
                 ),
@@ -276,10 +275,4 @@ class _ReadingSessionDetailsState extends State<ReadingSessionDetails> {
       )),
     );
   }
-
-  void onChanged(value) {
-    setState(() {});
-  }
-
-  onPressed() {}
 }

@@ -7,6 +7,7 @@ import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/repos/group_repo.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/bounce.dart';
+import 'package:Qaree/widgets/custom_app_bar.dart';
 import 'package:Qaree/widgets/loading_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,22 +34,8 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
     final user = ref.watch(readerProvider);
     return user.when(
       data: (user) => Scaffold(
-        backgroundColor: ColorsConst.lightGrey,
-        appBar: AppBar(
-          backgroundColor: ColorsConst.primaryBlack,
-          title: Text(
-            'Groups',
-            style: context.textThemes.displayMedium?.copyWith(
-              fontFamily: "JosefinSans",
-              color: ColorsConst.white,
-            ),
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-          ),
-        ),
+        backgroundColor: ColorsConst.veryLightGrey,
+        appBar: CustomAppBar(context: context, title: 'Groups'),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -65,19 +52,19 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
                         final group = ref.watch(GroupRepo.getGroupByIdProvider(
                             user.groups![index]));
                         return group.when(
-                            data: (group) => BounceAnimation(
-                                  onTap: () =>
-                                      _controller.onGroupCardTap(group),
-                                  child: GroupItem(
-                                      name: group?.name,
-                                      members: group?.members?.length),
-                                ),
-                            error: (error, stack) => Text("An error Occurred"),
-                            loading: () => Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 15.w, vertical: 10.h),
-                                  child: LoadingContainer(height: 161.h),
-                                ));
+                          data: (group) => BounceAnimation(
+                            onTap: () => _controller.onGroupCardTap(group),
+                            child: GroupItem(
+                                name: group?.name,
+                                members: group?.members?.length),
+                          ),
+                          error: (error, stack) => Text("An error Occurred"),
+                          loading: () => Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 15.w, vertical: 10.h),
+                            child: LoadingContainer(height: 161.h),
+                          ),
+                        );
                       },
                     );
                   },
