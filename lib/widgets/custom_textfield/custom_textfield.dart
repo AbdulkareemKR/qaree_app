@@ -30,6 +30,7 @@ class CustomTextField extends StatefulWidget {
     this.counterText = "",
     this.initialValue,
     this.keyboardType = TextInputType.text,
+    this.color = ColorsConst.lightGrey,
   }) : super(key: key);
 
   final bool indicateValid;
@@ -55,6 +56,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType keyboardType;
 
   final List<TextInputFormatter>? inputFormatter;
+  final Color? color;
 
   @override
   State<CustomTextField> createState() => CustomTextFieldState();

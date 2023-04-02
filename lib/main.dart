@@ -1,10 +1,18 @@
+import 'package:Qaree/features/book_search/screens/book_search_screen.dart';
+import 'package:Qaree/features/login/screens/login_screen.dart';
 import 'package:Qaree/features/splash_screen/views/splash_screen.dart';
 import 'package:Qaree/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/login/screens/login_screen.dart';
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
