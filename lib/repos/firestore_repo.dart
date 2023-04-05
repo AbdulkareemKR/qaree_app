@@ -10,4 +10,5 @@ class FirestoreRepo {
   static final groupsCollection = firestore.collection('Groups');
   static final reviewsCollection = firestore.collection('reviews');
   static final bookShelvesCollection = firestore.collection('BookShelves');
+  static final sessionsCollection = firestore.collection('Sessions');
 }

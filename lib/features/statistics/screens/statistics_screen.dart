@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:Qaree/constants/border_radius_const.dart';
 import 'package:Qaree/constants/box_shadow_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/statistics/controllers/statistics_controller.dart';
 import 'package:Qaree/providers/reader_provider.dart';
+import 'package:Qaree/repos/session_repo.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/custom_app_bar.dart';
 import 'package:Qaree/widgets/loading_container.dart';
@@ -31,6 +34,7 @@ class _StatisticsScreenState extends ConsumerState<StatisticsScreen> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
+
     return user.when(
       data: (user) => Scaffold(
         backgroundColor: ColorsConst.veryLightGrey,
@@ -52,23 +56,67 @@ class _StatisticsScreenState extends ConsumerState<StatisticsScreen> {
                       ),
                     ),
                     SpacingConst.vSpacing16,
-                    StatisticsItem(
-                      title: 'Pages Read',
-                      value: '0',
-                      average: '0',
-                    ),
-                    SpacingConst.vSpacing20,
-                    StatisticsItem(
-                      title: 'Pages Read',
-                      value: '0',
-                      average: '0',
-                    ),
-                    SpacingConst.vSpacing20,
-                    StatisticsItem(
-                      title: 'Pages Read',
-                      value: '0',
-                      average: '0',
-                    ),
+                    Consumer(builder: (context, ref, child) {
+                      final session = ref.watch(
+                          SessionRepo.getTodaySessionByUserIdProvider(user.id));
+
+                      return session.when(
+                        data: (sessions) {
+                          return Column(
+                            children: [
+                              InfoItem(
+                                title: 'Reading Time',
+                                value: _controller
+                                    .getFormattedTotalReadingTime(sessions),
+                                average:
+                                    "${_controller.getFormattedAverageReadingTime(sessions)} - Session",
+                                icon: Icons.timer,
+                              ),
+                              SpacingConst.vSpacing20,
+                              InfoItem(
+                                title: 'Read Pages',
+                                value: _controller
+                                    .getNumberOfPages(sessions)
+                                    .toString(),
+                                average:
+                                    _controller.getFormattedAverageTimePerPage(
+                                            sessions) +
+                                        " - Page",
+                                icon: Icons.menu_book_rounded,
+                              ),
+                              SpacingConst.vSpacing20,
+                              InfoItem(
+                                title: 'Reading Sessions',
+                                value: sessions.length.toString(),
+                                average:
+                                    "${_controller.getFormattedAverageReadingTime(sessions)} - Session",
+                                icon: Icons.event_note_rounded,
+                              ),
+                            ],
+                          );
+                        },
+                        error: (error, stack) =>
+                            Center(child: Text("An error Ocurred")),
+                        loading: () => Column(
+                          children: [
+                            LoadingContainer(
+                              height: 161.h,
+                              width: 340.w,
+                            ),
+                            SpacingConst.vSpacing20,
+                            LoadingContainer(
+                              height: 161.h,
+                              width: 340.w,
+                            ),
+                            SpacingConst.vSpacing20,
+                            LoadingContainer(
+                              height: 161.h,
+                              width: 340.w,
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
                   ],
                 ),
               ],
@@ -82,16 +130,18 @@ class _StatisticsScreenState extends ConsumerState<StatisticsScreen> {
   }
 }
 
-class StatisticsItem extends StatelessWidget {
+class InfoItem extends StatelessWidget {
   final String title;
   final String value;
   final String average;
+  final IconData icon;
 
-  const StatisticsItem({
+  const InfoItem({
     Key? key,
     required this.title,
     required this.value,
     required this.average,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -119,7 +169,7 @@ class StatisticsItem extends StatelessWidget {
                   ),
                 ),
                 Icon(
-                  Icons.timer,
+                  icon,
                   size: 20.sp,
                 )
               ],
@@ -139,13 +189,15 @@ class StatisticsItem extends StatelessWidget {
                     ),
                   ),
                   CircularPercentIndicator(
+                    restartAnimation: true,
+                    animation: true,
+                    animationDuration: 2000,
                     radius: 27.w,
                     lineWidth: 10.w,
-                    animation: true,
-                    percent: 0.7,
+                    percent: 0.3,
                     circularStrokeCap: CircularStrokeCap.round,
-                    progressColor: ColorsConst.primaryBlack,
-                    backgroundColor: ColorsConst.primaryPurple,
+                    progressColor: ColorsConst.primaryPurple,
+                    backgroundColor: ColorsConst.primaryBlack,
                   ),
                 ],
               ),
@@ -157,14 +209,14 @@ class StatisticsItem extends StatelessWidget {
                 text: 'Avg: ',
                 style: context.textThemes.titleMedium?.copyWith(
                   color: ColorsConst.primaryPurple,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w800,
                 ),
                 children: [
                   TextSpan(
                     text: average,
                     style: context.textThemes.titleMedium?.copyWith(
                       color: ColorsConst.primaryBlack,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
                 ],

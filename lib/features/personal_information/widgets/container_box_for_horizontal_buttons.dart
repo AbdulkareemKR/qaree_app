@@ -1,5 +1,4 @@
 import 'package:Qaree/constants/colors_const.dart';
-import 'package:Qaree/features/personal_informations/widgets/horizontal_button_used_in_list.dart';
 import 'package:flutter/material.dart';
 
 class ContainerBoxForHorizontalButtons extends StatelessWidget {

@@ -25,7 +25,11 @@ mixin _$Note {
   String? get bookId => throw _privateConstructorUsedError;
   String? get noteTitle => throw _privateConstructorUsedError;
   String? get noteContent => throw _privateConstructorUsedError;
-  @JsonKey(name: 'date', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'date',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get date => throw _privateConstructorUsedError;
   bool? get isPublic => throw _privateConstructorUsedError;
 
@@ -45,7 +49,8 @@ abstract class $NoteCopyWith<$Res> {
       String? bookId,
       String? noteTitle,
       String? noteContent,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? date,
       bool? isPublic});
 }
 
@@ -115,7 +120,8 @@ abstract class _$$_NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
       String? bookId,
       String? noteTitle,
       String? noteContent,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? date,
       bool? isPublic});
 }
 
@@ -178,7 +184,8 @@ class _$_Note implements _Note {
       this.bookId,
       this.noteTitle,
       this.noteContent,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) this.date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          this.date,
       this.isPublic = false});
 
   factory _$_Note.fromJson(Map<String, dynamic> json) => _$$_NoteFromJson(json);
@@ -194,7 +201,11 @@ class _$_Note implements _Note {
   @override
   final String? noteContent;
   @override
-  @JsonKey(name: 'date', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'date',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   final DateTime? date;
   @override
   @JsonKey()
@@ -248,7 +259,8 @@ abstract class _Note implements Note {
       final String? bookId,
       final String? noteTitle,
       final String? noteContent,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) final DateTime? date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          final DateTime? date,
       final bool? isPublic}) = _$_Note;
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$_Note.fromJson;
@@ -264,7 +276,11 @@ abstract class _Note implements Note {
   @override
   String? get noteContent;
   @override
-  @JsonKey(name: 'date', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'date',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get date;
   @override
   bool? get isPublic;

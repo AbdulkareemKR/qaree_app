@@ -20,15 +20,23 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Session {
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   String? get bookId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'startDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get startDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'endDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get endDate => throw _privateConstructorUsedError;
   int? get numberOfPages => throw _privateConstructorUsedError;
-  double? get totalReadingTime => throw _privateConstructorUsedError;
+  int? get totalReadingTime => throw _privateConstructorUsedError;
   bool? get isFinished => throw _privateConstructorUsedError;
   StartEndDate? get pausesStartEndTime => throw _privateConstructorUsedError;
 
@@ -43,13 +51,15 @@ abstract class $SessionCopyWith<$Res> {
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String? userId,
       String? bookId,
-      @JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate,
+      @JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? endDate,
       int? numberOfPages,
-      double? totalReadingTime,
+      int? totalReadingTime,
       bool? isFinished,
       StartEndDate? pausesStartEndTime});
 
@@ -69,7 +79,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = freezed,
     Object? bookId = freezed,
     Object? startDate = freezed,
@@ -80,10 +90,10 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? pausesStartEndTime = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -107,7 +117,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
       totalReadingTime: freezed == totalReadingTime
           ? _value.totalReadingTime
           : totalReadingTime // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       isFinished: freezed == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
@@ -140,13 +150,15 @@ abstract class _$$_SessionCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String? userId,
       String? bookId,
-      @JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate,
+      @JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? endDate,
       int? numberOfPages,
-      double? totalReadingTime,
+      int? totalReadingTime,
       bool? isFinished,
       StartEndDate? pausesStartEndTime});
 
@@ -164,7 +176,7 @@ class __$$_SessionCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = freezed,
     Object? bookId = freezed,
     Object? startDate = freezed,
@@ -175,10 +187,10 @@ class __$$_SessionCopyWithImpl<$Res>
     Object? pausesStartEndTime = freezed,
   }) {
     return _then(_$_Session(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -202,7 +214,7 @@ class __$$_SessionCopyWithImpl<$Res>
       totalReadingTime: freezed == totalReadingTime
           ? _value.totalReadingTime
           : totalReadingTime // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       isFinished: freezed == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
@@ -219,11 +231,13 @@ class __$$_SessionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Session implements _Session {
   _$_Session(
-      {required this.id,
+      {this.id,
       this.userId,
       this.bookId,
-      @JsonKey(name: 'startDate', fromJson: _dateFromJson) this.startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson) this.endDate,
+      @JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          this.startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          this.endDate,
       this.numberOfPages,
       this.totalReadingTime = 0,
       this.isFinished = false,
@@ -233,22 +247,30 @@ class _$_Session implements _Session {
       _$$_SessionFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
   final String? userId;
   @override
   final String? bookId;
   @override
-  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'startDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   final DateTime? startDate;
   @override
-  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'endDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   final DateTime? endDate;
   @override
   final int? numberOfPages;
   @override
   @JsonKey()
-  final double? totalReadingTime;
+  final int? totalReadingTime;
   @override
   @JsonKey()
   final bool? isFinished;
@@ -302,36 +324,44 @@ class _$_Session implements _Session {
 
 abstract class _Session implements Session {
   factory _Session(
-      {required final String id,
+      {final String? id,
       final String? userId,
       final String? bookId,
-      @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+      @JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
           final DateTime? startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
           final DateTime? endDate,
       final int? numberOfPages,
-      final double? totalReadingTime,
+      final int? totalReadingTime,
       final bool? isFinished,
       final StartEndDate? pausesStartEndTime}) = _$_Session;
 
   factory _Session.fromJson(Map<String, dynamic> json) = _$_Session.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
   String? get userId;
   @override
   String? get bookId;
   @override
-  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'startDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get startDate;
   @override
-  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'endDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get endDate;
   @override
   int? get numberOfPages;
   @override
-  double? get totalReadingTime;
+  int? get totalReadingTime;
   @override
   bool? get isFinished;
   @override

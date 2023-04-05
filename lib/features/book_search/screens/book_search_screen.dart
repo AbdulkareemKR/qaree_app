@@ -1,19 +1,18 @@
+import 'package:Qaree/features/book_search/providers/book_search_provider.dart';
 import 'package:Qaree/models/book/book.dart';
+import 'package:Qaree/services/google_books_api.dart';
+import 'package:Qaree/widgets/book_image.dart';
+import 'package:Qaree/widgets/bounce.dart';
 import 'package:Qaree/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/enums/book_genre.dart';
 import 'package:Qaree/features/book_search/controllers/book_search_controller.dart';
-import 'package:Qaree/utils/theme/extensions.dart';
 import 'package:Qaree/widgets/custom_textfield/custom_textfield.dart';
 import 'package:Qaree/widgets/custom_textfield/textfield_types.dart';
-import 'package:Qaree/widgets/custom_book_card/custom_book_card.dart';
-import 'package:Qaree/widgets/custom_weekly_book/custom_weekly_book.dart';
-import 'package:Qaree/widgets/custom_book_genre/custom_book_genre.dart';
 
 class BookSearchScreen extends ConsumerStatefulWidget {
   const BookSearchScreen({super.key});
@@ -24,6 +23,11 @@ class BookSearchScreen extends ConsumerStatefulWidget {
 
 class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
   late final BookSearchController _controller;
+  final _textController = TextEditingController();
+  final _scrollController = ScrollController();
+  final _books = <Book>[];
+  int _startIndex = 0;
+  bool _isLoading = false;
   // late final List<Book>? books;
   var genres = BookGenre.values;
 
@@ -33,9 +37,44 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
     super.didChangeDependencies();
   }
 
+  void _loadBooks() async {
+    if (_isLoading) return;
+    setState(() {
+      _isLoading = true;
+    });
+    final books = await GoogleBooksApi.getBooksByName(
+      _textController.text,
+      _startIndex,
+      10, // Load 10 books at a time
+    );
+    setState(() {
+      _books.addAll(books);
+      _startIndex += books.length;
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        _loadBooks();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var book = {"name": "A Much recorded war", "author": "Frederic A. Sharf"};
+    final bookSearchQuery =
+        ref.watch(BookSearchProvider.bookSearchQueryProvider);
 
     return Scaffold(
       backgroundColor: ColorsConst.lightGreyPrimary,
@@ -47,69 +86,56 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
             SpacingConst.vSpacing16,
             CustomTextField(
               type: TextFieldType.normal,
-              controller: _controller.bookSearch,
+              controller: _textController,
               width: 348.w,
               height: 49.h,
               placeHolderText: "Search",
               color: ColorsConst.lightPurple,
               icon: Icons.search,
               onSubmit: (value) {
-                _controller.getBooksByQueryProvider(value);
+                setState(() {
+                  _books.clear();
+                  _startIndex = 0;
+                });
+                _loadBooks();
               },
             ),
-            SpacingConst.vSpacing40,
-            Text(
-              "Book of the Week",
-              style: context.textThemes.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SpacingConst.vSpacing20,
-            Container(
-              width: 400.w,
-              height: 250.h,
-              decoration: BoxDecoration(
-                color: ColorsConst.lightGrey,
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30.w),
-                    bottomRight: Radius.circular(30.w)),
-              ),
-              child: CustomWeeklyBook(),
-            ),
-            SpacingConst.vSpacing20,
-            Container(
-              width: double.infinity,
-              height: 30.h,
-              child: Expanded(
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      ...genres
-                          .map((genre) =>
-                              CustomBookGenre(genre: genre.name.toString()))
-                          .toList(),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SpacingConst.vSpacing60,
             Expanded(
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisExtent: 256,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                child: GridView.builder(
+                  controller: _scrollController,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 30.w,
+                    crossAxisSpacing: 30.h,
+                    mainAxisExtent: 230.h,
+                  ),
+                  itemCount: _books.length + (_isLoading ? 1 : 0),
+                  itemBuilder: (context, index) {
+                    return index < _books.length
+                        ? BounceAnimation(
+                            onTap: () {
+                              _controller.onBookTap(_books[index]);
+                            },
+                            child: BookImage(
+                              book: _books[index],
+                            ),
+                          )
+                        : SizedBox.shrink();
+                  },
                 ),
-                itemCount: 30,
-                itemBuilder: (context, index) {
-                  return CustomBookCard(
-                    book: book,
-                  );
-                },
               ),
             ),
+            _isLoading
+                ? Column(
+                    children: [
+                      SpacingConst.vSpacing8,
+                      CircularProgressIndicator(),
+                    ],
+                  )
+                : SizedBox.shrink(),
+            SpacingConst.vSpacing30,
           ],
         ),
       ),

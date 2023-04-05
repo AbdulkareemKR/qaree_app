@@ -1,8 +1,5 @@
-import 'package:Qaree/features/home/providers/home_screen_providers.dart';
-import 'package:Qaree/features/home/screens/book_details_screen.dart';
-import 'package:Qaree/models/book/book.dart';
-import 'package:Qaree/models/note/note.dart';
-import 'package:Qaree/services/easy_navigator.dart';
+import 'package:Qaree/models/session/session.dart';
+import 'package:Qaree/services/date_time_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,12 +12,50 @@ class StatisticsController {
     required this.ref,
   });
 
-  void onBookTap(int bookIndex) {
-    ref.read(selectedBookIndexProvider.notifier).state = bookIndex;
+  String getFormattedTotalReadingTime(List<Session> sessions) {
+    return DateTimeServices.LettersTimerFormatter(_totalReadingTime(sessions));
   }
 
-  void onBookCardTap(Book book, List<Note>? notes) {
-    EasyNavigator.openPage(
-        context: context, page: BookDetailsScreen(book: book, notes: notes));
+  String getFormattedAverageReadingTime(List<Session> sessions) {
+    return DateTimeServices.LettersTimerFormatter(
+        _averageReadingTime(sessions));
+  }
+
+  int getNumberOfPages(List<Session> sessions) {
+    int numberOfPages = 0;
+    sessions.forEach((session) {
+      numberOfPages += session.numberOfPages ?? 0;
+    });
+    return numberOfPages;
+  }
+
+  String getFormattedAverageTimePerPage(List<Session> sessions) {
+    return DateTimeServices.LettersTimerFormatter(
+      _getAverageTimePerPage(sessions),
+    );
+  }
+
+  int _getAverageTimePerPage(List<Session> sessions) {
+    if (getNumberOfPages(sessions) == 0) {
+      return 0;
+    }
+    final averageTimePerPage =
+        _totalReadingTime(sessions) / getNumberOfPages(sessions);
+
+    return averageTimePerPage.floor();
+  }
+
+  int _totalReadingTime(List<Session> sessions) {
+    int totalReadingTime = 0;
+    sessions.forEach((session) {
+      totalReadingTime += session.totalReadingTime ?? 0;
+    });
+    return totalReadingTime;
+  }
+
+  int _averageReadingTime(List<Session> sessions) {
+    final averageReadingTime =
+        _totalReadingTime(sessions) / (sessions.isEmpty ? 1 : sessions.length);
+    return averageReadingTime.floor();
   }
 }

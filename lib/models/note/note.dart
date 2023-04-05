@@ -11,7 +11,8 @@ class Note with _$Note {
     String? bookId,
     String? noteTitle,
     String? noteContent,
-    @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
+    @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+        DateTime? date,
     @Default(false) bool? isPublic,
   }) = _Note;
 
@@ -20,3 +21,5 @@ class Note with _$Note {
 
 DateTime _dateFromJson(Timestamp timestamp) =>
     DateTime.fromMillisecondsSinceEpoch(timestamp.millisecondsSinceEpoch);
+
+Timestamp _dateToJson(DateTime? dateTime) => Timestamp.fromDate(dateTime!);

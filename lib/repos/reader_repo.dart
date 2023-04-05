@@ -1,3 +1,4 @@
+import 'package:Qaree/models/note/note.dart';
 import 'package:Qaree/models/reader/reader.dart';
 import 'package:Qaree/repos/firestore_repo.dart';
 import 'package:Qaree/utils/status_logger/extensions.dart';
@@ -56,5 +57,12 @@ class ReaderRepo {
       e.logException();
       throw Exception(e);
     }
+  }
+
+  static Future<Note?> addNote({required Note note}) async {
+    await FirestoreRepo.readersCollection.doc(note.userId).update({
+      "notes": FieldValue.arrayUnion([note.toJson()]),
+    }).then((value) => StatusLogger.debug("rating added successfully!"),
+        onError: (e) => StatusLogger.error("Error adding rating $e"));
   }
 }

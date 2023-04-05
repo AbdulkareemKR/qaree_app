@@ -1,7 +1,10 @@
-import 'package:Qaree/features/personal_informations/widgets/horizontal_button_used_in_list.dart';
-import 'package:Qaree/features/personal_informations/widgets/custom_curved_clip_path.dart';
-import 'package:Qaree/features/personal_informations/widgets/container_box_for_horizontal_buttons.dart';
-import 'package:Qaree/features/personal_informations/screens/change_full_name.dart';
+import 'package:Qaree/features/login/screens/login_screen.dart';
+import 'package:Qaree/features/personal_information/widgets/horizontal_button_used_in_list.dart';
+import 'package:Qaree/features/personal_information/widgets/custom_curved_clip_path.dart';
+import 'package:Qaree/features/personal_information/widgets/container_box_for_horizontal_buttons.dart';
+import 'package:Qaree/features/personal_information/screens/change_full_name.dart';
+import 'package:Qaree/services/auth_services.dart';
+import 'package:Qaree/services/easy_navigator.dart';
 import 'package:Qaree/widgets/loading_container.dart';
 import 'package:flutter/material.dart';
 import 'package:Qaree/constants/colors_const.dart';
@@ -9,14 +12,14 @@ import 'package:Qaree/constants/spacing_const.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:Qaree/providers/reader_provider.dart';
 
-class PersonalInformations extends ConsumerStatefulWidget {
-  const PersonalInformations({super.key});
+class PersonalInformation extends ConsumerStatefulWidget {
+  const PersonalInformation({super.key});
   @override
-  ConsumerState<PersonalInformations> createState() =>
-      _PersonalInformationsState();
+  ConsumerState<PersonalInformation> createState() =>
+      _PersonalInformationState();
 }
 
-class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
+class _PersonalInformationState extends ConsumerState<PersonalInformation> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(readerProvider);
@@ -31,7 +34,7 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
               child: Container(
                 width: double.infinity,
                 height: 250,
-                color: ColorsConst.primaryBlack,
+                color: ColorsConst.lightGrey,
                 child: SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 38.0),
@@ -41,7 +44,7 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
                       style: TextStyle(
                         fontSize: 52,
                         fontFamily: "JosefinSans",
-                        color: ColorsConst.white,
+                        color: ColorsConst.primaryBlack,
                       ),
                     ),
                   ),
@@ -119,9 +122,9 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
                       buttonText: "Notifications",
                     ),
                     HorizontalButtonUsedInList(
-                      onTap: () => {},
-                      buttonIcon: Icons.language,
-                      buttonText: "Language",
+                      onTap: () => signOut(),
+                      buttonIcon: Icons.logout,
+                      buttonText: "Log Out",
                     ),
                   ],
                 ),
@@ -133,5 +136,10 @@ class _PersonalInformationsState extends ConsumerState<PersonalInformations> {
       error: (error, stackTrace) => Text("An error Ocurred"),
       loading: () => LoadingContainer(),
     );
+  }
+
+  void signOut() {
+    FirebaseAuthServices.instance.signOut();
+    EasyNavigator.openPage(context: context, page: LoginScreen());
   }
 }

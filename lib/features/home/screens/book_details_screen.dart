@@ -5,8 +5,9 @@ import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/home/controllers/home_screen_controller.dart';
 import 'package:Qaree/models/book/book.dart';
 import 'package:Qaree/models/note/note.dart';
+import 'package:Qaree/services/date_time_services.dart';
 import 'package:Qaree/widgets/book_image.dart';
-import 'package:Qaree/widgets/start_session_widget.dart';
+import 'package:Qaree/widgets/bounce.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -85,10 +86,6 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  StartSessionWidget(
-                                    onTap: () => _controller
-                                        .onStartSessionTap(widget.book),
-                                  ),
                                 ],
                               ),
                             ),
@@ -99,73 +96,155 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                     ),
                     Positioned(
                       bottom: -50.h,
-                      child: Container(
-                        width: 350.w,
-                        height: 92.h,
-                        decoration: BoxDecoration(
-                          color: ColorsConst.white,
-                          borderRadius: BorderRadiusConst.smallBorderRadius,
-                          boxShadow: [BoxShadowConst.allSidesBoxShadow],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 10.h),
-                          child: Row(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(10.h),
-                                decoration: BoxDecoration(
-                                  color: ColorsConst.primaryPurple,
-                                  borderRadius:
-                                      BorderRadiusConst.mediumBorderRadius,
-                                ),
-                                child: Icon(
-                                  CupertinoIcons.pen,
-                                  size: 30.sp,
-                                  color: ColorsConst.white,
-                                ),
-                              ),
-                              SpacingConst.hSpacing16,
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SpacingConst.vSpacing16,
-                                  Text(
-                                    "Authors",
-                                    style:
-                                        context.textThemes.bodySmall?.copyWith(
-                                      fontFamily: "JosefinSans",
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            width: 330.w,
+                            child: Row(
+                              children: [
+                                BounceAnimation(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 30.w,
+                                    height: 30.w,
+                                    decoration: BoxDecoration(
                                       color: ColorsConst.grey,
+                                      borderRadius: BorderRadiusConst
+                                          .verySmallBorderRadius,
+                                    ),
+                                    child: Icon(
+                                      Icons.library_books,
+                                      size: 20.sp,
+                                      color: ColorsConst.white,
                                     ),
                                   ),
-                                  SpacingConst.vSpacing8,
-                                  SizedBox(
-                                    height: 35.h,
-                                    width: 200.w,
-                                    child: ListView.separated(
-                                      shrinkWrap: true,
-                                      separatorBuilder: (context, index) =>
-                                          SpacingConst.vSpacing8,
-                                      itemCount:
-                                          widget.book.authors?.length ?? 0,
-                                      itemBuilder: (context, index) {
-                                        return Text(
-                                          widget.book.authors?[index] ??
-                                              "Unknown",
-                                          style: context.textThemes.bodyLarge
-                                              ?.copyWith(
-                                            fontFamily: "JosefinSans",
-                                            color: ColorsConst.primaryBlack,
-                                          ),
-                                        );
-                                      },
+                                ),
+                                Spacer(),
+                                BounceAnimation(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 30.w,
+                                    height: 30.w,
+                                    decoration: BoxDecoration(
+                                      color: ColorsConst.primaryPurple,
+                                      borderRadius: BorderRadiusConst
+                                          .verySmallBorderRadius,
                                     ),
-                                  )
+                                    child: Icon(
+                                      CupertinoIcons.pen,
+                                      size: 20.sp,
+                                      color: ColorsConst.white,
+                                    ),
+                                  ),
+                                ),
+                                SpacingConst.hSpacing20,
+                                BounceAnimation(
+                                  onTap: () => _controller
+                                      .onStartSessionTap(widget.book),
+                                  child: Container(
+                                    width: 30.w,
+                                    height: 30.w,
+                                    decoration: BoxDecoration(
+                                      color: ColorsConst.primaryPurple,
+                                      borderRadius: BorderRadiusConst
+                                          .verySmallBorderRadius,
+                                    ),
+                                    child: Icon(
+                                      Icons.play_circle_outline_rounded,
+                                      size: 22.sp,
+                                      color: ColorsConst.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SpacingConst.vSpacing16,
+                          Container(
+                            width: 350.w,
+                            height: 92.h,
+                            decoration: BoxDecoration(
+                              color: ColorsConst.white,
+                              borderRadius: BorderRadiusConst.smallBorderRadius,
+                              boxShadow: [BoxShadowConst.allSidesBoxShadow],
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20.w, vertical: 10.h),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(10.h),
+                                    decoration: BoxDecoration(
+                                      color: ColorsConst.primaryPurple,
+                                      borderRadius:
+                                          BorderRadiusConst.mediumBorderRadius,
+                                    ),
+                                    child: Icon(
+                                      Icons.group,
+                                      size: 30.sp,
+                                      color: ColorsConst.white,
+                                    ),
+                                  ),
+                                  SpacingConst.hSpacing16,
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SpacingConst.vSpacing16,
+                                      Text(
+                                        "Authors",
+                                        style: context.textThemes.bodySmall
+                                            ?.copyWith(
+                                          fontFamily: "JosefinSans",
+                                          color: ColorsConst.grey,
+                                        ),
+                                      ),
+                                      SpacingConst.vSpacing8,
+                                      SizedBox(
+                                        height: 35.h,
+                                        width: 200.w,
+                                        child: widget.book.authors?.length ==
+                                                null
+                                            ? ListView.separated(
+                                                shrinkWrap: true,
+                                                separatorBuilder:
+                                                    (context, index) =>
+                                                        SpacingConst.vSpacing8,
+                                                itemCount: widget
+                                                        .book.authors?.length ??
+                                                    0,
+                                                itemBuilder: (context, index) {
+                                                  return Text(
+                                                    widget.book.authors![index],
+                                                    style: context
+                                                        .textThemes.bodyLarge
+                                                        ?.copyWith(
+                                                      fontFamily: "JosefinSans",
+                                                      color: ColorsConst
+                                                          .primaryBlack,
+                                                    ),
+                                                  );
+                                                },
+                                              )
+                                            : Text(
+                                                "Unknown",
+                                                style: context
+                                                    .textThemes.bodyLarge
+                                                    ?.copyWith(
+                                                  fontFamily: "JosefinSans",
+                                                  color:
+                                                      ColorsConst.primaryBlack,
+                                                ),
+                                              ),
+                                      )
+                                    ],
+                                  ),
                                 ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     )
                   ],
@@ -174,66 +253,64 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
             ),
           )),
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.h),
-          child: Center(
-            child: Column(
-              children: [
-                SpacingConst.vSpacing80,
-                ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: widget.notes?.length ?? 0,
-                  separatorBuilder: ((context, index) =>
-                      SpacingConst.vSpacing20),
-                  itemBuilder: (context, index) => Container(
-                    height: 150.h,
-                    decoration: BoxDecoration(
-                      color: ColorsConst.lightPurple.withOpacity(0.80),
-                      borderRadius: BorderRadiusConst.smallBorderRadius,
-                      boxShadow: [BoxShadowConst.allSidesBoxShadow],
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.w, vertical: 10.h),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                widget.notes![index].date.toString(),
-                                style: context.textThemes.bodyMedium?.copyWith(
-                                  fontFamily: "JosefinSans",
-                                  color: ColorsConst.grey,
-                                ),
+        child: Container(
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: 60.h, bottom: 20.h, left: 20.w, right: 20.w),
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemCount: widget.notes?.length ?? 0,
+              separatorBuilder: ((context, index) => SpacingConst.vSpacing20),
+              itemBuilder: (context, index) => FadeInUp(
+                child: Container(
+                  height: 150.h,
+                  decoration: BoxDecoration(
+                    color: ColorsConst.white.withOpacity(0.80),
+                    borderRadius: BorderRadiusConst.smallBorderRadius,
+                    boxShadow: [BoxShadowConst.allSidesBoxShadow],
+                  ),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              DateTimeServices.getFullDateAsLetterMonth(
+                                  dateTime: widget.notes![index].date),
+                              style: context.textThemes.bodyMedium?.copyWith(
+                                fontFamily: "JosefinSans",
+                                color: ColorsConst.grey,
                               ),
-                            ],
-                          ),
-                          SpacingConst.vSpacing8,
-                          Text(
-                            widget.notes![index].noteTitle.toString(),
-                            style: context.textThemes.titleLarge?.copyWith(
-                              fontFamily: "JosefinSans",
-                              color: ColorsConst.primaryBlack,
-                              fontWeight: FontWeight.bold,
                             ),
+                          ],
+                        ),
+                        SpacingConst.vSpacing8,
+                        Text(
+                          widget.notes![index].noteTitle.toString(),
+                          style: context.textThemes.titleLarge?.copyWith(
+                            fontFamily: "JosefinSans",
+                            color: ColorsConst.primaryBlack,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Divider(color: ColorsConst.grey, thickness: 1.sp),
-                          SpacingConst.vSpacing8,
-                          Text(
-                            widget.notes![index].noteContent.toString(),
-                            style: context.textThemes.bodyMedium?.copyWith(
-                              fontFamily: "JosefinSans",
-                              color: ColorsConst.primaryBlack,
-                            ),
-                            maxLines: 4,
-                            overflow: TextOverflow.ellipsis,
+                        ),
+                        Divider(color: ColorsConst.grey, thickness: 1.sp),
+                        SpacingConst.vSpacing8,
+                        Text(
+                          widget.notes![index].noteContent.toString(),
+                          style: context.textThemes.bodyMedium?.copyWith(
+                            fontFamily: "JosefinSans",
+                            color: ColorsConst.primaryBlack,
                           ),
-                        ],
-                      ),
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
                   ),
-                )
-              ],
+                ),
+              ),
             ),
           ),
         ),

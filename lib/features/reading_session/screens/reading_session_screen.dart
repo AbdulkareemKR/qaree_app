@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:Qaree/constants/border_radius_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/fonts_const.dart';
@@ -6,8 +5,12 @@ import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/reading_session/controllers/reading_session_controller.dart';
 import 'package:Qaree/features/reading_session/providers/reading_session_providers.dart';
 import 'package:Qaree/models/book/book.dart';
+import 'package:Qaree/services/date_time_services.dart';
 import 'package:Qaree/widgets/book_image.dart';
+import 'package:Qaree/widgets/bounce.dart';
 import 'package:Qaree/widgets/custom_app_bar.dart';
+import 'package:Qaree/widgets/custom_button/custom_button.dart';
+import 'package:Qaree/widgets/custom_button/enums/button_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,46 +35,11 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
     super.didChangeDependencies();
   }
 
-  void Pause() {}
-  void Done() {}
-
-  int seconds = 0, minutes = 0, hours = 0;
-  String digitSeconds = '00', digitMinutes = '00', digitHours = '00';
-  Timer? timer;
-  bool started = false;
-  List laps = [];
-
-  void stop() {
-    timer!.cancel();
-    setState(() {
-      started = false;
-    });
-  }
-
-  void reset() {
-    timer!.cancel();
-    setState(() {
-      seconds = 0;
-      minutes = 0;
-      hours = 0;
-
-      digitSeconds = '00';
-      digitMinutes = '00';
-      digitHours = '00';
-
-      started = false;
-    });
-  }
-
-  void addLaps() {
-    String lap = '$digitHours:$digitMinutes:$digitSeconds';
-    setState(() {
-      laps.add(lap);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final isTakingNotes =
+        ref.watch(ReadingSessionProviders.isTakingNotesProvider);
+
     return Scaffold(
       backgroundColor: ColorsConst.veryLightGrey,
       appBar: CustomAppBar(context: context, title: 'Reading Session'),
@@ -131,6 +99,8 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         CircularPercentIndicator(
+                          animation: true,
+                          animationDuration: 2000,
                           radius: 45.0,
                           lineWidth: 16.0,
                           percent: 0.25,
@@ -154,7 +124,8 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
           ),
           SpacingConst.vSpacing40,
           Consumer(builder: (context, ref, child) {
-            final readingTimeSeconds = ref.watch(readingTimeProvider);
+            final readingTimeSeconds =
+                ref.watch(ReadingSessionProviders.readingTimeSecondsProvider);
             return Container(
               decoration: BoxDecoration(
                 color: ColorsConst.primaryPurple,
@@ -164,7 +135,7 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
               height: 61.w,
               child: Center(
                 child: Text(
-                  _controller.formatTimer(readingTimeSeconds),
+                  DateTimeServices.digitalTimerFormatter(readingTimeSeconds),
                   style: TextStyle(
                     color: ColorsConst.white,
                     fontWeight: FontWeight.w400,
@@ -176,53 +147,113 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
             );
           }),
           SpacingConst.vSpacing40,
-          Center(
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                width: 129.w,
-                height: 40.h,
-                decoration: BoxDecoration(
-                  color: ColorsConst.primaryBlack,
-                  borderRadius: BorderRadiusConst.smallBorderRadius,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
+          isTakingNotes
+              ? Column(
                   children: [
-                    Row(
-                      children: [
-                        SpacingConst.hSpacing6,
-                        Icon(
-                          CupertinoIcons.pen,
-                          size: 22.sp,
-                          color: ColorsConst.white,
+                    SizedBox(
+                      width: 350.w,
+                      height: 160.h,
+                      child: TextField(
+                        controller: _controller.notesController,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: 4,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadiusConst.smallBorderRadius,
+                            borderSide: BorderSide(
+                                width: 1, color: ColorsConst.lightGrey),
+                          ),
+                          hintText: "write Down your thoughts",
+                          hintStyle: context.textThemes.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w300,
+                            color: ColorsConst.grey,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadiusConst.smallBorderRadius,
+                            borderSide: BorderSide(
+                                width: 1, color: ColorsConst.primaryPurple),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadiusConst.smallBorderRadius,
+                            borderSide: BorderSide(
+                                width: 1, color: ColorsConst.lightGrey),
+                          ),
+                          fillColor: ColorsConst.white,
+                          filled: true,
                         ),
-                        SpacingConst.hSpacing8,
-                        Text(
-                          'Take Notes',
-                          style: TextStyle(
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CustomButton(
+                          width: 110.w,
+                          height: 50.h,
+                          label: "Cancel",
+                          onPressed: _controller.onCancelNotePressed,
+                          color: ColorsConst.primaryBlack,
+                          textStyle: context.textThemes.bodyMedium?.copyWith(
                             color: ColorsConst.white,
-                            fontFamily: FontConst.mainFontFamily,
-                            fontSize: 12.5,
-                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        CustomButton(
+                          width: 110.w,
+                          height: 50.h,
+                          label: "Save",
+                          onPressed: () async => await _controller
+                              .onSaveNotePressed(widget.book.id!),
+                          style: CustomButtonStyle.primary,
+                          textStyle: context.textThemes.bodyMedium?.copyWith(
+                            color: ColorsConst.white,
                           ),
                         ),
                       ],
                     ),
                   ],
+                )
+              : BounceAnimation(
+                  onTap: _controller.onTakeNotesPressed,
+                  child: Container(
+                    width: 129.w,
+                    height: 40.h,
+                    decoration: BoxDecoration(
+                      color: ColorsConst.primaryBlack,
+                      borderRadius: BorderRadiusConst.smallBorderRadius,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            SpacingConst.hSpacing6,
+                            Icon(
+                              CupertinoIcons.pen,
+                              size: 22.sp,
+                              color: ColorsConst.white,
+                            ),
+                            SpacingConst.hSpacing8,
+                            Text(
+                              'Take Notes',
+                              style: TextStyle(
+                                color: ColorsConst.white,
+                                fontFamily: FontConst.mainFontFamily,
+                                fontSize: 12.5,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
           SpacingConst.vSpacing40,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              GestureDetector(
-                onTap: () {
-                  _controller.start();
-                },
+              BounceAnimation(
+                onTap: _controller.onTimerButtonTap,
                 child: Container(
                   width: 94.w,
                   height: 55.h,
@@ -235,7 +266,7 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      (!started) ? 'Resume' : 'Pause',
+                      _controller.getTimerButtonText(),
                       style: TextStyle(
                         color: ColorsConst.white,
                         fontFamily: FontConst.mainFontFamily,
@@ -246,8 +277,8 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: Done,
+              BounceAnimation(
+                onTap: () async => await _controller.onStopTap(widget.book.id!),
                 child: Container(
                   width: 94.w,
                   height: 55.h,
@@ -275,6 +306,43 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
           )
         ],
       )),
+    );
+  }
+}
+
+class CustomTextFieldWidget extends StatelessWidget {
+  final TextEditingController controller;
+  final int maxLines;
+  final double width;
+  final double height;
+
+  CustomTextFieldWidget({
+    required this.controller,
+    required this.maxLines,
+    required this.width,
+    required this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: TextField(
+        controller: controller,
+        maxLines: maxLines,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(
+              width: 1,
+              color: Colors.grey[400]!,
+            ),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
+      ),
     );
   }
 }

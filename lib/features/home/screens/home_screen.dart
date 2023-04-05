@@ -7,6 +7,7 @@ import 'package:Qaree/features/home/providers/home_screen_providers.dart';
 import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/repos/book_repo.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
+import 'package:Qaree/widgets/book_image.dart';
 import 'package:Qaree/widgets/bounce.dart';
 import 'package:Qaree/widgets/custom_app_bar.dart';
 import 'package:Qaree/widgets/loading_container.dart';
@@ -131,7 +132,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   duration: Duration(milliseconds: 500),
                                   child: BounceAnimation(
                                     onTap: () => _controller.onBookCardTap(
-                                        book!,
+                                        book,
                                         user.notes
                                             ?.where((note) =>
                                                 note.bookId == book.id)
@@ -151,25 +152,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       ),
                                       child: Row(
                                         children: [
-                                          Container(
+                                          BookImage(
                                             width: 113.0,
                                             height: 168.h,
-                                            decoration: BoxDecoration(
-                                              boxShadow: [
-                                                BoxShadowConst
-                                                    .rightBottomBoxShadow
-                                              ],
-                                            ),
-                                            child: book?.image != null
-                                                ? ClipRRect(
-                                                    borderRadius: BorderRadiusConst
-                                                        .verySmallBorderRadius,
-                                                    child: Image.network(
-                                                      book!.image!,
-                                                      fit: BoxFit.fill,
-                                                    ),
-                                                  )
-                                                : Text(book?.name ?? "Unknown"),
+                                            book: book!,
                                           ),
                                           SpacingConst.hSpacing20,
                                           Container(
@@ -178,7 +164,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                               children: [
                                                 SpacingConst.vSpacing30,
                                                 Text(
-                                                  book?.name ?? "Unknown",
+                                                  book.name ?? "Unknown",
                                                   maxLines: 2,
                                                   textAlign: TextAlign.center,
                                                   style: context
@@ -192,8 +178,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                 ),
                                                 SpacingConst.vSpacing16,
                                                 Text(
-                                                  book?.description ??
-                                                      "Unknown",
+                                                  book.description ?? "Unknown",
                                                   style: context
                                                       .textThemes.bodyMedium
                                                       ?.copyWith(
@@ -208,7 +193,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                 Spacer(),
                                                 StartSessionWidget(
                                                   onTap: () => _controller
-                                                      .onStartSessionTap(book!),
+                                                      .onStartSessionTap(book),
                                                 ),
                                                 SpacingConst.vSpacing30,
                                               ],

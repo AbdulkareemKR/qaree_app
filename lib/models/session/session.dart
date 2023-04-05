@@ -7,13 +7,15 @@ part 'session.g.dart';
 @freezed
 class Session with _$Session {
   factory Session({
-    required String id,
+    String? id,
     String? userId,
     String? bookId,
-    @JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
-    @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate,
+    @JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+        DateTime? startDate,
+    @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+        DateTime? endDate,
     int? numberOfPages,
-    @Default(0) double? totalReadingTime,
+    @Default(0) int? totalReadingTime,
     @Default(false) bool? isFinished,
     StartEndDate? pausesStartEndTime,
   }) = _Session;
@@ -24,3 +26,5 @@ class Session with _$Session {
 
 DateTime _dateFromJson(Timestamp timestamp) =>
     DateTime.fromMillisecondsSinceEpoch(timestamp.millisecondsSinceEpoch);
+
+Timestamp _dateToJson(DateTime? dateTime) => Timestamp.fromDate(dateTime!);

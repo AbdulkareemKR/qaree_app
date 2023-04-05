@@ -339,11 +339,9 @@ class GroupStatisticsScreenState extends State<GroupStatisticsScreen> {
                 const SizedBox(
                   height: 37,
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 16, left: 6),
-                    child: _LineChart(isShowingMainData: isShowingMainData),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 16, left: 6),
+                  child: _LineChart(isShowingMainData: isShowingMainData),
                 ),
                 const SizedBox(
                   height: 10,

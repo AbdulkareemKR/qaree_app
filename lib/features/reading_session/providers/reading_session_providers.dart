@@ -1,5 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final readingTimeProvider = StateProvider<int>((ref) => 0);
+class ReadingSessionProviders {
+  static final readingTimeSecondsProvider = StateProvider<int>((ref) => 0);
 
-final isRunningTimer = StateProvider<bool>((ref) => false);
+  static final readingTimerProvider = StateProvider<Timer?>((ref) => null);
+
+  static final isTakingNotesProvider = StateProvider<bool>((ref) => false);
+
+  static final sessionStartTimeProvider =
+      StateProvider<DateTime?>((ref) => null);
+}

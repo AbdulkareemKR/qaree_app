@@ -15,39 +15,35 @@ class _CustomBookCardState extends State<CustomBookCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              child: Image(
-                  image: NetworkImage(
-                      "http://books.google.com/books/content?id=-16OzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"),
-                  fit: BoxFit.cover),
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Center(
+          child: Image(
+              image: NetworkImage(
+                  "http://books.google.com/books/content?id=-16OzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"),
+              fit: BoxFit.cover),
+        ),
+        Center(
+          child: Text(
+            widget.book["name"],
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
             ),
           ),
-          Center(
-            child: Text(
-              widget.book["name"],
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-              ),
+        ),
+        Center(
+          child: Text(
+            widget.book["author"],
+            style: TextStyle(
+              fontSize: 12,
+              color: ColorsConst.grey,
             ),
           ),
-          Center(
-            child: Text(
-              widget.book["author"],
-              style: TextStyle(
-                fontSize: 12,
-                color: ColorsConst.grey,
-              ),
-            ),
-          ),
-          SpacingConst.vSpacing20
-        ],
-      ),
+        ),
+        SpacingConst.vSpacing20
+      ],
     ));
   }
 }

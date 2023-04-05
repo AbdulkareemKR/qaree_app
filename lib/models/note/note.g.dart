@@ -22,6 +22,6 @@ Map<String, dynamic> _$$_NoteToJson(_$_Note instance) => <String, dynamic>{
       'bookId': instance.bookId,
       'noteTitle': instance.noteTitle,
       'noteContent': instance.noteContent,
-      'date': instance.date?.toIso8601String(),
+      'date': _dateToJson(instance.date),
       'isPublic': instance.isPublic,
     };

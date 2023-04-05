@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:Qaree/models/reader/reader.dart';
 import 'package:Qaree/repos/reader_repo.dart';
 import 'package:Qaree/services/auth_services.dart';
@@ -15,6 +14,5 @@ final userProvider = Provider<User?>((ref) {
 
 /// This is the provider that will be used to get the current technician data
 final readerProvider = StreamProvider<Reader>((ref) {
-  log(ref.watch(userProvider)!.uid);
   return ReaderRepo.getReaderStream(ref.watch(userProvider)!.uid);
 });

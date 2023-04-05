@@ -11,8 +11,8 @@ class BoxShadowConst {
 
   static final rightBottomBoxShadow = BoxShadow(
     color: Colors.grey.withOpacity(0.5),
-    spreadRadius: 6,
-    blurRadius: 6,
-    offset: Offset(5, 5), // changes position of shadow
+    spreadRadius: 2,
+    blurRadius: 8,
+    offset: Offset(3, 3), // changes position of shadow
   );
 }

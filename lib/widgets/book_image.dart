@@ -1,8 +1,10 @@
 import 'package:Qaree/constants/border_radius_const.dart';
+import 'package:Qaree/constants/box_shadow_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/models/book/book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:Qaree/utils/theme/extensions.dart';
 
 class BookImage extends StatelessWidget {
   final Book book;
@@ -19,7 +21,11 @@ class BookImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorsConst.lightPurple.withOpacity(0.80),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadiusConst.verySmallBorderRadius,
+        color: book.image == null ? ColorsConst.lightGrey : null,
+        boxShadow: [BoxShadowConst.rightBottomBoxShadow],
+      ),
       width: width.w,
       height: height.h,
       child: book.image != null
@@ -30,7 +36,19 @@ class BookImage extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             )
-          : Text(book.name ?? "Unknown"),
+          : Padding(
+              padding: EdgeInsets.all(10.w),
+              child: Center(
+                child: Text(
+                  book.name ?? "Unknown",
+                  style: context.textThemes.titleLarge?.copyWith(
+                    fontFamily: "JosefinSans",
+                    color: ColorsConst.darkGrey,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
     );
   }
 }

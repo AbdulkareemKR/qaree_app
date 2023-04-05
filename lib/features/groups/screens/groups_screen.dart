@@ -108,7 +108,7 @@ class GroupItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Pages Read',
+                  'Group Name',
                   style: context.textThemes.bodyMedium?.copyWith(
                     fontFamily: "JosefinSans",
                     color: ColorsConst.grey,

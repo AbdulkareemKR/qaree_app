@@ -4,12 +4,12 @@ import 'package:Qaree/utils/theme/extensions.dart';
 
 AppBar CustomAppBar({required BuildContext context, String? title}) {
   return AppBar(
-    backgroundColor: ColorsConst.primaryBlack,
+    backgroundColor: ColorsConst.lightGrey,
     title: Text(
       title ?? "",
       style: context.textThemes.displayMedium?.copyWith(
         fontFamily: "JosefinSans",
-        color: ColorsConst.white,
+        color: ColorsConst.primaryBlack,
       ),
     ),
     shape: const RoundedRectangleBorder(
