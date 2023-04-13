@@ -1,18 +1,15 @@
-import 'dart:developer';
-
 import 'package:Qaree/utils/status_logger/status_logger.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class EasyNavigator {
   static Future<T?> openPage<T>({
     required BuildContext context,
     required Widget page,
-    bool isAnimated = false,
     bool isPushReplaced = false,
     bool isPushAndRemoveUntil = false,
     bool isDismissible = true,
     bool expand = true,
+    bool isBottomSheet = false,
   }) async {
     if (isPushAndRemoveUntil) {
       return await Navigator.of(context).pushAndRemoveUntil<T>(
@@ -25,15 +22,18 @@ class EasyNavigator {
           .pushReplacement(MaterialPageRoute(builder: (context) => page));
     }
 
-    if (!isAnimated) {
+    if (isBottomSheet) {
       return await Navigator.of(context, rootNavigator: true)
           .push<T>(MaterialPageRoute(
         fullscreenDialog: true,
         builder: (BuildContext context) => page,
       ));
-    } else if (isAnimated) {
-      return await Navigator.of(context)
-          .push<T>(MaterialPageRoute(builder: (context) => page));
+    } else {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => page,
+        ),
+      );
     }
     return null;
   }

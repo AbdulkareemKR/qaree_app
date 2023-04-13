@@ -73,9 +73,6 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final bookSearchQuery =
-        ref.watch(BookSearchProvider.bookSearchQueryProvider);
-
     return Scaffold(
       backgroundColor: ColorsConst.lightGreyPrimary,
       appBar: CustomAppBar(context: context, title: "Book Search"),
@@ -101,40 +98,41 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
               },
             ),
             Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-                child: GridView.builder(
-                  controller: _scrollController,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 30.w,
-                    crossAxisSpacing: 30.h,
-                    mainAxisExtent: 230.h,
-                  ),
-                  itemCount: _books.length + (_isLoading ? 1 : 0),
-                  itemBuilder: (context, index) {
-                    return index < _books.length
-                        ? BounceAnimation(
-                            onTap: () {
-                              _controller.onBookTap(_books[index]);
-                            },
-                            child: BookImage(
-                              book: _books[index],
-                            ),
-                          )
-                        : SizedBox.shrink();
-                  },
-                ),
-              ),
+              child: _isLoading && _books.isEmpty
+                  ? Center(child: CircularProgressIndicator())
+                  : Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 10.h),
+                      child: GridView.builder(
+                        controller: _scrollController,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 30.w,
+                          crossAxisSpacing: 30.h,
+                          mainAxisExtent: 230.h,
+                        ),
+                        itemCount: _books.length + (_isLoading ? 1 : 0),
+                        itemBuilder: (context, index) {
+                          if (index < _books.length) {
+                            return BounceAnimation(
+                              onTap: () {
+                                _controller.onBookTap(_books[index]);
+                              },
+                              child: BookImage(
+                                book: _books[index],
+                              ),
+                            );
+                          } else {
+                            return Center(
+                              child: _isLoading
+                                  ? CircularProgressIndicator()
+                                  : SizedBox.shrink(),
+                            );
+                          }
+                        },
+                      ),
+                    ),
             ),
-            _isLoading
-                ? Column(
-                    children: [
-                      SpacingConst.vSpacing8,
-                      CircularProgressIndicator(),
-                    ],
-                  )
-                : SizedBox.shrink(),
             SpacingConst.vSpacing30,
           ],
         ),

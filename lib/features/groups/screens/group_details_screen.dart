@@ -44,10 +44,8 @@ class _GroupDetailsScreenState extends ConsumerState<GroupDetailsScreen>
             // automaticallyImplyLeading: false,
             backgroundColor: ColorsConst.primaryBlack,
             bottom: TabBar(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
               indicator: BoxDecoration(
-                borderRadius:
-                    BorderRadiusConst.smallBorderRadius, // Creates border
+                borderRadius: BorderRadiusConst.verySmallBorderRadius,
                 color: ColorsConst.primaryPurple,
               ),
               tabs: [
