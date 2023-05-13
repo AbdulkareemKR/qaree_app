@@ -47,7 +47,7 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SpacingConst.vSpacing40,
+          SpacingConst.vSpacing20,
           Row(
             children: [
               Container(
@@ -248,101 +248,71 @@ class _ReadingSessionState extends ConsumerState<ReadingSessionScreen> {
                     ),
                   ),
                 ),
-          SpacingConst.vSpacing40,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BounceAnimation(
-                onTap: _controller.onTimerButtonTap,
-                child: Container(
-                  width: 94.w,
-                  height: 55.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                    color: ColorsConst.primaryBlack,
-                  ),
-                  child: Center(
-                    child: Text(
-                      _controller.getTimerButtonText(),
-                      style: TextStyle(
-                        color: ColorsConst.white,
-                        fontFamily: FontConst.mainFontFamily,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              BounceAnimation(
-                onTap: () async => await _controller.onStopTap(widget.book.id!),
-                child: Container(
-                  width: 94.w,
-                  height: 55.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                    ),
-                    color: ColorsConst.primaryPurple,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Done',
-                      style: TextStyle(
-                        color: ColorsConst.white,
-                        fontFamily: FontConst.mainFontFamily,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
+          !isTakingNotes
+              ? Column(
+                  children: [
+                    SpacingConst.vSpacing40,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BounceAnimation(
+                          onTap: _controller.onTimerButtonTap,
+                          child: Container(
+                            width: 94.w,
+                            height: 55.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                              ),
+                              color: ColorsConst.primaryBlack,
+                            ),
+                            child: Center(
+                              child: Text(
+                                _controller.getTimerButtonText(),
+                                style: TextStyle(
+                                  color: ColorsConst.white,
+                                  fontFamily: FontConst.mainFontFamily,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        BounceAnimation(
+                          onTap: () async =>
+                              await _controller.onStopTap(widget.book.id!),
+                          child: Container(
+                            width: 94.w,
+                            height: 55.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                              ),
+                              color: ColorsConst.primaryPurple,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Done',
+                                style: TextStyle(
+                                  color: ColorsConst.white,
+                                  fontFamily: FontConst.mainFontFamily,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              : SizedBox.shrink(),
         ],
       )),
-    );
-  }
-}
-
-class CustomTextFieldWidget extends StatelessWidget {
-  final TextEditingController controller;
-  final int maxLines;
-  final double width;
-  final double height;
-
-  CustomTextFieldWidget({
-    required this.controller,
-    required this.maxLines,
-    required this.width,
-    required this.height,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: height,
-      child: TextField(
-        controller: controller,
-        maxLines: maxLines,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(
-              width: 1,
-              color: Colors.grey[400]!,
-            ),
-          ),
-          filled: true,
-          fillColor: Colors.white,
-        ),
-      ),
     );
   }
 }

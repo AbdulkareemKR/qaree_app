@@ -64,6 +64,11 @@ dependencies:
   percent_indicator: ^4.2.3
   uuid: ^3.0.7
   ntp: ^2.0.0
+  flutter_chat_ui: ^1.6.6
+  file_picker: ^5.2.11
+  image_picker: ^0.8.7+4
+  path_provider: ^2.0.14
+  open_filex: ^4.3.2
 
   # Charts
   fl_chart: ^0.61.0

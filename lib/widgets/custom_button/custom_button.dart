@@ -262,9 +262,6 @@ class _CustomButtonState extends State<CustomButton> {
         child: AnimatedContainer(
           curve: Curves.easeInBack,
           duration: const Duration(milliseconds: 200),
-          padding: EdgeInsets.symmetric(
-            horizontal: _showLabel && !isLoading ? 9.w : 0,
-          ),
           decoration: BoxDecoration(
               color: _isHovered ? _hoverColor : _color,
               border: _border,

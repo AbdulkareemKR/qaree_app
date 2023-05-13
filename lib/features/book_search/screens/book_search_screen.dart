@@ -1,4 +1,3 @@
-import 'package:Qaree/features/book_search/providers/book_search_provider.dart';
 import 'package:Qaree/models/book/book.dart';
 import 'package:Qaree/services/google_books_api.dart';
 import 'package:Qaree/widgets/book_image.dart';
@@ -116,7 +115,7 @@ class _BookSearchScreenState extends ConsumerState<BookSearchScreen> {
                           if (index < _books.length) {
                             return BounceAnimation(
                               onTap: () {
-                                _controller.onBookTap(_books[index]);
+                                _controller.onBookPressed(_books[index]);
                               },
                               child: BookImage(
                                 book: _books[index],

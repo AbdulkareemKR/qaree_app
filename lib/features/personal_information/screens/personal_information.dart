@@ -62,7 +62,7 @@ class _PersonalInformationState extends ConsumerState<PersonalInformation> {
                       backgroundColor: ColorsConst.veryLightGrey,
                       radius: 55,
                       backgroundImage: AssetImage(
-                        "assets/images/default_user_avatar.png",
+                        "assets/images/avatar.png",
                       ),
                     ),
                   ),
@@ -140,6 +140,10 @@ class _PersonalInformationState extends ConsumerState<PersonalInformation> {
 
   void signOut() {
     FirebaseAuthServices.instance.signOut();
-    EasyNavigator.openPage(context: context, page: LoginScreen());
+    EasyNavigator.openPage(
+      context: context,
+      page: LoginScreen(),
+      isPushReplaced: true,
+    );
   }
 }

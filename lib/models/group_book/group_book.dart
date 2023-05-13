@@ -6,7 +6,6 @@ part 'group_book.g.dart';
 @freezed
 class GroupBook with _$GroupBook {
   factory GroupBook({
-    required StartEndDate startEndDate,
     required String bookId,
   }) = _GroupBook;
 

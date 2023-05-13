@@ -73,6 +73,19 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
             ),
           ),
         ),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              backgroundColor: ColorsConst.primaryPurple,
+              foregroundColor: Colors.white,
+              splashColor: Colors.yellow,
+              onPressed: _controller.onCreateGroupTap,
+              child: Icon(Icons.create),
+            ),
+            SpacingConst.vSpacing40,
+          ],
+        ),
       ),
       error: (error, stackTrace) => Text("An error Occurred"),
       loading: () => LoadingContainer(),

@@ -20,9 +20,17 @@ StartEndDate _$StartEndDateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StartEndDate {
-  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'startDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get startDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'endDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get endDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,8 +46,10 @@ abstract class $StartEndDateCopyWith<$Res> {
       _$StartEndDateCopyWithImpl<$Res, StartEndDate>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate});
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? endDate});
 }
 
 /// @nodoc
@@ -80,8 +90,10 @@ abstract class _$$_StartEndDateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'startDate', fromJson: _dateFromJson) DateTime? startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson) DateTime? endDate});
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? endDate});
 }
 
 /// @nodoc
@@ -115,17 +127,27 @@ class __$$_StartEndDateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_StartEndDate implements _StartEndDate {
   _$_StartEndDate(
-      {@JsonKey(name: 'startDate', fromJson: _dateFromJson) this.startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson) this.endDate});
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          this.startDate,
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          this.endDate});
 
   factory _$_StartEndDate.fromJson(Map<String, dynamic> json) =>
       _$$_StartEndDateFromJson(json);
 
   @override
-  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'startDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   final DateTime? startDate;
   @override
-  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'endDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   final DateTime? endDate;
 
   @override
@@ -163,19 +185,27 @@ class _$_StartEndDate implements _StartEndDate {
 
 abstract class _StartEndDate implements StartEndDate {
   factory _StartEndDate(
-      {@JsonKey(name: 'startDate', fromJson: _dateFromJson)
+      {@JsonKey(name: 'startDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
           final DateTime? startDate,
-      @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+      @JsonKey(name: 'endDate', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
           final DateTime? endDate}) = _$_StartEndDate;
 
   factory _StartEndDate.fromJson(Map<String, dynamic> json) =
       _$_StartEndDate.fromJson;
 
   @override
-  @JsonKey(name: 'startDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'startDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get startDate;
   @override
-  @JsonKey(name: 'endDate', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'endDate',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get endDate;
   @override
   @JsonKey(ignore: true)

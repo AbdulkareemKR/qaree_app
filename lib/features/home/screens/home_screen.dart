@@ -16,6 +16,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -46,84 +47,113 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               SpacingConst.vSpacing60,
               Container(
                 height: 310.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: user.books?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    return Consumer(
-                        builder: ((context, ref, child) => ref
-                            .watch(BookRepo.getBookByIdProvider(
-                                user.books![index]))
-                            .when(
-                                data: (book) => FadeInUp(
-                                      duration: Duration(milliseconds: 500),
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 15.w),
-                                        child: BounceAnimation(
-                                          duration:
-                                              Duration(milliseconds: 2000),
-                                          onTap: () =>
-                                              _controller.onBookTap(index),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 180.w,
-                                                height: 270.h,
-                                                decoration: BoxDecoration(
-                                                  boxShadow: [
-                                                    BoxShadowConst
-                                                        .rightBottomBoxShadow
+                child: (user.books == null || user.books?.isEmpty == true)
+                    ? Column(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/svg/search_error.svg",
+                            width: 270.w,
+                          ),
+                          SpacingConst.vSpacing20,
+                          Text(
+                            "There is no Books",
+                            style: context.textThemes.headlineLarge?.copyWith(
+                              color: ColorsConst.grey,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      )
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: user.books?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return Consumer(
+                              builder: ((context, ref, child) => ref
+                                  .watch(BookRepo.getBookByIdProvider(
+                                      user.books![index]))
+                                  .when(
+                                      data: (book) => FadeInUp(
+                                            duration:
+                                                Duration(milliseconds: 500),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: BounceAnimation(
+                                                duration: Duration(
+                                                    milliseconds: 2000),
+                                                onTap: () => _controller
+                                                    .onBookTap(index),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: 180.w,
+                                                      height: 270.h,
+                                                      decoration: BoxDecoration(
+                                                        boxShadow: [
+                                                          BoxShadowConst
+                                                              .rightBottomBoxShadow
+                                                        ],
+                                                      ),
+                                                      child: book?.image != null
+                                                          ? ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadiusConst
+                                                                      .verySmallBorderRadius,
+                                                              child:
+                                                                  Image.network(
+                                                                book!.image!,
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                              ),
+                                                            )
+                                                          : Text(book?.name ??
+                                                              "Unknown"),
+                                                    ),
+                                                    SpacingConst.vSpacing16,
+                                                    SizedBox(
+                                                      width: 180.w,
+                                                      child: Text(
+                                                        book?.name ?? "Unknown",
+                                                        style: context
+                                                            .textThemes
+                                                            .bodyLarge
+                                                            ?.copyWith(
+                                                          fontFamily:
+                                                              "JosefinSans",
+                                                        ),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    )
                                                   ],
                                                 ),
-                                                child: book?.image != null
-                                                    ? ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadiusConst
-                                                                .verySmallBorderRadius,
-                                                        child: Image.network(
-                                                          book!.image!,
-                                                          fit: BoxFit.fill,
-                                                        ),
-                                                      )
-                                                    : Text(book?.name ??
-                                                        "Unknown"),
                                               ),
-                                              SpacingConst.vSpacing16,
-                                              Text(
-                                                book?.name ?? "Unknown",
-                                                style: context
-                                                    .textThemes.bodyLarge
-                                                    ?.copyWith(
-                                                  fontFamily: "JosefinSans",
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
-                                              )
-                                            ],
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                error: (error, stack) =>
-                                    Text("An Error Ocurred"),
-                                loading: () => Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 15.w),
-                                      child: LoadingContainer(
-                                        width: 180.w,
-                                        height: 270.h,
-                                      ),
-                                    ))));
-                  },
-                ),
+                                      error: (error, stack) =>
+                                          Text("An Error Ocurred"),
+                                      loading: () => Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 15.w),
+                                            child: LoadingContainer(
+                                              width: 180.w,
+                                              height: 270.h,
+                                            ),
+                                          ))));
+                        },
+                      ),
               ),
               SpacingConst.vSpacing60,
               Consumer(builder: ((context, ref, child) {
                 final selectedBook = ref.watch(selectedBookIndexProvider);
                 return user.books == null
-                    ? Text("No Books")
+                    ? Container()
                     : ref
                         .watch(BookRepo.getBookByIdProvider(
                             user.books![selectedBook]))
@@ -185,7 +215,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                     fontFamily: "JosefinSans",
                                                     color: ColorsConst.grey,
                                                   ),
-                                                  maxLines: 7,
+                                                  maxLines: 6,
                                                   textAlign: TextAlign.center,
                                                   overflow:
                                                       TextOverflow.ellipsis,

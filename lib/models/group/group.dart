@@ -7,7 +7,7 @@ part 'group.g.dart';
 @freezed
 class Group with _$Group {
   factory Group({
-    List<Group>? GroupAdmins,
+    List<String>? admins,
     required String id,
     String? name,
     String? description,
@@ -15,7 +15,8 @@ class Group with _$Group {
     List<GroupBook>? groupBooks,
     String? groupLink,
     String? image,
-    @JsonKey(name: 'createdAt', fromJson: _dateFromJson) DateTime? createdAt,
+    @JsonKey(name: 'createdAt', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+        DateTime? createdAt,
     List<String>? messages,
   }) = _Group;
 
@@ -24,3 +25,5 @@ class Group with _$Group {
 
 DateTime _dateFromJson(Timestamp timestamp) =>
     DateTime.fromMillisecondsSinceEpoch(timestamp.millisecondsSinceEpoch);
+
+Timestamp _dateToJson(DateTime? dateTime) => Timestamp.fromDate(dateTime!);

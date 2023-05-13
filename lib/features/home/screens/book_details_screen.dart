@@ -4,7 +4,7 @@ import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/home/controllers/home_screen_controller.dart';
 import 'package:Qaree/models/book/book.dart';
-import 'package:Qaree/models/note/note.dart';
+import 'package:Qaree/repos/note_repo.dart';
 import 'package:Qaree/services/date_time_services.dart';
 import 'package:Qaree/widgets/book_image.dart';
 import 'package:Qaree/widgets/bounce.dart';
@@ -17,8 +17,7 @@ import 'package:Qaree/utils/theme/extensions.dart';
 
 class BookDetailsScreen extends ConsumerStatefulWidget {
   final Book book;
-  final List<Note>? notes;
-  const BookDetailsScreen({required this.book, required this.notes, super.key});
+  const BookDetailsScreen({required this.book, super.key});
 
   @override
   ConsumerState<BookDetailsScreen> createState() => _BookDetailsScreenState();
@@ -53,10 +52,14 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            BookImage(
-                              book: widget.book,
-                              width: 90,
-                              height: 134,
+                            BounceAnimation(
+                              onTap: () =>
+                                  _controller.navigateToBookScreen(widget.book),
+                              child: BookImage(
+                                book: widget.book,
+                                width: 90,
+                                height: 134,
+                              ),
                             ),
                             SpacingConst.hSpacing20,
                             Container(
@@ -82,7 +85,7 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                                       fontFamily: "JosefinSans",
                                       color: ColorsConst.grey,
                                     ),
-                                    maxLines: 7,
+                                    maxLines: 6,
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -103,7 +106,8 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                             child: Row(
                               children: [
                                 BounceAnimation(
-                                  onTap: () {},
+                                  onTap: () =>
+                                      _controller.onAddReviewTap(widget.book),
                                   child: Container(
                                     width: 30.w,
                                     height: 30.w,
@@ -121,7 +125,8 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                                 ),
                                 Spacer(),
                                 BounceAnimation(
-                                  onTap: () {},
+                                  onTap: () =>
+                                      _controller.onAddNoteTap(widget.book),
                                   child: Container(
                                     width: 30.w,
                                     height: 30.w,
@@ -204,7 +209,7 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
                                       SizedBox(
                                         height: 35.h,
                                         width: 200.w,
-                                        child: widget.book.authors?.length ==
+                                        child: widget.book.authors?.length !=
                                                 null
                                             ? ListView.separated(
                                                 shrinkWrap: true,
@@ -252,69 +257,115 @@ class _BookDetailsScreenState extends ConsumerState<BookDetailsScreen> {
               ),
             ),
           )),
-      body: SafeArea(
-        child: Container(
-          child: Padding(
-            padding: EdgeInsets.only(
-                top: 60.h, bottom: 20.h, left: 20.w, right: 20.w),
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemCount: widget.notes?.length ?? 0,
-              separatorBuilder: ((context, index) => SpacingConst.vSpacing20),
-              itemBuilder: (context, index) => FadeInUp(
-                child: Container(
-                  height: 150.h,
-                  decoration: BoxDecoration(
-                    color: ColorsConst.white.withOpacity(0.80),
-                    borderRadius: BorderRadiusConst.smallBorderRadius,
-                    boxShadow: [BoxShadowConst.allSidesBoxShadow],
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              DateTimeServices.getFullDateAsLetterMonth(
-                                  dateTime: widget.notes![index].date),
-                              style: context.textThemes.bodyMedium?.copyWith(
-                                fontFamily: "JosefinSans",
-                                color: ColorsConst.grey,
+      body: Consumer(builder: (context, ref, child) {
+        final notes = ref
+            .watch(NoteRepo.getNotesByBookIdAndUserIdProvider(widget.book.id!));
+        return notes.when(
+            data: (notes) {
+              return notes.isNotEmpty
+                  ? SafeArea(
+                      child: Container(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              top: 60.h, bottom: 20.h, left: 20.w, right: 20.w),
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: notes.length,
+                            separatorBuilder: ((context, index) =>
+                                SpacingConst.vSpacing20),
+                            itemBuilder: (context, index) => FadeInUp(
+                              child: Container(
+                                height: 150.h,
+                                decoration: BoxDecoration(
+                                  color: ColorsConst.white.withOpacity(0.80),
+                                  borderRadius:
+                                      BorderRadiusConst.smallBorderRadius,
+                                  boxShadow: [BoxShadowConst.allSidesBoxShadow],
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10.w, vertical: 12.h),
+                                  child: Stack(
+                                    children: [
+                                      Positioned.fill(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: List.generate(
+                                            4,
+                                            (index) => Expanded(
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  border: Border(
+                                                    bottom: BorderSide(
+                                                      color:
+                                                          Colors.grey.shade400,
+                                                      width: 1.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 6.h),
+                                        child: Text(
+                                          notes[index].noteContent.toString(),
+                                          style: context.textThemes.bodyLarge
+                                              ?.copyWith(
+                                            fontFamily: "JosefinSans",
+                                            color: ColorsConst.primaryBlack,
+                                            height: 2.1.h,
+                                          ),
+                                          maxLines: 5,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            DateTimeServices
+                                                .getFullDateAsLetterMonth(
+                                                    dateTime:
+                                                        notes[index].date),
+                                            style: context.textThemes.bodyMedium
+                                                ?.copyWith(
+                                              fontFamily: "JosefinSans",
+                                              color: ColorsConst.grey,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
-                          ],
-                        ),
-                        SpacingConst.vSpacing8,
-                        Text(
-                          widget.notes![index].noteTitle.toString(),
-                          style: context.textThemes.titleLarge?.copyWith(
-                            fontFamily: "JosefinSans",
-                            color: ColorsConst.primaryBlack,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Divider(color: ColorsConst.grey, thickness: 1.sp),
-                        SpacingConst.vSpacing8,
-                        Text(
-                          widget.notes![index].noteContent.toString(),
-                          style: context.textThemes.bodyMedium?.copyWith(
-                            fontFamily: "JosefinSans",
-                            color: ColorsConst.primaryBlack,
-                          ),
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
+                      ),
+                    )
+                  : FadeInUp(
+                      child: Center(
+                          child: Text(
+                        "No Notes",
+                        style: context.textThemes.titleLarge?.copyWith(
+                          fontFamily: "JosefinSans",
+                          color: ColorsConst.primaryBlack,
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+                      )),
+                    );
+            },
+            error: (error, stackTrace) =>
+                Center(child: Text("There is an Error")),
+            loading: () => Center(
+                  child: CircularProgressIndicator(),
+                ));
+      }),
     );
   }
 }

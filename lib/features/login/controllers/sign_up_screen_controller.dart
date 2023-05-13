@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'package:Qaree/features/home/screens/home_screen.dart';
 import 'package:Qaree/features/login/auth_reo.dart';
 import 'package:Qaree/features/login/screens/login_screen.dart';
+import 'package:Qaree/features/navigation_bar/screens/navigation_bar.dart';
+import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/repos/reader_repo.dart';
 import 'package:Qaree/services/easy_navigator.dart';
 import 'package:Qaree/widgets/custom_snack_bar.dart';
@@ -46,6 +48,7 @@ class SignUpScreenController {
             name: nameController.text,
             email: emailController.text);
 
+        ref.read(userProvider.notifier).state = user;
         // If reader is null then there was an error creating the user
         if (reader == null) {
           CustomSnackBar.showCustomSnackBar(
@@ -71,7 +74,7 @@ class SignUpScreenController {
 
       // If everything went good and the user was logged in
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeScreen()));
+          MaterialPageRoute(builder: (context) => MainNavigationBar()));
     } catch (e) {
       // If the user enters invalid email/password, we will show an error dialog
       log(e.toString());

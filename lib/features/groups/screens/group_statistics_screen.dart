@@ -1,10 +1,12 @@
 import 'package:Qaree/constants/border_radius_const.dart';
 import 'package:Qaree/constants/box_shadow_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
-import 'package:Qaree/models/reader/reader.dart';
+import 'package:Qaree/constants/spacing_const.dart';
+import 'package:Qaree/features/statistics/screens/statistics_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:Qaree/utils/theme/extensions.dart';
 
 class _LineChart extends StatelessWidget {
   const _LineChart({required this.isShowingMainData});
@@ -14,7 +16,7 @@ class _LineChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LineChart(
-      isShowingMainData ? sampleData1 : sampleData2,
+      sampleData1,
       swapAnimationDuration: const Duration(milliseconds: 250),
     );
   }
@@ -26,20 +28,8 @@ class _LineChart extends StatelessWidget {
         borderData: borderData,
         lineBarsData: lineBarsData1,
         minX: 0,
-        maxX: 14,
+        maxX: 12,
         maxY: 4,
-        minY: 0,
-      );
-
-  LineChartData get sampleData2 => LineChartData(
-        lineTouchData: lineTouchData2,
-        gridData: gridData,
-        titlesData: titlesData2,
-        borderData: borderData,
-        lineBarsData: lineBarsData2,
-        minX: 0,
-        maxX: 14,
-        maxY: 6,
         minY: 0,
       );
 
@@ -71,52 +61,27 @@ class _LineChart extends StatelessWidget {
         lineChartBarData1_3,
       ];
 
-  LineTouchData get lineTouchData2 => LineTouchData(
-        enabled: false,
-      );
-
-  FlTitlesData get titlesData2 => FlTitlesData(
-        bottomTitles: AxisTitles(
-          sideTitles: bottomTitles,
-        ),
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: leftTitles(),
-        ),
-      );
-
-  List<LineChartBarData> get lineBarsData2 => [
-        lineChartBarData2_1,
-        lineChartBarData2_2,
-        lineChartBarData2_3,
-      ];
-
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
       fontSize: 14,
     );
     String text;
     switch (value.toInt()) {
       case 1:
-        text = '1m';
+        text = '1h';
         break;
       case 2:
-        text = '2m';
+        text = '2h';
         break;
       case 3:
-        text = '3m';
+        text = '3h';
         break;
       case 4:
-        text = '5m';
+        text = '5h';
         break;
       case 5:
-        text = '6m';
+        text = '6h';
         break;
       default:
         return Container();
@@ -129,24 +94,36 @@ class _LineChart extends StatelessWidget {
         getTitlesWidget: leftTitleWidgets,
         showTitles: true,
         interval: 1,
-        reservedSize: 40,
+        reservedSize: 20,
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
     );
     Widget text;
     switch (value.toInt()) {
-      case 2:
-        text = const Text('SEPT', style: style);
+      case 0:
+        text = const Text('Sun', style: style);
         break;
-      case 7:
-        text = const Text('OCT', style: style);
+      case 2:
+        text = const Text('Mon', style: style);
+        break;
+      case 4:
+        text = const Text('Tue', style: style);
+        break;
+      case 6:
+        text = const Text('Wed', style: style);
+        break;
+      case 8:
+        text = const Text('Tha', style: style);
+        break;
+      case 10:
+        text = const Text('Fri', style: style);
         break;
       case 12:
-        text = const Text('DEC', style: style);
+        text = const Text('Sat', style: style);
         break;
       default:
         text = const Text('');
@@ -167,22 +144,26 @@ class _LineChart extends StatelessWidget {
         getTitlesWidget: bottomTitleWidgets,
       );
 
-  FlGridData get gridData => FlGridData(show: false);
+  FlGridData get gridData => FlGridData(
+        show: true,
+        drawHorizontalLine: true,
+        drawVerticalLine: true,
+      );
 
   FlBorderData get borderData => FlBorderData(
-        show: true,
+        show: false,
         border: Border(
-          bottom: BorderSide(color: Colors.purple.withOpacity(0.2), width: 4),
-          left: const BorderSide(color: Colors.white),
-          right: const BorderSide(color: Colors.transparent),
-          top: const BorderSide(color: Colors.transparent),
+          bottom: const BorderSide(color: Colors.grey),
+          left: const BorderSide(color: Colors.grey),
+          right: const BorderSide(color: Colors.grey),
+          top: const BorderSide(color: Colors.grey),
         ),
       );
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         isCurved: true,
-        color: Colors.green,
-        barWidth: 8,
+        color: Color(0xffF2BF09),
+        barWidth: 3,
         isStrokeCapRound: true,
         dotData: FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
@@ -193,34 +174,28 @@ class _LineChart extends StatelessWidget {
           FlSpot(7, 3.4),
           FlSpot(10, 2),
           FlSpot(12, 2.2),
-          FlSpot(13, 1.8),
         ],
       );
 
   LineChartBarData get lineChartBarData1_2 => LineChartBarData(
         isCurved: true,
-        color: Colors.pink,
-        barWidth: 8,
+        color: Color(0xff602BF8),
+        barWidth: 3,
         isStrokeCapRound: true,
         dotData: FlDotData(show: false),
-        belowBarData: BarAreaData(
-          show: false,
-          color: Colors.pink.withOpacity(0),
-        ),
         spots: const [
           FlSpot(1, 1),
           FlSpot(3, 2.8),
           FlSpot(7, 1.2),
           FlSpot(10, 2.8),
           FlSpot(12, 2.6),
-          FlSpot(13, 3.9),
         ],
       );
 
   LineChartBarData get lineChartBarData1_3 => LineChartBarData(
         isCurved: true,
         color: Colors.cyan,
-        barWidth: 8,
+        barWidth: 3,
         isStrokeCapRound: true,
         dotData: FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
@@ -229,70 +204,13 @@ class _LineChart extends StatelessWidget {
           FlSpot(3, 1.9),
           FlSpot(6, 3),
           FlSpot(10, 1.3),
-          FlSpot(13, 2.5),
-        ],
-      );
-
-  LineChartBarData get lineChartBarData2_1 => LineChartBarData(
-        isCurved: true,
-        curveSmoothness: 0,
-        color: Colors.green.withOpacity(0.5),
-        barWidth: 4,
-        isStrokeCapRound: true,
-        dotData: FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 1),
-          FlSpot(3, 4),
-          FlSpot(5, 1.8),
-          FlSpot(7, 5),
-          FlSpot(10, 2),
-          FlSpot(12, 2.2),
-          FlSpot(13, 1.8),
-        ],
-      );
-
-  LineChartBarData get lineChartBarData2_2 => LineChartBarData(
-        isCurved: true,
-        color: Colors.pink.withOpacity(0.5),
-        barWidth: 4,
-        isStrokeCapRound: true,
-        dotData: FlDotData(show: false),
-        belowBarData: BarAreaData(
-          show: true,
-          color: Colors.pink.withOpacity(0.2),
-        ),
-        spots: const [
-          FlSpot(1, 1),
-          FlSpot(3, 2.8),
-          FlSpot(7, 1.2),
-          FlSpot(10, 2.8),
-          FlSpot(12, 2.6),
-          FlSpot(13, 3.9),
-        ],
-      );
-
-  LineChartBarData get lineChartBarData2_3 => LineChartBarData(
-        isCurved: true,
-        curveSmoothness: 0,
-        color: Colors.cyan.withOpacity(0.5),
-        barWidth: 2,
-        isStrokeCapRound: true,
-        dotData: FlDotData(show: true),
-        belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 3.8),
-          FlSpot(3, 1.9),
-          FlSpot(6, 5),
-          FlSpot(10, 3.3),
-          FlSpot(13, 4.5),
+          FlSpot(12, 2.5),
         ],
       );
 }
 
 class GroupStatisticsScreen extends StatefulWidget {
-  final List<Reader>? readers;
-  const GroupStatisticsScreen({this.readers, super.key});
+  const GroupStatisticsScreen({super.key});
 
   @override
   State<StatefulWidget> createState() => GroupStatisticsScreenState();
@@ -309,59 +227,143 @@ class GroupStatisticsScreenState extends State<GroupStatisticsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10.w),
-      decoration: BoxDecoration(
-        color: ColorsConst.white,
-        borderRadius: BorderRadiusConst.smallBorderRadius,
-        boxShadow: [BoxShadowConst.allSidesBoxShadow],
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                const SizedBox(
-                  height: 37,
-                ),
-                const Text(
-                  'Monthly Sales',
-                  style: TextStyle(
-                    color: Colors.purple,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 37,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16, left: 6),
-                  child: _LineChart(isShowingMainData: isShowingMainData),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
+    return Padding(
+      padding: EdgeInsets.all(16.w),
+      child: Column(
+        children: [
+          SpacingConst.vSpacing16,
+          Container(
+            decoration: BoxDecoration(
+              color: ColorsConst.white,
+              boxShadow: [BoxShadowConst.allSidesBoxShadow],
+              borderRadius: BorderRadiusConst.smallBorderRadius,
             ),
-            IconButton(
-              icon: Icon(
-                Icons.refresh,
-                color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+            height: 400,
+            child: Padding(
+              padding: EdgeInsets.all(15.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '15h 53m',
+                            style: context.textThemes.displayMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: ColorsConst.darkGrey,
+                            ),
+                          ),
+                          Text(
+                            'Total Reading Time',
+                            style: context.textThemes.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: ColorsConst.primaryPurple,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Icons.timer,
+                        size: 30.sp,
+                      )
+                    ],
+                  ),
+                  SpacingConst.vSpacing20,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    child: Column(
+                      children: [
+                        Indicator(
+                          color: Color(0xff602BF8),
+                          text: 'Abdulkareem Alramlawi',
+                          isSquare: true,
+                        ),
+                        SpacingConst.vSpacing8,
+                        Indicator(
+                          color: Color(0xffF2BF09),
+                          text: 'Bashar Alhayes',
+                          isSquare: true,
+                        ),
+                        SpacingConst.vSpacing8,
+                        Indicator(
+                          color: Colors.cyan,
+                          text: 'Ali Abu Rub',
+                          isSquare: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SpacingConst.vSpacing30,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 16, left: 6),
+                      child: _LineChart(isShowingMainData: isShowingMainData),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
               ),
-              onPressed: () {
-                setState(() {
-                  isShowingMainData = !isShowingMainData;
-                });
-              },
-            )
-          ],
-        ),
+            ),
+          ),
+          SpacingConst.vSpacing30,
+          InfoItem(
+            title: 'Best Reader',
+            value: "Ahmed",
+            average: "1h 34m - day",
+            icon: Icons.timer,
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class Indicator extends StatelessWidget {
+  const Indicator({
+    super.key,
+    required this.color,
+    required this.text,
+    required this.isSquare,
+    this.size = 16,
+    this.textColor,
+  });
+  final Color color;
+  final String text;
+  final bool isSquare;
+  final double size;
+  final Color? textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
+            color: color,
+          ),
+        ),
+        const SizedBox(
+          width: 4,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+            color: textColor,
+          ),
+        )
+      ],
     );
   }
 }

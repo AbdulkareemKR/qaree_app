@@ -20,12 +20,16 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Review {
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   String? get bookId => throw _privateConstructorUsedError;
   String? get reviewContent => throw _privateConstructorUsedError;
-  double? get rating => throw _privateConstructorUsedError;
-  @JsonKey(name: 'date', fromJson: _dateFromJson)
+  num? get rating => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'date',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get date => throw _privateConstructorUsedError;
   bool? get isPublic => throw _privateConstructorUsedError;
 
@@ -40,12 +44,13 @@ abstract class $ReviewCopyWith<$Res> {
       _$ReviewCopyWithImpl<$Res, Review>;
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String? userId,
       String? bookId,
       String? reviewContent,
-      double? rating,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
+      num? rating,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? date,
       bool? isPublic});
 }
 
@@ -62,7 +67,7 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = freezed,
     Object? bookId = freezed,
     Object? reviewContent = freezed,
@@ -71,10 +76,10 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
     Object? isPublic = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -90,7 +95,7 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as num?,
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -110,12 +115,13 @@ abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String? userId,
       String? bookId,
       String? reviewContent,
-      double? rating,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
+      num? rating,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          DateTime? date,
       bool? isPublic});
 }
 
@@ -129,7 +135,7 @@ class __$$_ReviewCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? userId = freezed,
     Object? bookId = freezed,
     Object? reviewContent = freezed,
@@ -138,10 +144,10 @@ class __$$_ReviewCopyWithImpl<$Res>
     Object? isPublic = freezed,
   }) {
     return _then(_$_Review(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -157,7 +163,7 @@ class __$$_ReviewCopyWithImpl<$Res>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as num?,
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -174,19 +180,20 @@ class __$$_ReviewCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Review implements _Review {
   _$_Review(
-      {required this.id,
+      {this.id,
       this.userId,
       this.bookId,
       this.reviewContent,
       this.rating,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) this.date,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          this.date,
       this.isPublic = false});
 
   factory _$_Review.fromJson(Map<String, dynamic> json) =>
       _$$_ReviewFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
   final String? userId;
   @override
@@ -194,9 +201,13 @@ class _$_Review implements _Review {
   @override
   final String? reviewContent;
   @override
-  final double? rating;
+  final num? rating;
   @override
-  @JsonKey(name: 'date', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'date',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   final DateTime? date;
   @override
   @JsonKey()
@@ -244,18 +255,19 @@ class _$_Review implements _Review {
 
 abstract class _Review implements Review {
   factory _Review(
-      {required final String id,
+      {final String? id,
       final String? userId,
       final String? bookId,
       final String? reviewContent,
-      final double? rating,
-      @JsonKey(name: 'date', fromJson: _dateFromJson) final DateTime? date,
+      final num? rating,
+      @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+          final DateTime? date,
       final bool? isPublic}) = _$_Review;
 
   factory _Review.fromJson(Map<String, dynamic> json) = _$_Review.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
   String? get userId;
   @override
@@ -263,9 +275,13 @@ abstract class _Review implements Review {
   @override
   String? get reviewContent;
   @override
-  double? get rating;
+  num? get rating;
   @override
-  @JsonKey(name: 'date', fromJson: _dateFromJson)
+  @JsonKey(
+      name: 'date',
+      fromJson: _dateFromJson,
+      toJson: _dateToJson,
+      nullable: true)
   DateTime? get date;
   @override
   bool? get isPublic;

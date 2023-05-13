@@ -14,6 +14,6 @@ _$_StartEndDate _$$_StartEndDateFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_StartEndDateToJson(_$_StartEndDate instance) =>
     <String, dynamic>{
-      'startDate': instance.startDate?.toIso8601String(),
-      'endDate': instance.endDate?.toIso8601String(),
+      'startDate': _dateToJson(instance.startDate),
+      'endDate': _dateToJson(instance.endDate),
     };

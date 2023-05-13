@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:Qaree/features/login/auth_reo.dart';
 import 'package:Qaree/features/login/screens/sign_up_screen.dart';
 import 'package:Qaree/features/navigation_bar/screens/navigation_bar.dart';
+import 'package:Qaree/providers/reader_provider.dart';
 import 'package:Qaree/services/easy_navigator.dart';
 import 'package:Qaree/widgets/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,7 @@ class LoginScreenController {
       if (user != null) {
         // If everything went good this means successful login
         log("Successfully logged in with UId: ${user.uid}");
+        ref.read(userProvider.notifier).state = user;
       } else {
         // else throw error that will be handled in the widget
         CustomSnackBar.showCustomSnackBar(

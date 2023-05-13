@@ -2,9 +2,10 @@ import 'package:Qaree/constants/colors_const.dart';
 import 'package:flutter/material.dart';
 import 'package:Qaree/utils/theme/extensions.dart';
 
-AppBar CustomAppBar({required BuildContext context, String? title}) {
+AppBar CustomAppBar(
+    {required BuildContext context, String? title, Color? backgroundColor}) {
   return AppBar(
-    backgroundColor: ColorsConst.lightGrey,
+    backgroundColor: backgroundColor ?? ColorsConst.lightGrey,
     title: Text(
       title ?? "",
       style: context.textThemes.displayMedium?.copyWith(

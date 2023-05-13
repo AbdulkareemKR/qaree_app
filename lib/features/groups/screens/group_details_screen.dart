@@ -3,6 +3,7 @@ import 'package:Qaree/constants/box_shadow_const.dart';
 import 'package:Qaree/constants/colors_const.dart';
 import 'package:Qaree/constants/spacing_const.dart';
 import 'package:Qaree/features/groups/controllers/groups_controller.dart';
+import 'package:Qaree/features/groups/screens/chat_page.dart';
 import 'package:Qaree/features/groups/screens/group_books_screen.dart';
 import 'package:Qaree/features/groups/screens/group_messages_screen.dart';
 import 'package:Qaree/features/groups/screens/group_statistics_screen.dart';
@@ -57,7 +58,7 @@ class _GroupDetailsScreenState extends ConsumerState<GroupDetailsScreen>
           ),
           body: TabBarView(
             children: [
-              GroupMessagesScreen(messages: widget.group?.messages),
+              ChatPage(),
               GroupStatisticsScreen(),
               GroupBooksScreen(groupBook: widget.group?.groupBooks),
             ],

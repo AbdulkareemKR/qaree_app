@@ -4,6 +4,7 @@ import 'package:Qaree/features/reading_session/providers/reading_session_provide
 import 'package:Qaree/models/note/note.dart';
 import 'package:Qaree/models/session/session.dart';
 import 'package:Qaree/providers/reader_provider.dart';
+import 'package:Qaree/repos/note_repo.dart';
 import 'package:Qaree/repos/reader_repo.dart';
 import 'package:Qaree/repos/session_repo.dart';
 import 'package:Qaree/services/date_time_services.dart';
@@ -142,9 +143,18 @@ class ReadingSessionController {
       userId: user.id,
     );
 
-    ReaderRepo.addNote(note: newNote);
+    NoteRepo.addNoteToUser(note: newNote);
 
     ref.read(ReadingSessionProviders.isTakingNotesProvider.notifier).state =
         false;
+  }
+
+  void popScreen() {
+    EasyNavigator.popPage(context);
+  }
+
+  Future<void> onSaveAndPop(String bookId) async {
+    await onSaveNotePressed(bookId);
+    popScreen();
   }
 }

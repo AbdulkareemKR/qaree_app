@@ -7,9 +7,8 @@ part of 'group.dart';
 // **************************************************************************
 
 _$_Group _$$_GroupFromJson(Map<String, dynamic> json) => _$_Group(
-      GroupAdmins: (json['GroupAdmins'] as List<dynamic>?)
-          ?.map((e) => Group.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      admins:
+          (json['admins'] as List<dynamic>?)?.map((e) => e as String).toList(),
       id: json['id'] as String,
       name: json['name'] as String?,
       description: json['description'] as String?,
@@ -27,7 +26,7 @@ _$_Group _$$_GroupFromJson(Map<String, dynamic> json) => _$_Group(
     );
 
 Map<String, dynamic> _$$_GroupToJson(_$_Group instance) => <String, dynamic>{
-      'GroupAdmins': instance.GroupAdmins,
+      'admins': instance.admins,
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
@@ -35,6 +34,6 @@ Map<String, dynamic> _$$_GroupToJson(_$_Group instance) => <String, dynamic>{
       'groupBooks': instance.groupBooks,
       'groupLink': instance.groupLink,
       'image': instance.image,
-      'createdAt': instance.createdAt?.toIso8601String(),
+      'createdAt': _dateToJson(instance.createdAt),
       'messages': instance.messages,
     };

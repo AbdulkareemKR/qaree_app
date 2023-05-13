@@ -6,12 +6,13 @@ part 'review.g.dart';
 @freezed
 class Review with _$Review {
   factory Review({
-    required String id,
+    String? id,
     String? userId,
     String? bookId,
     String? reviewContent,
-    double? rating,
-    @JsonKey(name: 'date', fromJson: _dateFromJson) DateTime? date,
+    num? rating,
+    @JsonKey(name: 'date', fromJson: _dateFromJson, toJson: _dateToJson, nullable: true)
+        DateTime? date,
     @Default(false) bool? isPublic,
   }) = _Review;
 
@@ -20,3 +21,5 @@ class Review with _$Review {
 
 DateTime _dateFromJson(Timestamp timestamp) =>
     DateTime.fromMillisecondsSinceEpoch(timestamp.millisecondsSinceEpoch);
+
+Timestamp _dateToJson(DateTime? dateTime) => Timestamp.fromDate(dateTime!);
