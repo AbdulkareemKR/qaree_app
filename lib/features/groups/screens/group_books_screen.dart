@@ -36,7 +36,8 @@ class _GroupBooksScreenState extends ConsumerState<GroupBooksScreen> {
       body: Column(
         children: [
           SpacingConst.vSpacing20,
-          ListView.builder(
+          ListView.separated(
+            separatorBuilder: (context, index) => SpacingConst.vSpacing20,
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemCount: widget.groupBook?.length ?? 0,

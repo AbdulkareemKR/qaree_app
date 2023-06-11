@@ -59,7 +59,7 @@ class _GroupDetailsScreenState extends ConsumerState<GroupDetailsScreen>
           body: TabBarView(
             children: [
               ChatPage(),
-              GroupStatisticsScreen(),
+              GroupStatisticsScreen(groupMembers: widget.group?.members),
               GroupBooksScreen(groupBook: widget.group?.groupBooks),
             ],
           ),

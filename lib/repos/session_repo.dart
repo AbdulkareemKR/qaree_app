@@ -11,6 +11,11 @@ class SessionRepo {
     return getTodaySessionsByUserId(userId);
   });
 
+  static final getWeeksSessionByUserIdProvider =
+      StreamProvider.family<List<Session>, String>((ref, userId) {
+    return getWeeksSessionsByUserId(userId);
+  });
+
   // Functions
   static Future<Session?> addSession({required Session session}) async {
     try {
@@ -56,4 +61,54 @@ class SessionRepo {
       return const Stream.empty();
     }
   }
+
+  static Stream<List<Session>> getWeeksSessionsByUserId(String userId) {
+    DateTime today = DateTime.now(); // get
+    DateTime startOfDay = DateTime(today.year, today.month, today.day); //
+    int currentDay = startOfDay.weekday;
+    DateTime firstDayOfWeek = startOfDay
+        .subtract(Duration(days: currentDay)); // get the first day of the week
+
+    try {
+      final ordersStream = FirestoreRepo.sessionsCollection
+          .where('userId', isEqualTo: userId)
+          .where('startDate', isGreaterThanOrEqualTo: firstDayOfWeek)
+          .snapshots()
+          .map((list) =>
+              list.docs.map((doc) => Session.fromJson(doc.data())).toList());
+      return ordersStream;
+    } catch (e) {
+      e.logException();
+      return const Stream.empty();
+    }
+  }
+
+  // static Stream<List<Session>> getUserSessionsFromDateToDate(
+  //     {required String userId, DateTime? fromDate, DateTime? toDate}) {
+  //   DateTime today = DateTime.now(); // get today's date and time
+  //   DateTime startOfDay = fromDate ??
+  //       DateTime(
+  //           today.year,
+  //           today.month,
+  //           today
+  //               .day); // if no date is provided, get the to get the start of the day
+
+  //   DateTime endOfDay = toDate ??
+  //       DateTime(today.year, today.month, today.day, 23,
+  //           59); // to get the end of the day
+
+  //   try {
+  //     final ordersStream = FirestoreRepo.sessionsCollection
+  //         .where('userId', isEqualTo: userId)
+  //         .where('startDate', isGreaterThanOrEqualTo: startOfDay)
+  //         .where('startDate', isLessThanOrEqualTo: endOfDay)
+  //         .snapshots()
+  //         .map((list) =>
+  //             list.docs.map((doc) => Session.fromJson(doc.data())).toList());
+  //     return ordersStream;
+  //   } catch (e) {
+  //     e.logException();
+  //     return const Stream.empty();
+  //   }
+  // }
 }

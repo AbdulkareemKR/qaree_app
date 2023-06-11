@@ -88,7 +88,7 @@ class _LineChartState extends ConsumerState<_LineChart> {
         borderData: borderData,
         lineBarsData: ref.watch(lineChartProvider),
         minX: 0,
-        maxX: 6, // number of days in the week (index 0 is the first day)
+        maxX: 7, // number of days in the week (index 0 is the first day)
         maxY: ref.watch(maximumReadingTimeProvider).toDouble(),
         minY: 0,
       );
@@ -161,24 +161,27 @@ class _LineChartState extends ConsumerState<_LineChart> {
     Widget text;
     switch (value.toInt()) {
       case 0:
-        text = const Text('Sun', style: style);
+        text = const Text('');
         break;
       case 1:
-        text = const Text('Mon', style: style);
+        text = const Text('Sun', style: style);
         break;
       case 2:
-        text = const Text('Tue', style: style);
+        text = const Text('Mon', style: style);
         break;
       case 3:
-        text = const Text('Wed', style: style);
+        text = const Text('Tue', style: style);
         break;
       case 4:
-        text = const Text('Tha', style: style);
+        text = const Text('Wed', style: style);
         break;
       case 5:
-        text = const Text('Fri', style: style);
+        text = const Text('Tha', style: style);
         break;
       case 6:
+        text = const Text('Fri', style: style);
+        break;
+      case 7:
         text = const Text('Sat', style: style);
         break;
       default:
@@ -269,99 +272,90 @@ class _LineChartState extends ConsumerState<_LineChart> {
 }
 
 class GroupStatisticsScreen extends ConsumerStatefulWidget {
-  final List<String>? groupMembers;
+  final String userId;
 
-  const GroupStatisticsScreen({super.key, required this.groupMembers});
+  const GroupStatisticsScreen({super.key, required this.userId});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      GroupStatisticsScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => ChartsStatistics();
 }
 
-class GroupStatisticsScreenState extends ConsumerState<GroupStatisticsScreen> {
-  void createChartData(List<String>? groupMembers) {
+class ChartsStatistics extends ConsumerState<GroupStatisticsScreen> {
+  void createChartData(String userId) {
     final lineChartProviderState = ref.read(lineChartProvider.notifier).state;
     double totalRadingTime = 0;
     double maxReadingTime = 0;
 
     int index = 0;
-    groupMembers?.forEach((member) {
-      final sessionStream =
-          ref.watch(SessionRepo.getWeeksSessionByUserIdProvider(member).stream);
 
-      StreamSubscription<List<Session>> _sessionSubscription =
-          sessionStream.listen((memberSessions) {
-        double memberReadingTime = 0;
-        List<FlSpot> flSpotSessions = [];
+    final sessionStream =
+        ref.watch(SessionRepo.getWeeksSessionByUserIdProvider(userId).stream);
 
-        DateTime today = DateTime.now();
-        DateTime startOfWeek =
-            today.subtract(Duration(days: today.weekday % 7));
+    StreamSubscription<List<Session>> _sessionSubscription =
+        sessionStream.listen((memberSessions) {
+      double memberReadingTime = 0;
+      List<FlSpot> flSpotSessions = [];
 
-        // If today is Sunday, start a new week with today's date as the first day
-        if (startOfWeek.weekday == DateTime.sunday) {
-          startOfWeek = today;
-        }
+      DateTime today = DateTime.now();
+      DateTime startOfWeek = today.subtract(Duration(days: today.weekday % 7));
 
-        for (DateTime date = startOfWeek;
-            date.isBefore(today.add(Duration(days: 1)));
-            date = date.add(Duration(days: 1))) {
-          int totalReadingTimeForDay = 0;
+      // If today is Sunday, start a new week with today's date as the first day
+      if (startOfWeek.weekday == DateTime.sunday) {
+        startOfWeek = today;
+      }
 
-          final DaySessions = memberSessions.where((session) {
-            return session.startDate!.day == date.day &&
-                session.startDate!.month == date.month &&
-                session.startDate!.year == date.year;
-          });
+      for (DateTime date = startOfWeek;
+          date.isBefore(today.add(Duration(days: 1)));
+          date = date.add(Duration(days: 1))) {
+        int totalReadingTimeForDay = 0;
 
-          flSpotSessions.add(FlSpot(
-            0,
-            0,
-          ));
+        final DaySessions = memberSessions.where((session) {
+          return session.startDate!.day == date.day &&
+              session.startDate!.month == date.month &&
+              session.startDate!.year == date.year;
+        });
 
-          DaySessions.forEach((session) {
-            totalReadingTimeForDay += session.totalReadingTime!;
-          });
+        DaySessions.forEach((session) {
+          totalReadingTimeForDay += session.totalReadingTime!;
+        });
 
-          memberReadingTime += totalReadingTimeForDay.toDouble();
-          totalRadingTime += totalReadingTimeForDay.toDouble();
+        memberReadingTime += totalReadingTimeForDay.toDouble();
+        totalRadingTime += totalReadingTimeForDay.toDouble();
+        flSpotSessions.add(FlSpot(
+          (date.weekday % 7 + 1).toDouble(),
+          totalReadingTimeForDay.toDouble(),
+        ));
+      }
 
-          flSpotSessions.add(FlSpot(
-            (date.weekday % 7).toDouble(),
-            totalReadingTimeForDay.toDouble(),
-          ));
-        }
+      if (memberReadingTime > maxReadingTime) {
+        maxReadingTime = memberReadingTime;
+        ref.read(bestReaderProvider.notifier).state = userId;
+      }
 
-        if (memberReadingTime > maxReadingTime) {
-          maxReadingTime = memberReadingTime;
-          ref.read(bestReaderProvider.notifier).state = member;
-        }
-
-        if (flSpotSessions.isNotEmpty) {
-          ref.read(lineChartProvider.notifier).state =
-              ref.read(lineChartProvider) +
-                  [
-                    LineChartBarData(
-                      show: true,
-                      isCurved: true,
-                      color: flutterColors[index],
-                      barWidth: 3,
-                      isStrokeCapRound: true,
-                      dotData: FlDotData(show: true),
-                      belowBarData: BarAreaData(show: true),
-                      spots: flSpotSessions,
-                    ),
-                  ];
-        }
-        index++;
-        // Print the maximum reading time among all members
-        log('Max Reading Time: $maxReadingTime');
-        log('Total Reading Time: $totalRadingTime');
-        ref.read(maximumReadingTimeProvider.notifier).state = maxReadingTime;
-        ref.read(totalReadingTimeProvider.notifier).state = totalRadingTime;
-      }, onError: (error, stackTrace) {
-        // Handle error if needed
-      });
+      if (flSpotSessions.isNotEmpty) {
+        ref.read(lineChartProvider.notifier).state =
+            ref.read(lineChartProvider) +
+                [
+                  LineChartBarData(
+                    show: true,
+                    isCurved: true,
+                    color: flutterColors[index],
+                    barWidth: 3,
+                    isStrokeCapRound: true,
+                    dotData: FlDotData(show: true),
+                    belowBarData: BarAreaData(show: true),
+                    spots: flSpotSessions,
+                  ),
+                ];
+      }
+      index++;
+      // Print the maximum reading time among all members
+      log('Max Reading Time: $maxReadingTime');
+      log('Total Reading Time: $totalRadingTime');
+      ref.read(maximumReadingTimeProvider.notifier).state = maxReadingTime;
+      ref.read(totalReadingTimeProvider.notifier).state = totalRadingTime;
+    }, onError: (error, stackTrace) {
+      // Handle error if needed
     });
   }
 
@@ -374,7 +368,7 @@ class GroupStatisticsScreenState extends ConsumerState<GroupStatisticsScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    createChartData(widget.groupMembers);
+    createChartData(widget.userId);
   }
 
   @override
@@ -435,9 +429,9 @@ class GroupStatisticsScreenState extends ConsumerState<GroupStatisticsScreen> {
                           separatorBuilder: (context, index) =>
                               SpacingConst.vSpacing8,
                           shrinkWrap: true,
-                          itemCount: widget.groupMembers?.length ?? 0,
+                          itemCount: widget.userId?.length ?? 0,
                           itemBuilder: (context, index) {
-                            final memberId = widget.groupMembers![index];
+                            final memberId = widget.userId![index];
                             return ref
                                 .watch(ReaderRepo.getUserByIdProvider(memberId))
                                 .when(

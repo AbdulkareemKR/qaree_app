@@ -72,18 +72,18 @@ class _StatisticsScreenState extends ConsumerState<StatisticsScreen> {
                                     "${_controller.getFormattedAverageReadingTime(sessions)} - Session",
                                 icon: Icons.timer,
                               ),
-                              SpacingConst.vSpacing20,
-                              InfoItem(
-                                title: 'Read Pages',
-                                value: _controller
-                                    .getNumberOfPages(sessions)
-                                    .toString(),
-                                average:
-                                    _controller.getFormattedAverageTimePerPage(
-                                            sessions) +
-                                        " - Page",
-                                icon: Icons.menu_book_rounded,
-                              ),
+                              // SpacingConst.vSpacing20,
+                              // InfoItem(
+                              //   title: 'Read Pages',
+                              //   value: _controller
+                              //       .getNumberOfPages(sessions)
+                              //       .toString(),
+                              //   average:
+                              //       _controller.getFormattedAverageTimePerPage(
+                              //               sessions) +
+                              //           " - Page",
+                              //   icon: Icons.menu_book_rounded,
+                              // ),
                               SpacingConst.vSpacing20,
                               InfoItem(
                                 title: 'Reading Sessions',

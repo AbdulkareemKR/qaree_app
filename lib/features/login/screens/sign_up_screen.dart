@@ -32,94 +32,97 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-          width: double.infinity,
-          color: ColorsConst.primaryBlack,
-          child: SafeArea(
-            child: Column(
-              children: [
-                SpacingConst.vSpacing60,
-                Text(
-                  "Qaree",
-                  style: context.textThemes.displayMedium?.copyWith(
-                    fontFamily: "JosefinSans",
-                    color: ColorsConst.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SpacingConst.vSpacing60,
-                Container(
-                  padding: EdgeInsets.all(18.h),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusConst.circularBorderRadius,
-                  ),
-                  width: 230.h,
-                  child:
-                      Image(image: AssetImage("assets/images/white_logo.png")),
-                ),
-                SpacingConst.vSpacing80,
-                CustomTextField(
-                  type: TextFieldType.normal,
-                  controller: _controller.nameController,
-                  width: 350.w,
-                  height: 50.h,
-                  placeHolderText: 'Name',
-                  icon: Icons.person,
-                ),
-                SpacingConst.vSpacing20,
-                CustomTextField(
-                  type: TextFieldType.normal,
-                  controller: _controller.emailController,
-                  width: 350.w,
-                  height: 50.h,
-                  placeHolderText: 'Email',
-                  icon: Icons.email,
-                ),
-                SpacingConst.vSpacing20,
-                CustomTextField(
-                  type: TextFieldType.normal,
-                  controller: _controller.passwordController,
-                  width: 350.w,
-                  height: 50.h,
-                  placeHolderText: 'Password',
-                  isPassword: true,
-                  icon: Icons.lock_outline_rounded,
-                ),
-                SpacingConst.vSpacing40,
-                CustomButton(
-                  label: "Sign Up",
-                  onPressed: _controller.onSignUpPressed,
-                  style: CustomButtonStyle.primary,
-                  textStyle: context.textThemes.bodyMedium?.copyWith(
-                    color: ColorsConst.white,
-                  ),
-                ),
-                SpacingConst.vSpacing20,
-                BounceAnimation(
-                  onTap: _controller.onLoginPressed,
-                  child: RichText(
-                    text: TextSpan(
-                      style: context.textThemes.bodyMedium?.copyWith(
-                        color: ColorsConst.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Already have an account? ',
-                        ),
-                        TextSpan(
-                            text: 'Log in',
-                            style: TextStyle(
-                              color: ColorsConst.primaryPurple,
-                            ))
-                      ],
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: ColorsConst.primaryBlack,
+            child: SafeArea(
+              child: Column(
+                children: [
+                  SpacingConst.vSpacing60,
+                  Text(
+                    "Qaree",
+                    style: context.textThemes.displayLarge?.copyWith(
+                      fontFamily: "JosefinSans",
+                      color: ColorsConst.white,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                )
-              ],
-            ),
-          )),
+                  SpacingConst.vSpacing60,
+                  Container(
+                    padding: EdgeInsets.all(18.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadiusConst.circularBorderRadius,
+                    ),
+                    width: 230.h,
+                    child: Image(
+                        image: AssetImage("assets/images/white_logo.png")),
+                  ),
+                  SpacingConst.vSpacing80,
+                  CustomTextField(
+                    type: TextFieldType.normal,
+                    controller: _controller.nameController,
+                    width: 350.w,
+                    height: 50.h,
+                    placeHolderText: 'Name',
+                    icon: Icons.person,
+                  ),
+                  SpacingConst.vSpacing20,
+                  CustomTextField(
+                    type: TextFieldType.normal,
+                    controller: _controller.emailController,
+                    width: 350.w,
+                    height: 50.h,
+                    placeHolderText: 'Email',
+                    icon: Icons.email,
+                  ),
+                  SpacingConst.vSpacing20,
+                  CustomTextField(
+                    type: TextFieldType.normal,
+                    controller: _controller.passwordController,
+                    width: 350.w,
+                    height: 50.h,
+                    placeHolderText: 'Password',
+                    isPassword: true,
+                    icon: Icons.lock_outline_rounded,
+                  ),
+                  SpacingConst.vSpacing40,
+                  CustomButton(
+                    label: "Sign Up",
+                    onPressed: _controller.onSignUpPressed,
+                    style: CustomButtonStyle.primary,
+                    textStyle: context.textThemes.bodyMedium?.copyWith(
+                      color: ColorsConst.white,
+                    ),
+                  ),
+                  SpacingConst.vSpacing20,
+                  BounceAnimation(
+                    onTap: _controller.onLoginPressed,
+                    child: RichText(
+                      text: TextSpan(
+                        style: context.textThemes.bodyMedium?.copyWith(
+                          color: ColorsConst.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Already have an account? ',
+                          ),
+                          TextSpan(
+                              text: 'Log in',
+                              style: TextStyle(
+                                color: ColorsConst.primaryPurple,
+                              ))
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )),
+      ),
     );
   }
 }
