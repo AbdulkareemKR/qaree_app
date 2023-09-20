@@ -2,6 +2,34 @@
 
 Qaree is a digital product aiming to facilitate group reading by enabling readers to create group cycles online. In addition, individual readers can use Qaree to track their reading status and keep a record of their achievements. Qaree will target regular readers, but also other sectors of Saudi Arabia’s society. That would result in enriching the culture of society and promoting reading between its members. Current products mainly target English-speaking audience with little or no support of Arabic. Some digital products can be used regardless of the language barrier. However, with a socially heavy activity like group reading, it is a must to have a platform that is tailored for local needs and culture. That is where Qaree will fill this gap and provide the desired solution. 
 
+
+### App Pictures 
+
+<img src="https://github.com/AbdulkareemKR/qaree_app/assets/76615134/a6c33225-b2f1-4cbd-a21a-982b656f6801" width="300">
+
+---
+
+<img src="https://github.com/AbdulkareemKR/qaree_app/assets/76615134/e88f5746-c733-4a7f-b434-d83b8bee2482" width="300">
+
+---
+
+<img src="https://github.com/AbdulkareemKR/qaree_app/assets/76615134/f9457bbd-e598-4419-a38a-b1b1c231e674" width="300">
+
+---
+
+<img src="https://github.com/AbdulkareemKR/qaree_app/assets/76615134/ec41ae15-e45d-4d78-974a-0fcf91a69f1d" width="300">
+
+---
+
+<img src="https://github.com/AbdulkareemKR/qaree_app/assets/76615134/e6f8ea8a-95a0-418e-a71c-5e236281813f" width="300">
+
+---
+
+<img src="https://github.com/AbdulkareemKR/qaree_app/assets/76615134/8431f7ac-f82a-434a-b5d6-71fabeaab253" width="300">
+
+
+
+
 ### Files Structure
 
 When you want to implement a new feature in the app you should create a new folder representing this feature in the `features` folder.
